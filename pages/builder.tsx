@@ -1,9 +1,22 @@
 import { NextPage } from "next";
 import DadosLinks from "./components/links"
+import { useState } from "react";
 
 const builder:NextPage = () => {
-
     
+    interface UserLinks {
+        tipoLink:String,
+        link:String
+    }
+    
+    const [dadoslinkList, setDadoslinkList] = useState<any|null>([]);
+
+
+    function pushLinks(){
+        const dados = <DadosLinks tipolink="git" link="github.com" />;
+        setDadoslinkList([dados, ...dadoslinkList])
+    }
+
     return(
         <div>
             <h2>Construa seu CV:</h2>
@@ -28,10 +41,10 @@ const builder:NextPage = () => {
                     
                 </div>
 
-                <DadosLinks tipolink="git" link="github.com" />
+                {dadoslinkList}
                 <br />
 
-                <button type="submit">Register</button>
+                <button onClick={pushLinks}>Register</button>
             </form>
         </div>
     )
