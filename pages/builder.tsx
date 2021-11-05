@@ -2,19 +2,21 @@ import { NextPage } from "next";
 import DadosLinks from "./components/links"
 import { useState } from "react";
 
-const builder:NextPage = () => {
+const Builder:NextPage = () => {
     
     interface UserLinks {
         tipoLink:String,
         link:String
     }
+
+
     
-    const [dadoslinkList, setDadoslinkList] = useState<any|null>([]);
+    const [dadosLinkList, setDadoslinkList] = useState<any>([]);
 
 
     function pushLinks(){
         const dados = <DadosLinks tipolink="git" link="github.com" />;
-        setDadoslinkList([dados, ...dadoslinkList])
+        setDadoslinkList([dados, ...dadosLinkList])
     }
 
     return(
@@ -41,7 +43,7 @@ const builder:NextPage = () => {
                     
                 </div>
 
-                {dadoslinkList}
+                {dadosLinkList}
                 <br />
 
                 <button onClick={pushLinks}>Register</button>
@@ -50,4 +52,4 @@ const builder:NextPage = () => {
     )
 }
 
-export default builder;
+export default Builder;
