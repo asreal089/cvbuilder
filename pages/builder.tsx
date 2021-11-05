@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import DadosLinks from "./components/links"
 import React, { useState } from "react";
-import { Button } from '@material-ui/core';
+import { Container, Button , FormGroup, FormControl, Input, InputLabel} from '@material-ui/core';
 
 
 const Builder:NextPage = () => {
@@ -22,35 +22,34 @@ const Builder:NextPage = () => {
     }
 
     return(
-        <div>
+        <Container className="center">
             <h2>Construa seu CV:</h2>
 
-            <form>
-                <div className="formGroup">
-                    <label htmlFor="name">Name:</label><br />
-                    <input id="name" type="text" autoComplete="name" required />
-                </div>
-                <div className="formGroup">
-                    <label htmlFor="name">Endereço </label><br />
-                    <input id="name" type="text" autoComplete="name" required />
-                </div>
-                <div className="formGroup">
-                    <label htmlFor="name">Ocupação</label><br />
-                    <input id="name" type="text" autoComplete="name" required />
-                </div>
+            <FormGroup>
+                <FormControl>
+                    <InputLabel htmlFor="name">Name:</InputLabel><br />
+                    <Input id="name" type="text" autoComplete="name" required />
+                </FormControl>
+                <FormControl>
+                    <InputLabel htmlFor="name">Endereço </InputLabel><br />
+                    <Input id="name" type="text" autoComplete="name" required />
+                </FormControl>
+                <FormControl>
+                    <InputLabel htmlFor="name">Ocupação</InputLabel><br />
+                    <Input id="name" type="text" autoComplete="name" required />
+                </FormControl>
 
-                <div className="formGroup">
-                    <label htmlFor="name">Link</label><br />
-                    <input id="name" type="text" autoComplete="name" required />
-                    
-                </div>
+                <FormControl>
+                    <InputLabel htmlFor="name">Link</InputLabel><br />
+                    <Input id="name" type="text" autoComplete="name" required />
+                </FormControl>
 
                 {dadosLinkList}
                 <br />
 
                 <Button onClick={pushLinks}>Register</Button>
-            </form>
-        </div>
+            </FormGroup>
+        </Container>
     )
 }
 
