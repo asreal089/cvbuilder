@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import DadosLinks from "./components/links"
 import React, { useState } from "react";
-import { Container, Button , FormGroup, FormControl, Input, InputLabel} from '@material-ui/core';
+import { Container, Button , FormGroup, FormControl, Input, InputLabel, Divider} from '@material-ui/core';
 
 
 const Builder:NextPage = () => {
@@ -47,7 +47,9 @@ const Builder:NextPage = () => {
                 {dadosLinkList}
                 <br />
 
-                <Button onClick={pushLinks}>Register</Button>
+                <Divider />
+
+                <Button variant="contained" color="primary" onClick={pushLinks}>Register</Button>
             </FormGroup>
         </Container>
     )
