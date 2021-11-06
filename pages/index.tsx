@@ -24,24 +24,37 @@ const Home: NextPage = () => {
             <HomeIcon />
           </Link>
           </IconButton>
-          <Typography variant="h6" >
-            <Link href='/sobre'>
-              Sobre  
-            </Link>
-          </Typography>
+          <ul className="menu">
+            <li>
 
-          <Typography variant="h6" >
-            <Link href='/dicas'>
-              Dicas  
-            </Link>
-          </Typography>
+              <Link href='/sobre'>
+                <Typography variant="h6" >
+                  Sobre  
+                </Typography>
+              </Link>
+            </li>
+
+            <li>
+              <Link href='/dicas'>
+                <Typography variant="h6" >
+                    Dicas  
+                </Typography>
+              </Link>
+              
+            </li>
+
+            <li>
+              <Link href='/builder'>
+                <Typography variant="h6" >
+                  Builder  
+                </Typography>
+              </Link>
+              
+            </li>
+          </ul>
 
 
-          <Typography variant="h6" >
-            <Link href='/builder'>
-              builder  
-            </Link>
-          </Typography>
+
 
         </Toolbar>
       </AppBar>
@@ -56,16 +69,11 @@ const Home: NextPage = () => {
       </main>
 
       <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-          >
+        
           Powered by{' '}
           <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+            <Image src="/nlt-logo.jpeg" alt="nlt" width={72} height={16} />
           </span>
-        </a>
       </footer>
     </Container>
     </div>
