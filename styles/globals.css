@@ -29,3 +29,7 @@ ul.menu li {
   display:inline-block;
   padding-right: 1rem;
 }
+
+.white{
+  color:white !important;
+}

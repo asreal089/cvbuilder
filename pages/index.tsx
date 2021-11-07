@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import Navbar from './components/navbar'
 import Link from 'next/link'
 import HomeIcon from '@mui/icons-material/Home';
 import { AppBar, Toolbar, IconButton, Typography, Button, Container } from '@material-ui/core'
@@ -16,48 +17,8 @@ const Home: NextPage = () => {
       </Head>
 
     <Container>
+      <Navbar />
 
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu">
-          <Link href='/'>
-            <HomeIcon />
-          </Link>
-          </IconButton>
-          <ul className="menu">
-            <li>
-
-              <Link href='/sobre'>
-                <Typography variant="h6" >
-                  Sobre  
-                </Typography>
-              </Link>
-            </li>
-
-            <li>
-              <Link href='/dicas'>
-                <Typography variant="h6" >
-                    Dicas  
-                </Typography>
-              </Link>
-              
-            </li>
-
-            <li>
-              <Link href='/builder'>
-                <Typography variant="h6" >
-                  Builder  
-                </Typography>
-              </Link>
-              
-            </li>
-          </ul>
-
-
-
-
-        </Toolbar>
-      </AppBar>
 
       <main className={styles.main}>
 
