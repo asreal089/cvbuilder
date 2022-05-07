@@ -30,7 +30,7 @@ const Home: NextPage = () => {
           Welcome to your CV builder.
         </h1>
 
-        {!session.user && (
+        {!session.data && (
         <>
           Not signed in <br />
           <button
@@ -42,9 +42,9 @@ const Home: NextPage = () => {
           </button>
         </>
       )}
-      {session.user && (
+      {session.data && (
         <>
-          Signed in as {session.user.name} <br />
+          Signed in as {session.data.user.name} <br />
           <button onClick={() => signOut()}>Sign out</button>
         </>
       )}

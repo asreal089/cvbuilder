@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import NextAuth, { Session, SessionOptions, User } from "next-auth";
-import Providers from "next-auth/providers";
+import NextAuth, { SessionOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google"
 
 const googleClientId: string = process.env.GOOGLE_CLIENT_ID ?? ''
@@ -14,19 +13,11 @@ const sessionOptions:SessionOptions = {
 
 const options = {
   providers: [
-    GoogleProvider({
-      clientId: googleClientSecret,
-      clientSecret: googleClientSecret,
-    }),
+      GoogleProvider({
+        clientId: googleClientId,
+        clientSecret: googleClientSecret,
+      }),
   ],
-  secret: process.env.JWT_SECRET, 
-  database: process.env.MONGODB_URI,
-  session: sessionOptions,
-  debug: true,
-  
-};
+}
 
-const Auth = (req: NextApiRequest, res: NextApiResponse) =>
-  NextAuth(req, res, options);
-
-export default Auth;
+export default (req: NextApiRequest, res: NextApiResponse<any>) => NextAuth(req, res, options)
