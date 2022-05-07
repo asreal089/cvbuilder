@@ -6,8 +6,12 @@ import Navbar from './components/navbar'
 import Link from 'next/link'
 import HomeIcon from '@mui/icons-material/Home';
 import { AppBar, Toolbar, IconButton, Typography, Button, Container } from '@material-ui/core'
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const Home: NextPage = () => {
+
+  const session: any = useSession();
+
   return (
     <div>
       <Head>
@@ -26,6 +30,24 @@ const Home: NextPage = () => {
           Welcome to your CV builder.
         </h1>
 
+        {!session.user && (
+        <>
+          Not signed in <br />
+          <button
+            onClick={() =>
+              signIn("google", { callbackUrl: "http://localhost:3000/" })
+            }
+          >
+            Sign in
+          </button>
+        </>
+      )}
+      {session.user && (
+        <>
+          Signed in as {session.user.name} <br />
+          <button onClick={() => signOut()}>Sign out</button>
+        </>
+      )}
         
       </main>
 
@@ -41,4 +63,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Home;
