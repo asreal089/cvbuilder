@@ -25,6 +25,12 @@ a {
   
 }
 
+.login-button{
+  align-self: right;
+  float: right;
+  align-items: right;
+}
+
 ul.menu li {
   display:inline-block;
   padding-right: 1rem;

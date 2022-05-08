@@ -3,9 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Navbar from './components/navbar'
-import Link from 'next/link'
-import HomeIcon from '@mui/icons-material/Home';
-import { AppBar, Toolbar, IconButton, Typography, Button, Container } from '@material-ui/core'
+import { Container } from '@material-ui/core'
 import { signIn, signOut, useSession } from "next-auth/react";
 
 const Home: NextPage = () => {
