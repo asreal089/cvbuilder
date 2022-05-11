@@ -12,7 +12,7 @@ export const connectToDatabase = async () => {
   console.log("Mongoose Connection Established")
 
   // OUR TODO SCHEMA
-  const TodoSchema = new mongoose.Schema({
+  const CvSchema = new mongoose.Schema({
     nome: String,
     localidade: String,
     email: String,
@@ -37,7 +37,7 @@ export const connectToDatabase = async () => {
   })
 
   // OUR TODO MODEL
-  const Todo = mongoose.models.Todo || mongoose.model("Todo", TodoSchema)
+  const CV = mongoose.models.Todo || mongoose.model("CV", CvSchema)
 
-  return { conn, Todo }
+  return { conn, CV }
 }

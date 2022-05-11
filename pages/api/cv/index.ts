@@ -13,13 +13,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const handleCase: ResponseFuncs = {
     // RESPONSE FOR GET REQUESTS
     GET: async (req: NextApiRequest, res: NextApiResponse) => {
-      const { Todo } = await connectToDatabase() 
-      res.json(await Todo.find({}).catch(catcher))
+      const { CV } = await connectToDatabase() 
+      res.json(await CV.find({}).catch(catcher))
     },
     // RESPONSE POST REQUESTS
     POST: async (req: NextApiRequest, res: NextApiResponse) => {
-      const { Todo } = await connectToDatabase() 
-      const response = await Todo.create(req.body).catch(catcher)
+      const { CV } = await connectToDatabase() 
+      const response = await CV.create(req.body).catch(catcher)
       res.json(response)
     },
   }
