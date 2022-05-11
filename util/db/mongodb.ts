@@ -1,6 +1,6 @@
 //IMPORT MONGOOSE
 import mongoose, { Model } from "mongoose"
-
+import { Experiencia } from "../models/types"
 // CONNECTING TO MONGOOSE (Get Database Url from .env.local)
 const { MONGODB_URI } = process.env
 
@@ -15,6 +15,25 @@ export const connectToDatabase = async () => {
   const TodoSchema = new mongoose.Schema({
     nome: String,
     localidade: String,
+    email: String,
+    links: [[String]],
+    cover_letter: String,
+    habilidades: [[String]],
+    experiencia: [[{
+      empresa: String,
+      incio: String,
+      fim: String,
+      descricao: String,
+    }]],
+    cursos: [[{
+      instituicao: String,
+      duracao: String,
+      descricao: String
+    }]],
+    conquistas: [[{
+      titulo: String,
+      descricao: String
+    }]],
   })
 
   // OUR TODO MODEL
