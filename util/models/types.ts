@@ -9,6 +9,7 @@ export interface ResponseFuncs {
   export interface Cv {
     _id?: number
     nome: string
+    titulo_palavras_chave: string[]
     localidade: string
     email: string
     links: string[]

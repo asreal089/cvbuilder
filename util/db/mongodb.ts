@@ -15,6 +15,7 @@ export const connectToDatabase = async () => {
   const CvSchema = new mongoose.Schema({
     nome: String,
     localidade: String,
+    titulo_palavras_chave: [[String]],
     email: String,
     links: [[String]],
     cover_letter: String,

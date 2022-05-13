@@ -20,9 +20,8 @@ a {
 }
 
 .right{
-  align-items: right;
-  float: right;
-  
+  align-items: right !important; 
+  float: right !important;  
 }
 
 .login-button{
