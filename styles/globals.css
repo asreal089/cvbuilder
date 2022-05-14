@@ -15,8 +15,12 @@ a {
   box-sizing: border-box;
 }
 
+.campoDinamico{
+  padding-top: 10px;
+}
+
 .center{
-  text-align: center;
+  text-align: center !important;
 }
 
 .right{

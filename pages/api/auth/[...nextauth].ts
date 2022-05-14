@@ -17,7 +17,8 @@ const options = {
         clientId: googleClientId,
         clientSecret: googleClientSecret,
       }),
-  ],
+    ],
+    secret: process.env.JWT_SECRET,
 }
 
 export default (req: NextApiRequest, res: NextApiResponse<any>) => NextAuth(req, res, options)
