@@ -4,6 +4,7 @@ import React, { Component, FunctionComponent, ReactElement, useState } from "rea
 import { Conquistas, Curso, Experiencia } from "../util/models/types";
 import { Container, Button, FormGroup, Divider, TextField } from '@material-ui/core';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { inputClasses } from "@mui/material";
 
 
 const Builder: NextPage = () => {
@@ -30,6 +31,7 @@ const Builder: NextPage = () => {
     const [conquistas, setConquistas] = useState<Conquistas>();
     
 
+
     function pushLinks() {
         console.log("Nome: " + nome)
         console.log("email: " + email)
@@ -41,14 +43,19 @@ const Builder: NextPage = () => {
 
     function pushHabilidade() {
         console.log("cai aqui" + counterHabilidade)
+        const habildiadeKey = "habilidade"+counterHabilidade;
         const campoNovo  :ReactElement<any, any> = ( 
             <>
                 <br />
-                <TextField key={counterHabilidade} type="text" label="habilidade" autoComplete="habilidades" variant="outlined" required onChange={(e) => { setHabilidades([e.target.value, ...habilidades]) }} />
+                <TextField key={habildiadeKey} type="text" label="habilidade" variant="outlined" required />
             </>
         );
         setCounterHabilidade(counterHabilidade+1);
         setCampoHabilidades([campoNovo, ...campoHabilidades]);
+    }
+
+    function atualizaHabilidades() {
+        console.log("olar")
     }
 
     return (
@@ -69,7 +76,7 @@ const Builder: NextPage = () => {
                 Habilidades:
                 <br />
 
-                <TextField id="habilidades" type="text" label="habilidade" autoComplete="habilidades" variant="outlined" required onChange={(e) => { setHabilidades([e.target.value, ...habilidades]) }} />
+                <TextField key={"habilidade"+counterHabilidade} className="habilidade" type="text" label="habilidade" variant="outlined" required />
                 
                 {campoHabilidades}
                 <br />
