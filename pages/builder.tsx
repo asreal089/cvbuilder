@@ -20,7 +20,6 @@ import { inputClasses } from "@mui/material";
 const Builder: NextPage = () => {
   
   const [dadosLinkList, setDadoslinkList] = useState<any>([]);
-  const [campoHabilidades, setCampoHabilidades] = useState<any>([]);
   const [nome, setNome] = useState<String>();
   const [localidade, setLocalidade] = useState<String>();
   const [email, setEmail] = useState<String>();
@@ -33,8 +32,6 @@ const Builder: NextPage = () => {
   const [cursos, setCursos] = useState<Curso>();
   const [conquistas, setConquistas] = useState<Conquistas>();
 
-  const [counterHabilidade, setCounterHabilidade] = useState<number>(1);
-
   function saveCV() {
     console.log("Nome: " + nome);
     console.log("email: " + email);
@@ -43,31 +40,13 @@ const Builder: NextPage = () => {
   }
 
   function pushHabilidade() {
-    let localCounter = counterHabilidade;
-    const campoNovo: ReactElement<any, any> = (
-      <>
-        <br />
-        <TextField
-          className="habilidade"
-          type="text"
-          label="habilidade"
-          variant="outlined"
-          required
-          onChange={(e) => {
-            setNovaHabilidade(e, localCounter)
-          }}
-        />
-      </>
-    );
-    setCounterHabilidade(counterHabilidade => counterHabilidade + 1);
-    console.log(counterHabilidade);
-    setCampoHabilidades([campoNovo, ...campoHabilidades]);
+    let novaHabilidade = '';
+    setHabilidades([ '' ,...habilidades]);
   }
 
   function setNovaHabilidade(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>, index: number){
-      let temp = habilidades.map((i: any)=>i);
+      let temp= habilidades.map((i: any)=>i);
       temp[index] = e.target.value;
-      console.log(index)
       setHabilidades(temp);
   }
 
@@ -126,20 +105,23 @@ const Builder: NextPage = () => {
           }}
         />
         Habilidades:
-        <br />
-        <TextField
-          name="habilidade"
-          key={"habilidade"}
-          className="habilidade"
-          type="text"
-          label="habilidade"
-          variant="outlined"
-          required
-          onChange={(e) => {
-            setNovaHabilidade(e, 0)
-          }}
-        />
-        {campoHabilidades}
+        
+        {habilidades.map((_item: any, index: number) => (
+            <>
+              <br />
+              <TextField
+                name="habilidade"
+                key={"habilidade"}
+                className="habilidade"
+                type="text"
+                label="habilidade"
+                variant="outlined"
+                required
+                onChange={(e) => {
+                  setNovaHabilidade(e, index);
+                } } />
+            </>
+          ))}
         <br />
         <span className="center">
           <Button variant="contained" color="primary" onClick={pushHabilidade}>
