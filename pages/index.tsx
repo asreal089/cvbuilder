@@ -53,7 +53,7 @@ const Home: NextPage = () => {
         
           Powered by{' '}
           <span className={styles.logo}>
-            <Image src="/nltech.png" alt="nlt" width={72} height={16} />
+            <Image src="/nltech.png" alt="nlt" width={100} height={20} />
           </span>
       </footer>
     </Container>
