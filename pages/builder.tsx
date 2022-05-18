@@ -27,7 +27,7 @@ const Builder: NextPage = () => {
     useState<[String]>();
   const [links, setLinks] = useState<[String]>();
   const [cover_letter, setCover_letter] = useState<String>();
-  const [habilidades, setHabilidades] = useState<any>([]);
+  const [habilidades, setHabilidades] = useState<any>(['']);
   const [experiencia, setExperiencia] = useState<Experiencia>();
   const [cursos, setCursos] = useState<Curso>();
   const [conquistas, setConquistas] = useState<Conquistas>();

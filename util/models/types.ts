@@ -5,7 +5,7 @@ export interface ResponseFuncs {
     DELETE?: Function
   }
   
-  // Interface to define our Todo model on the frontend
+
   export interface Cv {
     _id?: number
     nome: string
