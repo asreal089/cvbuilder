@@ -15,8 +15,10 @@ import {
 } from "@material-ui/core";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import router from "next/dist/client/router";
+import { Alert, AlertTitle } from "@mui/material";
 
 const Builder: NextPage = () => {
+  const [saveSucefull, setSaveSucefull] = useState<boolean>(false); 
   const [nome, setNome] = useState<string>("");
   const [localidade, setLocalidade] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -31,7 +33,6 @@ const Builder: NextPage = () => {
 
   async function saveCV() {
     var cv = buildCV();
-    const hostname = window.location.hostname;
     await fetch("/api/cv", {
       method: "post",
       headers: {
@@ -39,12 +40,9 @@ const Builder: NextPage = () => {
       },
       body: JSON.stringify(cv),
     }).then(res => {
-      if(res.status == 200){
-        alert("CV salvo")
-      }
       console.log(res)
     })
-    router.push("/")
+    setSaveSucefull(true);
   }
 
   function buildCV() {
@@ -77,7 +75,7 @@ const Builder: NextPage = () => {
   }
 
   return (
-    <Container className="center">
+    <Container>
       <h2>Construa seu CV:</h2>
 
       <FormGroup>
@@ -160,6 +158,14 @@ const Builder: NextPage = () => {
           Register
         </Button>
       </FormGroup>
+      {saveSucefull && (
+      <>
+        <br />
+        <Alert  severity="success" onClose={() => {setSaveSucefull(false)}}>
+          <AlertTitle>Sucesso!</AlertTitle>Seu Cv foi salvo.
+        </Alert>
+      </>
+      )}
     </Container>
   );
 };

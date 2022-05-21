@@ -19,10 +19,6 @@ a {
   padding-top: 10px;
 }
 
-.center{
-  text-align: center !important;
-}
-
 .right{
   align-items: right !important; 
   float: right !important;  
