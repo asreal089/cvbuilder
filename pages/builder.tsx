@@ -16,9 +16,12 @@ import {
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import router from "next/dist/client/router";
 import { Alert, AlertTitle } from "@mui/material";
+import { useSession } from "next-auth/react";
+import { SettingsSuggestOutlined } from "@mui/icons-material";
 
 const Builder: NextPage = () => {
-  const [saveSucefull, setSaveSucefull] = useState<boolean>(false); 
+  const session: any = useSession();
+  const [saveSucefull, setSaveSucefull] = useState<boolean>(false);
   const [nome, setNome] = useState<string>("");
   const [localidade, setLocalidade] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -46,7 +49,9 @@ const Builder: NextPage = () => {
   }
 
   function buildCV() {
+    console.log(session.data.user.email)
     var cv: Cv = {
+      id_usuario: session.data.user.email,
       nome: nome,
       localidade: localidade,
       email: email,
@@ -56,7 +61,7 @@ const Builder: NextPage = () => {
       habilidades: [],
       experiencia: [],
       cursos: [],
-      conquistas: [],
+      conquistas: []
     };
     return cv;
   }
