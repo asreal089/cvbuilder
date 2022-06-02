@@ -86,7 +86,7 @@ const Builder: NextPage = () => {
         <TextField
           id="name"
           label="name"
-          variant="outlined"
+          //variant="outlined"
           type="text"
           autoComplete="name"
           required
@@ -98,7 +98,7 @@ const Builder: NextPage = () => {
         <TextField
           id="localidade"
           label="localidade"
-          variant="outlined"
+          //variant="outlined"
           type="text"
           autoComplete="localidade"
           required
@@ -111,7 +111,7 @@ const Builder: NextPage = () => {
           id="email"
           label="email"
           type="text"
-          variant="outlined"
+          //variant="outlined"
           autoComplete="email"
           required
           onChange={(e) => {
@@ -123,7 +123,7 @@ const Builder: NextPage = () => {
           id="cover-letter"
           label="Cover Later"
           type="text"
-          variant="outlined"
+          //variant="outlined"
           autoComplete="cover-letter"
           rows={5}
           multiline
@@ -132,7 +132,6 @@ const Builder: NextPage = () => {
             setCover_letter(e.target.value);
           }}
         />
-        Habilidades:
         {habilidades.map((_item: any, index: number) => (
           <>
             <br />
@@ -142,7 +141,7 @@ const Builder: NextPage = () => {
               className="habilidade"
               type="text"
               label="habilidade"
-              variant="outlined"
+              //variant="outlined"
               required
               onChange={(e) => {
                 setNovaHabilidade(e, index);
