@@ -49,7 +49,6 @@ const Builder: NextPage = () => {
   }
 
   function buildCV() {
-    console.log(session.data.user.email)
     var cv: Cv = {
       id_usuario: session.data.user.email,
       nome: nome,
