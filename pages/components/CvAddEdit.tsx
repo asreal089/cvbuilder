@@ -25,33 +25,43 @@ interface Data{
 }
 
 function CvAddEdit({ data }: Data): JSX.Element {
+
     const session: any = useSession();
     const [saveSucefull, setSaveSucefull] = useState<boolean>(false);
     const [nome, setNome] = useState<string>(data.nome);
     const [localidade, setLocalidade] = useState<string>(data.localidade);
     const [email, setEmail] = useState<string>(data.email);
-    const [titulo_palavras_chave, settitulo_palavras_chave] = useState<[String]>();
-    const [links, setLinks] = useState<[String]>(data.links);
-    const [cover_letter, setCover_letter] = useState<String>(data.cover_letter);
-    const [habilidades, setHabilidades] = useState<[String]>((data.habilidades.length < 1 ) ?['']: data.habilidades);
+    const [titulo_palavras_chave, settitulo_palavras_chave] = useState<[string]>(data.titulo_palavras_chave);
+    const [links, setLinks] = useState<[string]>(data.links);
+    const [cover_letter, setCover_letter] = useState<string>(data.cover_letter);
+    const [habilidades, setHabilidades] = useState<[string]>((data.habilidades.length < 1 ) ?['']: data.habilidades);
     const [experiencia, setExperiencia] = useState<[Experiencia]>(data.experiencia);
     const [cursos, setCursos] = useState<[Curso]>(data.cursos);
     const [conquistas, setConquistas] = useState<[Conquistas]>(data.conquistas);
-
-    console.log("Suas habilidades")
-    console.log(habilidades)
-   
+  
     async function saveCV() {
         var cv = buildCV();
-        await fetch("/api/cv", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(cv),
-        }).then(res => {
-            console.log(res);
-        });
+        if(data._id){
+            await fetch("/api/cv/"+data._id, {
+                method: "put",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(cv),
+            }).then(res => {
+                console.log(res);
+            });
+        }else{
+            await fetch("/api/cv", {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(cv),
+            }).then(res => {
+                console.log(res);
+            });
+        }
         setSaveSucefull(true);
     }
 
@@ -61,10 +71,10 @@ function CvAddEdit({ data }: Data): JSX.Element {
             nome: nome,
             localidade: localidade,
             email: email,
-            titulo_palavras_chave: [''],
-            links: [''],
-            cover_letter: "",
-            habilidades: [''],
+            titulo_palavras_chave: titulo_palavras_chave,
+            links: links,
+            cover_letter: cover_letter,
+            habilidades: habilidades,
             experiencia: experiencia,
             cursos: cursos,
             conquistas: conquistas

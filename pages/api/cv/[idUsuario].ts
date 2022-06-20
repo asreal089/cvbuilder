@@ -26,7 +26,7 @@ export default async function handleGetEPutPorUsuario(req: NextApiRequest, res: 
             // RESPONSE POST REQUESTS
             PUT: async (req: NextApiRequest, res: NextApiResponse) => {
               const { CV } = await connectToDatabase() 
-              const resp = await CV.findOneAndUpdate({ id_usuario: { $eq: idUsuario } }, req.body).catch(catcher)
+              const resp = await CV.findByIdAndUpdate(idUsuario, req.body).catch(catcher)
               res.json(resp)
             },
           }
