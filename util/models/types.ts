@@ -9,15 +9,15 @@ export interface Cv {
   _id?: string;
   id_usuario: string;
   nome: string;
-  titulo_palavras_chave: string[];
+  titulo_palavras_chave: [string];
   localidade: string;
   email: string;
-  links: string[];
+  links: [string];
   cover_letter: string;
-  habilidades: string[];
-  experiencia: Experiencia[];
-  cursos: Curso[];
-  conquistas: Conquistas[];
+  habilidades: [string];
+  experiencia: [Experiencia];
+  cursos: [Curso];
+  conquistas: [Conquistas];
 }
 
 export interface Experiencia {

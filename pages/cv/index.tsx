@@ -5,7 +5,7 @@ import React, {
   ReactElement,
   useState,
 } from "react";
-import { Conquistas, Curso, Experiencia, Cv } from "../util/models/types";
+import { Conquistas, Curso, Experiencia, Cv } from "../../util/models/types";
 import {
   Container,
   Button,

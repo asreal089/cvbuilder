@@ -10,7 +10,7 @@ export const connectToDatabase = async () => {
   console.log("Mongoose Connection Established")
 
   const CvSchema = new mongoose.Schema({
-    id_usuario: String,
+    id_usuario: {type : String , unique : true, required : true, dropDups: true },
     nome: String,
     localidade: String,
     titulo_palavras_chave: [[String]],
