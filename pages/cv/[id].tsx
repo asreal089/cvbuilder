@@ -1,7 +1,7 @@
 import { GetServerSideProps, NextPage } from "next";
 import { getSession, useSession } from "next-auth/react";
 import { Cv } from "../../util/models/types";
-import CvAddEdit from "../components/cvAddEdit";
+import * as cvAddEdit from "../components/cvAddEdit";
 import axios from "axios";
 
 interface Data{
@@ -13,7 +13,7 @@ const EditCv: NextPage<Data> = (props) => {
 
     
     return(
-        <CvAddEdit data={props.data} />
+        <cvAddEdit.default data={props.data} />
         
         );
 }

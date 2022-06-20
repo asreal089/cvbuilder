@@ -18,7 +18,7 @@ import router from "next/dist/client/router";
 import { Alert, AlertTitle } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { SettingsSuggestOutlined } from "@mui/icons-material";
-import CvAddEdit from "../components/cvAddEdit";
+import * as cvAddEdit from "../components/cvAddEdit";
 
 const AddCv: NextPage = () => {
   const session: any = useSession();
@@ -57,7 +57,7 @@ const AddCv: NextPage = () => {
   }
   
   return(
-      <CvAddEdit data={cv}  />
+      <cvAddEdit.default data={cv}  />
       );
 }
 
