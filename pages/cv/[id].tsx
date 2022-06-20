@@ -3,7 +3,6 @@ import { getSession, useSession } from "next-auth/react";
 import { Cv } from "../../util/models/types";
 import CvAddEdit from "../components/cvAddEdit";
 import axios from "axios";
-import { FindReplaceTwoTone } from "@mui/icons-material";
 
 interface Data{
     data : Cv;

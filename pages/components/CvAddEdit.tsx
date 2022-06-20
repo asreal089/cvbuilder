@@ -1,8 +1,4 @@
-import { NextPage } from "next";
 import React, {
-  Component,
-  FunctionComponent,
-  ReactElement,
   useState,
 } from "react";
 import { Conquistas, Curso, Experiencia, Cv } from "../../util/models/types";
@@ -14,17 +10,14 @@ import {
   TextField,
 } from "@material-ui/core";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import router from "next/dist/client/router";
 import { Alert, AlertTitle } from "@mui/material";
 import { useSession } from "next-auth/react";
-import { SettingsSuggestOutlined } from "@mui/icons-material";
-import { NotAcceptedFields } from "mongodb";
 
 interface Data{
     data : Cv;
 }
 
-function CvAddEdit({ data }: Data): JSX.Element {
+function CvAddEdit({ data }: Data ): JSX.Element {
 
     const session: any = useSession();
     const [saveSucefull, setSaveSucefull] = useState<boolean>(false);
