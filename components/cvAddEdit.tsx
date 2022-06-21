@@ -1,7 +1,7 @@
 import React, {
   useState,
 } from "react";
-import { Conquistas, Curso, Experiencia, Cv } from "../../util/models/types";
+import { Conquistas, Curso, Experiencia, Cv } from "../util/models/types";
 import {
   Container,
   Button,
@@ -12,19 +12,20 @@ import {
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Alert, AlertTitle } from "@mui/material";
 import { useSession } from "next-auth/react";
+import router from "next/router";
 
 interface Data{
     data : Cv;
 }
 
-function CvAddEdit({ data }: Data ): JSX.Element {
+function CvAddEdit({ data }: Data): JSX.Element {
 
     const session: any = useSession();
     const [saveSucefull, setSaveSucefull] = useState<boolean>(false);
     const [nome, setNome] = useState<string>(data.nome);
     const [localidade, setLocalidade] = useState<string>(data.localidade);
     const [email, setEmail] = useState<string>(data.email);
-    const [titulo_palavras_chave, settitulo_palavras_chave] = useState<[string]>(data.titulo_palavras_chave);
+    const [titulo_palavras_chave, setTitulo_palavras_chave] = useState<[string]>(data.titulo_palavras_chave);
     const [links, setLinks] = useState<[string]>(data.links);
     const [cover_letter, setCover_letter] = useState<string>(data.cover_letter);
     const [habilidades, setHabilidades] = useState<[string]>((data.habilidades.length < 1 ) ?['']: data.habilidades);

@@ -25,13 +25,13 @@ export default async function handleGetEPutPorUsuario(req: NextApiRequest, res: 
             },
             // RESPONSE POST REQUESTS
             PUT: async (req: NextApiRequest, res: NextApiResponse) => {
-              const { CV } = await connectToDatabase() 
-              const resp = await CV.findByIdAndUpdate(idUsuario, req.body).catch(catcher)
-              res.json(resp)
+              const { CV } = await connectToDatabase(); 
+              const resp = await CV.findByIdAndUpdate(idUsuario, req.body).catch(catcher);
+              res.json(resp);
             },
           }
-        const response = handleCase[method]
-        if (response) response(req, res)
-        else res.status(400).json({ error: "No Response for This Request" })
+        const response = handleCase[method];
+        if (response) response(req, res);
+        else res.status(400).json({ error: "No Response for This Request" });
     //}
 }

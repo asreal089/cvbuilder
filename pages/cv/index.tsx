@@ -1,24 +1,8 @@
 import { NextPage } from "next";
-import React, {
-  Component,
-  FunctionComponent,
-  ReactElement,
-  useState,
-} from "react";
+import React from "react";
 import { Conquistas, Curso, Experiencia, Cv } from "../../util/models/types";
-import {
-  Container,
-  Button,
-  FormGroup,
-  Divider,
-  TextField,
-} from "@material-ui/core";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import router from "next/dist/client/router";
-import { Alert, AlertTitle } from "@mui/material";
 import { useSession } from "next-auth/react";
-import { SettingsSuggestOutlined } from "@mui/icons-material";
-import * as cvAddEdit from "../components/cvAddEdit";
+import * as cvAddEdit from "../../components/cvAddEdit";
 
 const AddCv: NextPage = () => {
   const session: any = useSession();
@@ -57,7 +41,7 @@ const AddCv: NextPage = () => {
   }
   
   return(
-      <cvAddEdit.default data={cv}  />
+        <cvAddEdit.default data={cv}  />
       );
 }
 
