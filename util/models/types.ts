@@ -14,7 +14,7 @@ export interface Cv {
   email: string;
   links: [string];
   cover_letter: string;
-  habilidades: [string];
+  habilidades: string[];
   experiencia: [Experiencia];
   cursos: [Curso];
   conquistas: [Conquistas];

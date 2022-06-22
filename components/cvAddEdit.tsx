@@ -28,7 +28,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
     const [titulo_palavras_chave, setTitulo_palavras_chave] = useState<[string]>(data.titulo_palavras_chave);
     const [links, setLinks] = useState<[string]>(data.links);
     const [cover_letter, setCover_letter] = useState<string>(data.cover_letter);
-    const [habilidades, setHabilidades] = useState<[string]>((data.habilidades.length < 1 ) ?['']: data.habilidades);
+    const [habilidades, setHabilidades] = useState<string[]>((data.habilidades.length < 1 ) ?['']: data.habilidades);
     const [experiencia, setExperiencia] = useState<[Experiencia]>(data.experiencia);
     const [cursos, setCursos] = useState<[Curso]>(data.cursos);
     const [conquistas, setConquistas] = useState<[Conquistas]>(data.conquistas);
@@ -75,9 +75,8 @@ function CvAddEdit({ data }: Data): JSX.Element {
         };
         return cv;
     }
-    function pushHabilidade() {
-        let novaHabilidade = "";
-        //setHabilidades(["", ...habilidades]);
+    function pushHabilidade(){
+        setHabilidades([...habilidades, '']);
     }
 
     function setNovaHabilidade(
@@ -86,8 +85,9 @@ function CvAddEdit({ data }: Data): JSX.Element {
     ) {
         let temp = habilidades.map((i: any) => i);
         temp[index] = e.target.value;
-        //setHabilidades(temp);
+        setHabilidades(temp);
     }
+
 
     return (
         <Container>
@@ -151,7 +151,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
                             className="habilidade"
                             type="text"
                             label="habilidade"
-                            //variant="outlined"
+                            value={habilidades[index]}
                             required
                             onChange={(e) => {
                                 setNovaHabilidade(e, index);
