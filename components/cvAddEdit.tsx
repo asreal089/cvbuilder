@@ -28,7 +28,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
     const [titulo_palavras_chave, setTitulo_palavras_chave] = useState<[string]>(data.titulo_palavras_chave);
     const [links, setLinks] = useState<[string]>(data.links);
     const [cover_letter, setCover_letter] = useState<string>(data.cover_letter);
-    const [habilidades, setHabilidades] = useState<string[]>((data.habilidades.length < 1 ) ?['']: data.habilidades);
+    const [habilidades, setHabilidades] = useState<string[]>((data.habilidades ));
     const [experiencia, setExperiencia] = useState<[Experiencia]>(data.experiencia);
     const [cursos, setCursos] = useState<[Curso]>(data.cursos);
     const [conquistas, setConquistas] = useState<[Conquistas]>(data.conquistas);
@@ -44,16 +44,21 @@ function CvAddEdit({ data }: Data): JSX.Element {
                 body: JSON.stringify(cv),
             }).then(res => {
                 console.log(res);
+                
+            }).catch(error =>{
+                console.log(error);
             });
         }else{
             await fetch("/api/cv", {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/json",
-                },
                 body: JSON.stringify(cv),
-            }).then(res => {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                method: "POST",
+              }).then(res => {
                 console.log(res);
+            }).catch(error =>{
+                console.log(error);
             });
         }
         setSaveSucefull(true);
@@ -86,6 +91,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
         let temp = habilidades.map((i: any) => i);
         temp[index] = e.target.value;
         setHabilidades(temp);
+        console.log(habilidades);
     }
 
 
@@ -97,7 +103,6 @@ function CvAddEdit({ data }: Data): JSX.Element {
                 <TextField
                     id="name"
                     label="name"
-                    //variant="outlined"
                     value={nome}
                     type="text"
                     autoComplete="name"
@@ -136,19 +141,18 @@ function CvAddEdit({ data }: Data): JSX.Element {
                     type="text"
                     //variant="outlined"
                     autoComplete="cover-letter"
-                    rows={5}
+                    minRows={5}
                     multiline
                     required
                     onChange={(e) => {
                         setCover_letter(e.target.value);
                     } } />
-                {habilidades.map((_item: any, index: number) => (
-                    <>
+                {habilidades.map((_element, index: number) => (
+                    <span key={index} className="campoFull" >
                         <br />
                         <TextField
                             name="habilidade"
-                            key={"habilidade"}
-                            className="habilidade"
+                            className="habilidade campoFull"
                             type="text"
                             label="habilidade"
                             value={habilidades[index]}
@@ -156,17 +160,17 @@ function CvAddEdit({ data }: Data): JSX.Element {
                             onChange={(e) => {
                                 setNovaHabilidade(e, index);
                             } } />
-                    </>
+                    </span>
                 ))}
                 <br />
                 <span className="center">
-                    <Button variant="contained" color="primary" onClick={pushHabilidade}>
+                    <Button  variant="contained" color="primary" onClick={pushHabilidade}>
                        Adicione uma Habilidade <AddCircleIcon className="center"></AddCircleIcon>
                     </Button>
                 </span>
                 <br />
                 <Divider />
-                <Button variant="contained" color="primary" onClick={saveCV}>
+                <Button  variant="contained" color="primary" onClick={saveCV}>
                     Register
                 </Button>
             </FormGroup>

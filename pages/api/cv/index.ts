@@ -19,8 +19,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     // RESPONSE POST REQUESTS
     POST: async (req: NextApiRequest, res: NextApiResponse) => {
       const { CV } = await connectToDatabase() 
-      const response = await CV.create(req.body).catch(catcher)
-      res.json(response)
+      const resp= await CV.create(req.body).catch(catcher)
+      res.json(resp)
     },
   }
   

@@ -15,6 +15,10 @@ a {
   box-sizing: border-box;
 }
 
+.campoFull{
+  width: 100% !important;
+}
+
 .campoDinamico{
   padding-top: 10px;
 }
