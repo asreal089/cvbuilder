@@ -34,7 +34,7 @@ const AddCv: NextPage = () => {
     email: "",
     links: [""],
     cover_letter: "",
-    habilidades: [],
+    habilidades: [""],
     experiencia: [experiencia],
     cursos: [curso],
     conquistas: [conquista]

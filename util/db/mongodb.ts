@@ -15,24 +15,24 @@ export const connectToDatabase = async () => {
     localidade: String,
     titulo_palavras_chave: [[String]],
     email: String,
-    links: [[String]],
+    links: [String],
     cover_letter: String,
-    habilidades: [[String]],
-    experiencia: [[{
+    habilidades: [String],
+    experiencia: [{
       empresa: String,
       incio: String,
       fim: String,
       descricao: String
-    }]],
-    cursos: [[{
+    }],
+    cursos: [{
       instituicao: String,
       duracao: String,
       descricao: String
-    }]],
-    conquistas: [[{
+    }],
+    conquistas: [{
       titulo: String,
       descricao: String
-    }]],
+    }],
   })
 
   const CV = mongoose.models.CV || mongoose.model("CV", CvSchema)

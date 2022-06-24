@@ -65,6 +65,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
     }
 
     function buildCV() {
+
         var cv: Cv = {
             id_usuario: session.data.user.email,
             nome: nome,
@@ -78,6 +79,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
             cursos: cursos,
             conquistas: conquistas
         };
+        
         return cv;
     }
     function pushHabilidade(){
@@ -139,6 +141,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
                     id="cover-letter"
                     label="Cover Later"
                     type="text"
+                    value={cover_letter}
                     //variant="outlined"
                     autoComplete="cover-letter"
                     minRows={5}
