@@ -25,8 +25,8 @@ function CvAddEdit({ data }: Data): JSX.Element {
     const [nome, setNome] = useState<string>(data.nome);
     const [localidade, setLocalidade] = useState<string>(data.localidade);
     const [email, setEmail] = useState<string>(data.email);
-    const [titulo_palavras_chave, setTitulo_palavras_chave] = useState<[string]>(data.titulo_palavras_chave);
-    const [links, setLinks] = useState<[string]>(data.links);
+    const [titulo_palavras_chave, setTitulo_palavras_chave] = useState<string[]>(data.titulo_palavras_chave);
+    const [links, setLinks] = useState<string[]>(data.links);
     const [cover_letter, setCover_letter] = useState<string>(data.cover_letter);
     const [habilidades, setHabilidades] = useState<string[]>((data.habilidades ));
     const [experiencia, setExperiencia] = useState<[Experiencia]>(data.experiencia);
@@ -96,6 +96,20 @@ function CvAddEdit({ data }: Data): JSX.Element {
         console.log(habilidades);
     }
 
+    function pushPalavraChave(){
+        setTitulo_palavras_chave([...titulo_palavras_chave, '']);
+    }
+
+    function setNovaPalavraChave(
+        e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+        index: number
+    ) {
+        let temp = titulo_palavras_chave.map((i: any) => i);
+        temp[index] = e.target.value;
+        setTitulo_palavras_chave(temp);
+        console.log(titulo_palavras_chave);
+    }
+
 
     return (
         <Container>
@@ -116,7 +130,6 @@ function CvAddEdit({ data }: Data): JSX.Element {
                 <TextField
                     id="localidade"
                     label="localidade"
-                    //variant="outlined"
                     type="text"
                     value={localidade}
                     autoComplete="localidade"
@@ -136,6 +149,28 @@ function CvAddEdit({ data }: Data): JSX.Element {
                     onChange={(e) => {
                         setEmail(e.target.value);
                     } } />
+                <br />
+                {titulo_palavras_chave.map((_element, index: number) => (
+                    <span key={index} className="campoFull" >
+                        <br />
+                        <TextField
+                            name="palavras-chave"
+                            className="palavra-chave campoFull"
+                            type="text"
+                            label="palavra chave"
+                            value={titulo_palavras_chave[index]}
+                            required
+                            onChange={(e) => {
+                                setNovaPalavraChave(e, index);
+                            } } />
+                    </span>
+                ))}
+                <br />
+                <span className="center">
+                    <Button  variant="contained" color="primary" onClick={pushPalavraChave}>
+                       Palavra Chave <AddCircleIcon className="center"></AddCircleIcon>
+                    </Button>
+                </span>
                 <br />
                 <TextField
                     id="cover-letter"
@@ -168,11 +203,13 @@ function CvAddEdit({ data }: Data): JSX.Element {
                 <br />
                 <span className="center">
                     <Button  variant="contained" color="primary" onClick={pushHabilidade}>
-                       Adicione uma Habilidade <AddCircleIcon className="center"></AddCircleIcon>
+                        Habilidade <AddCircleIcon className="center"></AddCircleIcon>
                     </Button>
                 </span>
                 <br />
                 <Divider />
+                <br />
+
                 <Button  variant="contained" color="primary" onClick={saveCV}>
                     Register
                 </Button>

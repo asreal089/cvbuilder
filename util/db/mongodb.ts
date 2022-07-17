@@ -13,7 +13,7 @@ export const connectToDatabase = async () => {
   id_usuario: {type : String, unique : true, required : true, dropDups: true },
     nome: String,
     localidade: String,
-    titulo_palavras_chave: [[String]],
+    titulo_palavras_chave: [String],
     email: String,
     links: [String],
     cover_letter: String,
