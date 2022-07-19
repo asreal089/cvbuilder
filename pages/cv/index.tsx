@@ -3,7 +3,6 @@ import React from "react";
 import { Conquistas, Curso, Experiencia, Cv, Links, Lingua } from "../../util/models/types";
 import { useSession } from "next-auth/react";
 import * as cvAddEdit from "../../components/cvAddEdit";
-import { Link } from "@mui/icons-material";
 
 const AddCv: NextPage = () => {
   const session: any = useSession();

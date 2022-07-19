@@ -15,6 +15,12 @@ a {
   box-sizing: border-box;
 }
 
+.link {
+  display: grid;
+  grid-template-columns: 40%;
+  width: 50%;
+}
+
 .campoFull{
   width: 100% !important;
 }

@@ -102,6 +102,10 @@ function CvAddEdit({ data }: Data): JSX.Element {
         setTitulo_palavras_chave([...titulo_palavras_chave, '']);
     }
 
+    function pushLink(){
+        setLinks([...links, {tipo: '', link: ''}]);
+    }
+
     function setNovaPalavraChave(
         e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
         index: number
@@ -110,6 +114,24 @@ function CvAddEdit({ data }: Data): JSX.Element {
         temp[index] = e.target.value;
         setTitulo_palavras_chave(temp);
         console.log(titulo_palavras_chave);
+    }
+
+    function setNovoLinkTipo(
+        e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+        index: number
+    ) {
+        let temp = links.map((i: Links) => i);
+        temp[index].tipo = e.target.value;
+        setLinks(temp);
+    }
+
+    function setNovoLinkLink(
+        e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+        index: number
+    ) {
+        let temp = links.map((i: Links) => i);
+        temp[index].link = e.target.value;
+        setLinks(temp);
     }
 
 
@@ -167,12 +189,46 @@ function CvAddEdit({ data }: Data): JSX.Element {
                             } } />
                     </span>
                 ))}
-                <br />
                 <span className="center">
                     <Button  variant="contained" color="primary" onClick={pushPalavraChave}>
                        Palavra Chave <AddCircleIcon className="center"></AddCircleIcon>
                     </Button>
                 </span>
+
+                {links.map((_element, index: number) => (
+                    <span key={index} className="links" >
+                        <br />
+                        <TextField
+                            name="link-desc"
+                            className="link desc"
+                            type="text"
+                            label="link descrição"
+                            value={links[index].tipo}
+                            required
+                            onChange={(e) => {
+                                setNovoLinkTipo(e, index);
+                            } } />
+                        
+                        <TextField
+                            name="link-link"
+                            className="link"
+                            type="text"
+                            label="link"
+                            value={links[index].link}
+                            required
+                            onChange={(e) => {
+                                setNovoLinkLink(e, index);
+                            } } />
+                        <br />
+                    </span>
+                ))}
+                <span className="center">
+                    <Button  variant="contained" color="primary" onClick={pushLink}>
+                            Link <AddCircleIcon className="center"></AddCircleIcon>
+                    </Button>
+                </span>
+
+                <br />
                 <br />
                 <TextField
                     id="cover-letter"
