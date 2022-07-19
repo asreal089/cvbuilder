@@ -1,7 +1,7 @@
 import React, {
   useState,
 } from "react";
-import { Conquistas, Curso, Experiencia, Cv } from "../util/models/types";
+import { Conquistas, Curso, Experiencia, Cv, Links, Lingua } from "../util/models/types";
 import {
   Container,
   Button,
@@ -10,7 +10,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { Alert, AlertTitle } from "@mui/material";
+import { Alert, AlertTitle, getLinearProgressUtilityClass } from "@mui/material";
 import { useSession } from "next-auth/react";
 import router from "next/router";
 
@@ -26,12 +26,13 @@ function CvAddEdit({ data }: Data): JSX.Element {
     const [localidade, setLocalidade] = useState<string>(data.localidade);
     const [email, setEmail] = useState<string>(data.email);
     const [titulo_palavras_chave, setTitulo_palavras_chave] = useState<string[]>(data.titulo_palavras_chave);
-    const [links, setLinks] = useState<string[]>(data.links);
+    const [linguas, setLinguas] = useState<Lingua[]>(data.linguas);
+    const [links, setLinks] = useState<Links[]>(data.links);
     const [cover_letter, setCover_letter] = useState<string>(data.cover_letter);
     const [habilidades, setHabilidades] = useState<string[]>((data.habilidades ));
-    const [experiencia, setExperiencia] = useState<[Experiencia]>(data.experiencia);
-    const [cursos, setCursos] = useState<[Curso]>(data.cursos);
-    const [conquistas, setConquistas] = useState<[Conquistas]>(data.conquistas);
+    const [experiencia, setExperiencia] = useState<Experiencia[]>(data.experiencia);
+    const [cursos, setCursos] = useState<Curso[]>(data.cursos);
+    const [conquistas, setConquistas] = useState<Conquistas[]>(data.conquistas);
   
     async function saveCV() {
         var cv = buildCV();
@@ -66,13 +67,14 @@ function CvAddEdit({ data }: Data): JSX.Element {
 
     function buildCV() {
 
-        var cv: Cv = {
+        let cv: Cv = {
             id_usuario: session.data.user.email,
             nome: nome,
             localidade: localidade,
             email: email,
             titulo_palavras_chave: titulo_palavras_chave,
             links: links,
+            linguas: linguas,
             cover_letter: cover_letter,
             habilidades: habilidades,
             experiencia: experiencia,

@@ -12,12 +12,23 @@ export interface Cv {
   titulo_palavras_chave: string[];
   localidade: string;
   email: string;
-  links: string[];
+  links: Links[];
+  linguas: Lingua[];
   cover_letter: string;
   habilidades: string[];
-  experiencia: [Experiencia];
-  cursos: [Curso];
-  conquistas: [Conquistas];
+  experiencia: Experiencia[];
+  cursos: Curso[];
+  conquistas: Conquistas[];
+}
+
+export interface Links {
+  tipo: string;
+  link: string;
+}
+
+export interface Lingua {
+  lingua: string;
+  nivel: string;
 }
 
 export interface Experiencia {

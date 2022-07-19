@@ -1,8 +1,9 @@
 import { NextPage } from "next";
 import React from "react";
-import { Conquistas, Curso, Experiencia, Cv } from "../../util/models/types";
+import { Conquistas, Curso, Experiencia, Cv, Links, Lingua } from "../../util/models/types";
 import { useSession } from "next-auth/react";
 import * as cvAddEdit from "../../components/cvAddEdit";
+import { Link } from "@mui/icons-material";
 
 const AddCv: NextPage = () => {
   const session: any = useSession();
@@ -26,13 +27,24 @@ const AddCv: NextPage = () => {
     descricao: ""
   };
 
+  const link : Links={
+    tipo: "",
+    link: ""
+  }
+
+  const linguas : Lingua={
+    lingua: "",
+    nivel: ""
+  }
+
   const cv : Cv={
     id_usuario: "",
     nome: "",
     titulo_palavras_chave: [""],
     localidade: "",
     email: "",
-    links: [""],
+    links: [link],
+    linguas: [linguas],
     cover_letter: "",
     habilidades: [""],
     experiencia: [experiencia],

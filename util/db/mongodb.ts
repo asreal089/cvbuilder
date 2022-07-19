@@ -15,7 +15,14 @@ export const connectToDatabase = async () => {
     localidade: String,
     titulo_palavras_chave: [String],
     email: String,
-    links: [String],
+    links: [{
+      tipo: String,
+      link: String
+    }],
+    linguas: [{
+      lingua: String,
+      nivel: String
+    }],
     cover_letter: String,
     habilidades: [String],
     experiencia: [{
