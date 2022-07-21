@@ -21,11 +21,13 @@ import {
   Alert,
   AlertTitle,
   getLinearProgressUtilityClass,
+  Input,
 } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 
 interface Data {
   data: Cv;
@@ -176,21 +178,19 @@ function CvAddEdit({ data }: Data): JSX.Element {
     setExperiencia(temp);
   }
 
-  function setExperienciaIncio(
-    e: { target: { value: string; } },
-    index: number
+  function setNovaExperienciaInicio( e: any, index : number
   ) {
     let temp = experiencia.map((i: Experiencia) => i);
-    temp[index].incio = e.target.value;
+    temp[index].incio = e;
     setExperiencia(temp);
   }
 
   function setExperienciaFim(
-    e: { target: { value: string; } },
+    e: any,
     index: number
   ) {
     let temp = experiencia.map((i: Experiencia) => i);
-    temp[index].fim = e.target.value;
+    temp[index].fim = e;
     setExperiencia(temp);
   }
 
@@ -355,14 +355,33 @@ function CvAddEdit({ data }: Data): JSX.Element {
                             setNovaExperienciaEmpresa(e, index);
                         } } />
 
-                    
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <DesktopDatePicker
+                            label="data de início"
+                            inputFormat="MM/dd/yyyy"
+                            value={experiencia[index].incio}
+                            onChange={(e)=>{setNovaExperienciaInicio(e, index)}}
+                            renderInput={(params: any ) => <TextField {...params} />}
+
+                        />
+                    </LocalizationProvider>
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <DesktopDatePicker
+                            label="data de fim"
+                            inputFormat="MM/dd/yyyy"
+                            value={experiencia[index].fim}
+                            onChange={(e)=>{setExperienciaFim(e, index)}}
+                            renderInput={(params: any ) => <TextField {...params} />}
+
+                    />
+                    </LocalizationProvider>
                     <br />
                     <TextField
                         name="experiencia"
                         className="experiencia campoFull"
                         type="text"
                         rows={5}
-                        label="experiencia"
+                        label="experiencia Descricao"
                         value={experiencia[index].descricao}
                         required
                         onChange={(e) => {
