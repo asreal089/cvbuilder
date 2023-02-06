@@ -126,6 +126,10 @@ function CvAddEdit({ data }: Data): JSX.Element {
     setLinks([...links, { tipo: "", link: "" }]);
   }
 
+  function pushLingua() {
+    setLinguas([...linguas, { lingua: "", nivel: "" }]);
+  }
+
   function setNovaPalavraChave(
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
     index: number
@@ -134,6 +138,24 @@ function CvAddEdit({ data }: Data): JSX.Element {
     temp[index] = e.target.value;
     setTitulo_palavras_chave(temp);
     console.log(titulo_palavras_chave);
+  }
+
+  function setNovaLinguaLingua(
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    index: number
+  ) {
+    let temp = linguas.map((i: Lingua) => i);
+    temp[index].lingua = e.target.value;
+    setLinguas(temp);
+  }
+
+  function setNovaLinguaNivel(
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    index: number
+  ) {
+    let temp = linguas.map((i: Lingua) => i);
+    temp[index].nivel = e.target.value;
+    setLinguas(temp);
   }
 
   function setNovoLinkTipo(
@@ -205,6 +227,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
           value={nome}
           type="text"
           autoComplete="name"
+          variant="outlined"
           required
           onChange={(e) => {
             setNome(e.target.value);
@@ -215,6 +238,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
           id="localidade"
           label="localidade"
           type="text"
+          variant="outlined"
           value={localidade}
           autoComplete="localidade"
           required
@@ -228,13 +252,15 @@ function CvAddEdit({ data }: Data): JSX.Element {
           label="email"
           type="text"
           value={email}
-          //variant="outlined"
+          variant="outlined"
           autoComplete="email"
           required
           onChange={(e) => {
             setEmail(e.target.value);
           }}
         />
+        
+
         <br />
         {titulo_palavras_chave.map((_element, index: number) => (
           <span key={index} className="campoFull">
@@ -244,6 +270,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
               className="palavra-chave campoFull"
               type="text"
               label="palavra chave"
+              variant="outlined"
               value={titulo_palavras_chave[index]}
               required
               onChange={(e) => {
@@ -261,6 +288,44 @@ function CvAddEdit({ data }: Data): JSX.Element {
             Palavra Chave <AddCircleIcon className="center"></AddCircleIcon>
           </Button>
         </span>
+        
+        {linguas.map((_element, index: number) => (
+          <span key={index} className="linguas">
+            <br />
+            <TextField
+              name="lingua"
+              className="lingua"
+              type="text"
+              label="língua"
+              variant="outlined"
+              value={linguas[index].lingua}
+              required
+              onChange={(e) => {
+                setNovaLinguaLingua(e, index);
+              }}
+            />
+
+            <TextField
+              name="lingua"
+              className="lingua"
+              type="text"
+              label="nível"
+              variant="outlined"
+              value={linguas[index].nivel}
+              required
+              onChange={(e) => {
+                setNovaLinguaNivel(e, index);
+              }}
+            />
+            <br />
+          </span>
+        ))}
+
+        <span className="center">
+          <Button variant="contained" color="primary" onClick={pushLingua}>
+            Língua <AddCircleIcon className="center"></AddCircleIcon>
+          </Button>
+        </span>
 
         {links.map((_element, index: number) => (
           <span key={index} className="links">
@@ -269,7 +334,8 @@ function CvAddEdit({ data }: Data): JSX.Element {
               name="link-desc"
               className="link desc"
               type="text"
-              label="link descrição"
+              label="tipo de link"
+              variant="outlined"
               value={links[index].tipo}
               required
               onChange={(e) => {
@@ -282,6 +348,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
               className="link"
               type="text"
               label="link"
+              variant="outlined"
               value={links[index].link}
               required
               onChange={(e) => {
@@ -304,7 +371,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
           label="Cover Later"
           type="text"
           value={cover_letter}
-          //variant="outlined"
+          variant="outlined"
           autoComplete="cover-letter"
           minRows={5}
           multiline
@@ -324,6 +391,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
               type="text"
               label="habilidade"
               value={habilidades[index]}
+              variant="outlined"
               required
               onChange={(e) => {
                 setNovaHabilidade(e, index);
@@ -344,19 +412,10 @@ function CvAddEdit({ data }: Data): JSX.Element {
         {experiencia.map((_element, index: number) => {
             return (
                 <span key={index} className="campoFull">
-                    <TextField
-                        name="experiencia"
-                        className="experiencia-empresa campoFull"
-                        type="text"
-                        label="experiencia"
-                        value={experiencia[index].empresa}
-                        required
-                        onChange={(e) => {
-                            setNovaExperienciaEmpresa(e, index);
-                        } } />
 
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DesktopDatePicker
+                            className="data_picker"
                             label="data de início"
                             inputFormat="MM/dd/yyyy"
                             value={experiencia[index].incio}
@@ -367,6 +426,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
                     </LocalizationProvider>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DesktopDatePicker
+                            className="data_picker"
                             label="data de fim"
                             inputFormat="MM/dd/yyyy"
                             value={experiencia[index].fim}
@@ -375,13 +435,27 @@ function CvAddEdit({ data }: Data): JSX.Element {
 
                     />
                     </LocalizationProvider>
+                    
+                    <TextField
+                        name="experiencia"
+                        className="experiencia-empresa campoFull"
+                        type="text"
+                        label="Empresa"
+                        value={experiencia[index].empresa}
+                        variant="outlined"
+                        required
+                        onChange={(e) => {
+                            setNovaExperienciaEmpresa(e, index);
+                        } } />
                     <br />
                     <TextField
                         name="experiencia"
                         className="experiencia campoFull"
                         type="text"
-                        rows={5}
-                        label="experiencia Descricao"
+                        minRows={5}
+                        variant="outlined"
+                        multiline
+                        label="Descrição"
                         value={experiencia[index].descricao}
                         required
                         onChange={(e) => {

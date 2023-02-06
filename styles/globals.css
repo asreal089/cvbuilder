@@ -14,9 +14,20 @@ a {
 * {
   box-sizing: border-box;
 }
+.experiencia{
+  padding-bottom: 0.5rem;
+}
+.data_picker{
+  padding-bottom: 0.5rem;
+}
+.lingua {
+  display: grid;
+  width: 50%;
+}
 
 .link {
   display: grid;
+  padding-left: 0.5rem;
   grid-template-columns: 40%;
   width: 50%;
 }
