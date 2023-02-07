@@ -216,6 +216,40 @@ function CvAddEdit({ data }: Data): JSX.Element {
     setExperiencia(temp);
   }
 
+  function pushCurso() {
+    setCursos([
+      ...cursos,
+      { instituicao: "", duracao: "", descricao: ""},
+    ]);
+  }
+
+  function setNovoCursoDescricao(
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    index: number
+  ) {
+    let temp = cursos.map((i: Curso) => i);
+    temp[index].descricao = e.target.value;
+    setCursos(temp);
+  }
+
+  function setNovoCursoDuracao(
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    index: number
+  ) {
+    let temp = cursos.map((i: Curso) => i);
+    temp[index].duracao = e.target.value;
+    setCursos(temp);
+  }
+
+  function setNovoCursoInstituicao(
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    index: number
+  ) {
+    let temp = cursos.map((i: Curso) => i);
+    temp[index].instituicao = e.target.value;
+    setCursos(temp);
+  }
+
   return (
     <Container>
       <h2>Construa seu CV:</h2>
@@ -473,6 +507,60 @@ function CvAddEdit({ data }: Data): JSX.Element {
         <br />
         <Divider />
         <br />
+
+        {cursos.map((_element, index: number) => {
+            return (
+                <span key={index} className="campoFull">
+                    <TextField
+                        name="cursos"
+                        className="cursos campoFull"
+                        type="text"
+                        label="Instituição"
+                        value={cursos[index].instituicao}
+                        variant="outlined"
+                        required
+                        onChange={(e) => {
+                            setNovoCursoInstituicao(e, index);
+                        } } />
+                    <br />
+                    <TextField
+                        name="cursos"
+                        className="cursos campoFull"
+                        type="text"
+                        variant="outlined"
+
+                        label="Duração"
+                        value={cursos[index].duracao}
+                        required
+                        onChange={(e) => {
+                            setNovoCursoDuracao(e, index);
+                        } } />
+                    <br />
+                    <TextField
+                        name="cursos"
+                        className="cursos campoFull"
+                        type="text"
+                        variant="outlined"
+                        label="Descrição"
+                        value={cursos[index].descricao}
+                        required
+                        onChange={(e) => {
+                            setNovoCursoDescricao(e, index);
+                        } } />
+                </span>
+            );
+        })}
+        <br />
+        <span className="center">
+          <Button variant="contained" color="primary" onClick={pushCurso}>
+            Curso <AddCircleIcon className="center"></AddCircleIcon>
+          </Button>
+        </span>
+        <br />
+        <Divider />
+
+
+
         <Button variant="contained" color="primary" onClick={saveCV}>
           Register
         </Button>

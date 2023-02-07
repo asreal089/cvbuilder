@@ -33,6 +33,7 @@ a {
 }
 
 .campoFull{
+  padding-bottom: 0.5rem !important;
   width: 100% !important;
 }
 
