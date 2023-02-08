@@ -33,12 +33,15 @@ a {
 }
 
 .campoFull{
-  padding-bottom: 0.5rem !important;
   width: 100% !important;
 }
 
-.campoDinamico{
-  padding-top: 10px;
+.center{
+  align-items: center !important;
+}
+
+.campoComPadding{
+  padding-bottom: 0.5rem !important;
 }
 
 .right{

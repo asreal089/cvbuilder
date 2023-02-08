@@ -1,4 +1,5 @@
-import React, { JSXElementConstructor, ReactElement, useState } from "react";
+import React, {  useState } from "react";
+
 
 import {
   Conquistas,
@@ -14,20 +15,17 @@ import {
   FormGroup,
   Divider,
   TextField,
-  TextFieldProps,
 } from "@material-ui/core";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import {
   Alert,
   AlertTitle,
-  getLinearProgressUtilityClass,
-  Input,
 } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import formNome from "./cv/formNome";
 
 interface Data {
   data: Cv;
@@ -256,6 +254,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
 
       <FormGroup>
         <TextField
+          className="campoFull campoComPadding"
           id="name"
           label="name"
           value={nome}
@@ -267,8 +266,9 @@ function CvAddEdit({ data }: Data): JSX.Element {
             setNome(e.target.value);
           }}
         />
-        <br />
+        
         <TextField
+          className="campoFull campoComPadding"
           id="localidade"
           label="localidade"
           type="text"
@@ -280,8 +280,9 @@ function CvAddEdit({ data }: Data): JSX.Element {
             setLocalidade(e.target.value);
           }}
         />
-        <br />
+        
         <TextField
+          className="campoFull campoComPadding"
           id="email"
           label="email"
           type="text"
@@ -295,13 +296,13 @@ function CvAddEdit({ data }: Data): JSX.Element {
         />
         
 
-        <br />
+        
         {titulo_palavras_chave.map((_element, index: number) => (
-          <span key={index} className="campoFull">
-            <br />
+          <span key={index} className="campoFull campoComPadding">
+            
             <TextField
               name="palavras-chave"
-              className="palavra-chave campoFull"
+              className="palavra-chave campoFull campoComPadding"
               type="text"
               label="palavra chave"
               variant="outlined"
@@ -313,7 +314,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
             />
           </span>
         ))}
-        <span className="center">
+        <span className="center campoFull campoComPadding">
           <Button
             variant="contained"
             color="primary"
@@ -325,10 +326,10 @@ function CvAddEdit({ data }: Data): JSX.Element {
         
         {linguas.map((_element, index: number) => (
           <span key={index} className="linguas">
-            <br />
+            
             <TextField
               name="lingua"
-              className="lingua"
+              className="lingua campoFull campoComPadding"
               type="text"
               label="língua"
               variant="outlined"
@@ -341,7 +342,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
 
             <TextField
               name="lingua"
-              className="lingua"
+              className="lingua campoFull campoComPadding"
               type="text"
               label="nível"
               variant="outlined"
@@ -351,11 +352,11 @@ function CvAddEdit({ data }: Data): JSX.Element {
                 setNovaLinguaNivel(e, index);
               }}
             />
-            <br />
+            
           </span>
         ))}
 
-        <span className="center">
+        <span className="center campoFull campoComPadding">
           <Button variant="contained" color="primary" onClick={pushLingua}>
             Língua <AddCircleIcon className="center"></AddCircleIcon>
           </Button>
@@ -363,10 +364,10 @@ function CvAddEdit({ data }: Data): JSX.Element {
 
         {links.map((_element, index: number) => (
           <span key={index} className="links">
-            <br />
+            
             <TextField
               name="link-desc"
-              className="link desc"
+              className="link campoFull campoComPadding"
               type="text"
               label="tipo de link"
               variant="outlined"
@@ -379,7 +380,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
 
             <TextField
               name="link-link"
-              className="link"
+              className="link campoFull campoComPadding" 
               type="text"
               label="link"
               variant="outlined"
@@ -389,19 +390,20 @@ function CvAddEdit({ data }: Data): JSX.Element {
                 setNovoLinkLink(e, index);
               }}
             />
-            <br />
+            
           </span>
         ))}
-        <span className="center">
+        <span className="center campoFull campoComPadding">
           <Button variant="contained" color="primary" onClick={pushLink}>
             Link <AddCircleIcon className="center"></AddCircleIcon>
           </Button>
         </span>
 
-        <br />
-        <br />
+        
+        
         <TextField
           id="cover-letter"
+          className="campoFull campoComPadding"
           label="Cover Later"
           type="text"
           value={cover_letter}
@@ -417,11 +419,11 @@ function CvAddEdit({ data }: Data): JSX.Element {
         <Divider />
 
         {habilidades.map((_element, index: number) => (
-          <span key={index} className="campoFull">
-            <br />
+          <span key={index} className="campoFull campoComPadding">
+            
             <TextField
               name="habilidade"
-              className="habilidade campoFull"
+              className="habilidade campoFull campoComPadding"
               type="text"
               label="habilidade"
               value={habilidades[index]}
@@ -433,46 +435,24 @@ function CvAddEdit({ data }: Data): JSX.Element {
             />
           </span>
         ))}
-        <br />
-        <span className="center">
+        
+        <span className="center campoFull campoComPadding">
           <Button variant="contained" color="primary" onClick={pushHabilidade}>
             Habilidade <AddCircleIcon className="center"></AddCircleIcon>
           </Button>
         </span>
-        <br />
+        
         <Divider />
-        <br />
+        
 
         {experiencia.map((_element, index: number) => {
             return (
-                <span key={index} className="campoFull">
-
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <DesktopDatePicker
-                            className="data_picker"
-                            label="data de início"
-                            inputFormat="MM/dd/yyyy"
-                            value={experiencia[index].incio}
-                            onChange={(e)=>{setNovaExperienciaInicio(e, index)}}
-                            renderInput={(params: any ) => <TextField {...params} />}
-
-                        />
-                    </LocalizationProvider>
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <DesktopDatePicker
-                            className="data_picker"
-                            label="data de fim"
-                            inputFormat="MM/dd/yyyy"
-                            value={experiencia[index].fim}
-                            onChange={(e)=>{setExperienciaFim(e, index)}}
-                            renderInput={(params: any ) => <TextField {...params} />}
-
-                    />
-                    </LocalizationProvider>
+                <span key={index} className="campoFull campoComPadding">
+                  
                     
                     <TextField
                         name="experiencia"
-                        className="experiencia-empresa campoFull"
+                        className="experiencia-empresa campoFull campoComPadding"
                         type="text"
                         label="Empresa"
                         value={experiencia[index].empresa}
@@ -481,10 +461,10 @@ function CvAddEdit({ data }: Data): JSX.Element {
                         onChange={(e) => {
                             setNovaExperienciaEmpresa(e, index);
                         } } />
-                    <br />
+                    
                     <TextField
                         name="experiencia"
-                        className="experiencia campoFull"
+                        className="experiencia campoFull campoComPadding"
                         type="text"
                         minRows={5}
                         variant="outlined"
@@ -495,25 +475,52 @@ function CvAddEdit({ data }: Data): JSX.Element {
                         onChange={(e) => {
                             setNovaExperienciaDescricao(e, index);
                         } } />
+
+
+                  <span className="campoFull campoComPadding">
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                          <DesktopDatePicker
+                              className="data_picker campoFull campoComPadding"
+                              label="data de início"
+                              inputFormat="MM/dd/yyyy"
+                              value={experiencia[index].incio}
+                              onChange={(e)=>{setNovaExperienciaInicio(e, index)}}
+                              renderInput={(params: any ) => <TextField {...params} />}
+
+                          />
+                      </LocalizationProvider>
+                      <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <DesktopDatePicker
+                            className="data_picker campoFull campoComPadding" 
+                            label="data de fim"
+                            inputFormat="MM/dd/yyyy"
+                            value={experiencia[index].fim}
+                            onChange={(e)=>{setExperienciaFim(e, index)}}
+                            renderInput={(params: any ) => <TextField {...params} />}
+
+                    />
+                    </LocalizationProvider>
+                    
+                  </span>
                 </span>
             );
         })}
-        <br />
-        <span className="center">
+        
+        <span className="center campoFull campoComPadding">
           <Button variant="contained" color="primary" onClick={pushExperiencia}>
             Experiencia <AddCircleIcon className="center"></AddCircleIcon>
           </Button>
         </span>
-        <br />
+        
         <Divider />
-        <br />
+        
 
         {cursos.map((_element, index: number) => {
             return (
-                <span key={index} className="campoFull">
+                <span key={index} className="campoFull campoComPadding">
                     <TextField
                         name="cursos"
-                        className="cursos campoFull"
+                        className="cursos campoFull campoComPadding"
                         type="text"
                         label="Instituição"
                         value={cursos[index].instituicao}
@@ -522,10 +529,9 @@ function CvAddEdit({ data }: Data): JSX.Element {
                         onChange={(e) => {
                             setNovoCursoInstituicao(e, index);
                         } } />
-                    <br />
                     <TextField
                         name="cursos"
-                        className="cursos campoFull"
+                        className="cursos campoFull campoComPadding"
                         type="text"
                         variant="outlined"
 
@@ -535,10 +541,9 @@ function CvAddEdit({ data }: Data): JSX.Element {
                         onChange={(e) => {
                             setNovoCursoDuracao(e, index);
                         } } />
-                    <br />
                     <TextField
                         name="cursos"
-                        className="cursos campoFull"
+                        className="cursos campoFull campoComPadding"
                         type="text"
                         variant="outlined"
                         label="Descrição"
@@ -550,24 +555,22 @@ function CvAddEdit({ data }: Data): JSX.Element {
                 </span>
             );
         })}
-        <br />
-        <span className="center">
+        <span className="center campoFull campoComPadding">
           <Button variant="contained" color="primary" onClick={pushCurso}>
             Curso <AddCircleIcon className="center"></AddCircleIcon>
           </Button>
         </span>
-        <br />
         <Divider />
 
 
-
-        <Button variant="contained" color="primary" onClick={saveCV}>
-          Register
-        </Button>
+        <span className="center campoFull campoComPadding">
+          <Button variant="contained" color="primary" onClick={saveCV}>
+            Register
+          </Button>
+        </span>
       </FormGroup>
       {saveSucefull && (
         <>
-          <br />
           <Alert
             severity="success"
             onClose={() => {
