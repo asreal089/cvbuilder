@@ -1,19 +1,20 @@
 import { TextField } from "@material-ui/core";
-import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 
-function FormNome( data : string ): JSX.Element {
-    const session: any = useSession();
-    const [nome, setNome] = useState<string>(data);
+
+function FormNome({ name }: { name: string; }): JSX.Element {
+
+    
+    const [nome, setNome] = useState<string>(name);
     return(
 
         <TextField
             className="campoFull campoComPadding"
-            id="name"
-            label="name"
+            id="nome"
+            label="nome"
             value={nome}
             type="text"
-            autoComplete="name"
+            autoComplete="nome"
             variant="outlined"
             required
             onChange={(e) => {

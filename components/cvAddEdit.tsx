@@ -33,6 +33,7 @@ interface Data {
 
 function CvAddEdit({ data }: Data): JSX.Element {
   const session: any = useSession();
+  const [id_usuario, setId_usuario] = useState<string>(data.id_usuario); 
   const [saveSucefull, setSaveSucefull] = useState<boolean>(false);
   const [nome, setNome] = useState<string>(data.nome);
   const [localidade, setLocalidade] = useState<string>(data.localidade);
@@ -249,9 +250,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
   }
 
   return (
-    <Container>
-      <h2>Construa seu CV:</h2>
-
+    <Container className="container">
       <FormGroup>
         <TextField
           className="campoFull campoComPadding"

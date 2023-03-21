@@ -1,42 +1,51 @@
 import { NextPage } from "next";
 import React from "react";
-import { Conquistas, Curso, Experiencia, Cv, Links, Lingua } from "../../util/models/types";
+import {
+  Conquistas,
+  Curso,
+  Experiencia,
+  Cv,
+  Links,
+  Lingua,
+} from "../../util/models/types";
 import { useSession } from "next-auth/react";
 import * as cvAddEdit from "../../components/cvAddEdit";
+import Head from "next/head";
+import Navbar from "../../components/navbar";
+import { Container } from "@material-ui/core";
 
 const AddCv: NextPage = () => {
   const session: any = useSession();
 
-
-  const experiencia : Experiencia ={
+  const experiencia: Experiencia = {
     empresa: "",
     incio: "",
     fim: "",
-    descricao: ""
+    descricao: "",
   };
 
-  const curso : Curso ={
+  const curso: Curso = {
     instituicao: "",
     duracao: "",
-    descricao: ""
+    descricao: "",
   };
 
-  const conquista :Conquistas ={
+  const conquista: Conquistas = {
     titulo: "",
-    descricao: ""
+    descricao: "",
   };
 
-  const link : Links={
+  const link: Links = {
     tipo: "",
-    link: ""
-  }
+    link: "",
+  };
 
-  const linguas : Lingua={
+  const linguas: Lingua = {
     lingua: "",
-    nivel: ""
-  }
+    nivel: "",
+  };
 
-  const cv : Cv={
+  const cv: Cv = {
     id_usuario: "",
     nome: "",
     titulo_palavras_chave: [""],
@@ -48,14 +57,24 @@ const AddCv: NextPage = () => {
     habilidades: [""],
     experiencia: [experiencia],
     cursos: [curso],
-    conquistas: [conquista]
-  }
+    conquistas: [conquista],
+  };
 
-  
-  
-  return(
-        <cvAddEdit.default data={cv}  />
-      );
-}
+  return (
+    <div>
+      <Head>
+        <title>CV BUILDER</title>
+        <meta name="CV BUILDER" content="Site para armazenar o CV." />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <Container>
+        <Navbar />
+
+        <cvAddEdit.default data={cv} />
+      </Container>
+    </div>
+  );
+};
 
 export default AddCv;

@@ -19,8 +19,7 @@ export default async function handleGetEPutPorUsuario(req: NextApiRequest, res: 
             // RESPONSE FOR GET REQUESTS
             GET: async (req: NextApiRequest, res: NextApiResponse) => {
               const { CV } = await connectToDatabase(); 
-              //const resp = await CV.findOne({ id_usuario: { $eq: idUsuario } }).catch(catcher);
-              const resp = await CV.findById(idUsuario).catch(catcher);
+              const resp = await CV.findOne({id_usuario: { $eq: idUsuario }}).catch(catcher);
               res.json(JSON.parse(JSON.stringify(resp)));
             },
             // RESPONSE POST REQUESTS
