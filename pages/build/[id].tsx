@@ -1,18 +1,17 @@
 import { GetServerSideProps, NextPage } from "next";
 import { getSession, SessionProvider, useSession } from "next-auth/react";
 import { Cv } from "../../util/models/types";
+import * as cvAddEdit from "../../components/cvAddEdit";
 import axios from "axios";
 import { Container } from "@material-ui/core";
 import Head from "next/head";
 import Navbar from "../../components/navbar";
-import cvView from "../../components/cvView";
-import CvView from "../../components/cvView";
 
 interface Data {
   data: Cv;
 }
 
-const ViewCv: NextPage<Data> = (props) => {
+const EditCv: NextPage<Data> = (props) => {
 
   return (
     <div>
@@ -22,10 +21,11 @@ const ViewCv: NextPage<Data> = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Container>
+        <Navbar />
 
-
-        <CvView data={props.data} />
-
+        <cvAddEdit.default data={props.data} />
+      </Container>
     </div>
   );
 };
@@ -41,4 +41,4 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   };
 };
 
-export default ViewCv;
+export default EditCv;

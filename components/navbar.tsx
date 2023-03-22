@@ -12,14 +12,16 @@ import React from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
-import Container from "@mui/material/Container";
-import { AlignHorizontalCenter } from "@mui/icons-material";
+
 
 const Navbar = () => {
   const session: any = useSession();
 
   const cvLink: string =
     session.data != undefined ? "/cv/" + session.data.user.email : "/cv";
+  const cvAddEditLink: string = 
+    session.data != undefined ? "/build/" + session.data.user.email : "/build";
+
   return (
     
       <AppBar position="fixed" className="center">
@@ -38,7 +40,13 @@ const Navbar = () => {
 
             <li>
               <Link href={cvLink} className="white">
-                <Typography variant="h6">Seu CV</Typography>
+                <Typography variant="h6">Exibição do CV</Typography>
+              </Link>
+            </li>
+
+            <li>
+              <Link href={cvAddEditLink} className="white">
+                <Typography variant="h6">Criar/Editar</Typography>
               </Link>
             </li>
           </ul>
