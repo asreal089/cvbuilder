@@ -34,19 +34,19 @@ const Navbar = () => {
           <ul className="menu">
             <li>
               <Link href="/sobre" className="white">
-                <Typography variant="h6">Sobre</Typography>
+                <Typography >About us</Typography>
               </Link>
             </li>
 
             <li>
               <Link href={cvLink} className="white">
-                <Typography variant="h6">Exibição do CV</Typography>
+                <Typography >View</Typography>
               </Link>
             </li>
 
             <li>
               <Link href={cvAddEditLink} className="white">
-                <Typography variant="h6">Criar/Editar</Typography>
+                <Typography >Build</Typography>
               </Link>
             </li>
           </ul>
