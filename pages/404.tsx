@@ -1,12 +1,10 @@
 import { Container } from "@mui/material";
 import { NextPage } from "next";
-import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Navbar from "../components/navbar";
 import styles from "../styles/Home.module.css";
 
 const notFound: NextPage = () => {
-  const session: any = useSession();
 
   return (
     <div>
