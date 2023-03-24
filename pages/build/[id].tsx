@@ -12,7 +12,6 @@ interface Data {
 }
 
 const EditCv: NextPage<Data> = (props) => {
-
   return (
     <div>
       <Head>
@@ -32,13 +31,22 @@ const EditCv: NextPage<Data> = (props) => {
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { id } = query;
+  const session: any = useSession();
   const axioscfg = { baseURL: process.env.URL };
   const res = await axios.get("/api/cv/" + id, axioscfg);
+  if(res.data == null || res.data == undefined || res.data.id_usuario != res.data.id_usuario){
+    
+    return {
+      redirect: {
+        destination: "/build",
+        permanent: true, // set to 'true' for a 301 permanent redirect, or 'false' for a 302 temporary redirect
+      },
+    };
+  }
   return {
     props: {
       data: res.data,
     },
   };
 };
-
 export default EditCv;

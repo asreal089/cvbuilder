@@ -1,0 +1,61 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.item {
+  margin-bottom: 1rem;
+}
+
+.skillsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+/* Add these styles to your existing Cv.module.css */
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.name {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.keyword {
+  font-size: 0.9rem;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+}
+.texto {
+  white-space: pre-line;
+}

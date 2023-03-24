@@ -18,6 +18,7 @@ const AddCv: NextPage = () => {
   const session: any = useSession();
 
   const experiencia: Experiencia = {
+    titulo: "",
     empresa: "",
     incio: "",
     fim: "",

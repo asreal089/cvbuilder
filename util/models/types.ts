@@ -32,6 +32,7 @@ export interface Lingua {
 }
 
 export interface Experiencia {
+  titulo: string;
   empresa: string;
   incio: string;
   fim: string;

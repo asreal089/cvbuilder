@@ -1,5 +1,4 @@
-import React, {  useState } from "react";
-
+import React, {  useEffect, useState } from "react";
 
 import {
   Conquistas,
@@ -25,15 +24,16 @@ import { useSession } from "next-auth/react";
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import formNome from "./cv/formNome";
+import router from "next/router";
 
 interface Data {
   data: Cv;
 }
 
 function CvAddEdit({ data }: Data): JSX.Element {
+
   const session: any = useSession();
-  const [id_usuario, setId_usuario] = useState<string>(data.id_usuario); 
+  
   const [saveSucefull, setSaveSucefull] = useState<boolean>(false);
   const [nome, setNome] = useState<string>(data.nome);
   const [localidade, setLocalidade] = useState<string>(data.localidade);
@@ -114,7 +114,6 @@ function CvAddEdit({ data }: Data): JSX.Element {
     let temp = habilidades.map((i: any) => i);
     temp[index] = e.target.value;
     setHabilidades(temp);
-    console.log(habilidades);
   }
 
   function pushPalavraChave() {
@@ -136,7 +135,6 @@ function CvAddEdit({ data }: Data): JSX.Element {
     let temp = titulo_palavras_chave.map((i: any) => i);
     temp[index] = e.target.value;
     setTitulo_palavras_chave(temp);
-    console.log(titulo_palavras_chave);
   }
 
   function setNovaLinguaLingua(
@@ -186,7 +184,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
   function pushExperiencia() {
     setExperiencia([
       ...experiencia,
-      { descricao: "", empresa: "", incio: "", fim: "" },
+      { titulo: "", descricao: "", empresa: "", incio: "", fim: "" },
     ]);
   }
 
@@ -196,6 +194,15 @@ function CvAddEdit({ data }: Data): JSX.Element {
   ) {
     let temp = experiencia.map((i: Experiencia) => i);
     temp[index].empresa = e.target.value;
+    setExperiencia(temp);
+  }
+
+  function setNovaExperienciaTitulo(
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    index: number
+  ) {
+    let temp = experiencia.map((i: Experiencia) => i);
+    temp[index].titulo = e.target.value;
     setExperiencia(temp);
   }
 
@@ -448,7 +455,17 @@ function CvAddEdit({ data }: Data): JSX.Element {
             return (
                 <span key={index} className="campoFull campoComPadding">
                   
-                    
+                  <TextField
+                        name="experiencia"
+                        className="experiencia-empresa campoFull campoComPadding"
+                        type="text"
+                        label="Titutlo"
+                        value={experiencia[index].titulo}
+                        variant="outlined"
+                        required
+                        onChange={(e) => {
+                            setNovaExperienciaTitulo(e, index);
+                        } } />
                     <TextField
                         name="experiencia"
                         className="experiencia-empresa campoFull campoComPadding"

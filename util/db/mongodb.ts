@@ -26,6 +26,7 @@ export const connectToDatabase = async () => {
     cover_letter: String,
     habilidades: [String],
     experiencia: [{
+      titulo: String,
       empresa: String,
       incio: String,
       fim: String,

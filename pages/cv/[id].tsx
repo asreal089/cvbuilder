@@ -13,7 +13,6 @@ interface Data {
 }
 
 const ViewCv: NextPage<Data> = (props) => {
-
   return (
     <div>
       <Head>
@@ -21,11 +20,7 @@ const ViewCv: NextPage<Data> = (props) => {
         <meta name="CV BUILDER" content="Site para armazenar o CV." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-
-
-        <CvView data={props.data} />
-
+      <CvView data={props.data} />
     </div>
   );
 };
