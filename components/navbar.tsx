@@ -61,7 +61,7 @@ const Navbar = () => {
               <Button
                 className="white right"
                 onClick={() =>
-                  signIn("google", { callbackUrl: "http://localhost:3000/" })
+                  signIn("google", { callbackUrl: process.env.URL })
                 }
               >
                 Sing In

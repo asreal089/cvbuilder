@@ -28,15 +28,17 @@ const EditCv: NextPage<Data> = (props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = async ({ query, req }) => {
   const { id } = query;
-  const axioscfg = { baseURL: process.env.URL };
+  const axioscfg = { baseURL: process.env.URL, headers: {
+    cookie: req.headers.cookie || "",
+  }};
   const res = await axios.get("/api/cv/" + id, axioscfg);
   
   return {
     props: {
-      data: res.data,
-    },
+      data: res.data
+    }
   };
 };
 export default EditCv;

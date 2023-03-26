@@ -80,7 +80,7 @@ const Home: NextPage = () => {
               Join in Now
               <button
                 onClick={() =>
-                  signIn("google", { callbackUrl: "http://localhost:3000/" })
+                  signIn("google", { callbackUrl: process.env.URL })
                 }
               >
                 Sign in
