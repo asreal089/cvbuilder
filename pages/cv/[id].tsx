@@ -1,11 +1,7 @@
 import { GetServerSideProps, NextPage } from "next";
-import { getSession, SessionProvider, useSession } from "next-auth/react";
 import { Cv } from "../../util/models/types";
 import axios from "axios";
-import { Container } from "@material-ui/core";
 import Head from "next/head";
-import Navbar from "../../components/navbar";
-import cvView from "../../components/cvView";
 import CvView from "../../components/cvView";
 
 interface Data {

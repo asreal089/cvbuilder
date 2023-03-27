@@ -33,8 +33,18 @@ export const getServerSideProps: GetServerSideProps = async ({ query, req }) => 
   const axioscfg = { baseURL: process.env.URL, headers: {
     cookie: req.headers.cookie || "",
   }};
-  const res = await axios.get("/api/cv/" + id, axioscfg);
+  const session = await getSession();
+  if( !session || session.user?.email != id){
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    }
+  }
   
+  const res = await axios.get("/api/cv/" + id, axioscfg);
+
   return {
     props: {
       data: res.data
