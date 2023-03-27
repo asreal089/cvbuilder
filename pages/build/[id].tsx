@@ -28,10 +28,10 @@ const EditCv: NextPage<Data> = (props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query, req }) => {
-  const { id } = query;
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { id } = context.query;
   const axioscfg = { baseURL: process.env.URL, headers: {
-    cookie: req.headers.cookie || "",
+    cookie: context.req.headers.cookie || "",
   }};
   const session = await getSession();
   if( !session || session.user?.email != id){
