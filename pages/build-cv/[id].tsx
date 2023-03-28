@@ -33,7 +33,6 @@ const EditCv: NextPage<Data> = (props) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
   const id = context.query.id as string; 
-  console.log("session" +  session );
   const axiosconf : AxiosRequestConfig = {
     headers: {
       cookie: context.req.headers.cookie || "",

@@ -34,21 +34,21 @@ function CvAddEdit({ data }: Data): JSX.Element {
   const session: any = useSession();
   
   const [saveSucefull, setSaveSucefull] = useState<boolean>(false);
-  const [nome, setNome] = useState<string>(data.nome);
-  const [localidade, setLocalidade] = useState<string>(data.localidade);
-  const [email, setEmail] = useState<string>(data.email);
+  const [nome, setNome] = useState<string>(data?.nome || "");
+  const [localidade, setLocalidade] = useState<string>(data?.localidade || "");
+  const [email, setEmail] = useState<string>(data?.email || "") ;
   const [titulo_palavras_chave, setTitulo_palavras_chave] = useState<string[]>(
-    data.titulo_palavras_chave
+    data?.titulo_palavras_chave || []
   );
-  const [linguas, setLinguas] = useState<Lingua[]>(data.linguas);
-  const [links, setLinks] = useState<Links[]>(data.links);
-  const [cover_letter, setCover_letter] = useState<string>(data.cover_letter);
-  const [habilidades, setHabilidades] = useState<string[]>(data.habilidades);
+  const [linguas, setLinguas] = useState<Lingua[]>(data?.linguas || []);
+  const [links, setLinks] = useState<Links[]>(data?.links || [] );
+  const [cover_letter, setCover_letter] = useState<string>(data?.cover_letter || "");
+  const [habilidades, setHabilidades] = useState<string[]>(data?.habilidades || []);
   const [experiencia, setExperiencia] = useState<Experiencia[]>(
-    data.experiencia
+    data?.experiencia || []
   );
-  const [cursos, setCursos] = useState<Curso[]>(data.cursos);
-  const [conquistas, setConquistas] = useState<Conquistas[]>(data.conquistas);
+  const [cursos, setCursos] = useState<Curso[]>(data?.cursos || []);
+  const [conquistas, setConquistas] = useState<Conquistas[]>(data?.conquistas || []);
 
   async function saveCV() {
     var cv = buildCV();
@@ -529,7 +529,6 @@ function CvAddEdit({ data }: Data): JSX.Element {
         
         <Divider />
         
-
         {cursos.map((_element, index: number) => {
             return (
                 <span key={index} className="campoFull campoComPadding">

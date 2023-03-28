@@ -65,7 +65,6 @@ const Navbar = () => {
                 }
               >
                 <Typography>Sing In</Typography>
-                Sing In
                 <LoginIcon className="white" />
               </Button>
             </>
