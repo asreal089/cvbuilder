@@ -47,7 +47,7 @@ const Navbar = () => {
           {session.data && (
             <li>
               <Link
-                href={"/build/" + session.data.user.email}
+                href={"/build-cv/" + session.data.user.email}
                 className="white"
               >
                 <Typography>BUILD</Typography>
@@ -64,6 +64,7 @@ const Navbar = () => {
                   signIn("google", { callbackUrl: process.env.URL })
                 }
               >
+                <Typography>Sing In</Typography>
                 Sing In
                 <LoginIcon className="white" />
               </Button>
@@ -73,7 +74,7 @@ const Navbar = () => {
           {session.data && (
             <>
               <Button className="white right" onClick={() => signOut()}>
-                Sign out
+              <Typography>Sign out</Typography>
                 <LogoutIcon className="white" />
               </Button>
             </>
