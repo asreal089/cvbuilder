@@ -1,13 +1,18 @@
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-}
+
 
 .title {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 2rem;
+}
+
+.cvcontent{
+  width: 80%;
+  margin: 0 auto;
+  padding: 2em 0;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #ffffff;
 }
 
 .section {
@@ -58,4 +63,12 @@
 }
 .texto {
   white-space: pre-line;
+}
+
+
+.texticon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }

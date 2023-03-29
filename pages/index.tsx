@@ -5,6 +5,7 @@ import styles from "../styles/Home.module.css";
 import Navbar from "../components/navbar";
 import { Container } from "@material-ui/core";
 import { signIn, signOut, useSession } from "next-auth/react";
+import Footer from "../components/footer";
 
 const Home: NextPage = () => {
   const session: any = useSession();
@@ -13,7 +14,10 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>CV Builder</title>
-        <meta name="description" content="a place where you can store your cv" />
+        <meta
+          name="description"
+          content="a place where you can store your cv"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -30,7 +34,6 @@ const Home: NextPage = () => {
           <div className={styles.grid}>
             <div className={styles.card}>
               <Image
-              
                 src="/escudo.png"
                 alt="Secure Storage"
                 width={200}
@@ -63,47 +66,14 @@ const Home: NextPage = () => {
             </div>
 
             <div className={styles.card}>
-              <Image
-                src="/share.png"
-                alt="Share CV"
-                width={200}
-                height={200}
-              />
+              <Image src="/share.png" alt="Share CV" width={200} height={200} />
               <h3>Share Your CVs</h3>
               <p>You can easily share your CVs with potential employers.</p>
             </div>
           </div>
-          <p className={styles.cta}>
-            
-          {!session.data && (
-            <div>
-              Join in Now
-              <button
-                onClick={() =>
-                  signIn("google", { callbackUrl: process.env.URL })
-                }
-              >
-                Sign in
-              </button>
-            </div>
-          )}
-          {session.data && (
-            <div>
-              Signed in as {session.data.user.name}
-              <button onClick={() => signOut()}>Sign out</button>
-            </div>
-          )}
-          </p>
-
-          
         </main>
 
-        <footer className={styles.footer}>
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/nltech.png" alt="nlt" width={100} height={20} />
-          </span>
-        </footer>
+        <Footer />
       </Container>
     </div>
   );

@@ -4,6 +4,7 @@ import { ResponseFuncs } from "../../../util/models/types";
 import { authOptions } from "../auth/[...nextauth]";
 import { getServerSession } from "next-auth/next";
 
+
 export default async function handleGetEPutPorUsuario(
   req: NextApiRequest,
   res: NextApiResponse
@@ -29,10 +30,10 @@ export default async function handleGetEPutPorUsuario(
     // RESPONSE POST REQUESTS
     PUT: async (req: NextApiRequest, res: NextApiResponse) => {
       const { CV } = await connectToDatabase();
-      if (!session || session.user?.email != idUsuario) {
+      if (!session) {
         res.status(403).json({ error: "Acesso negado" });
       } else {
-        const resp = await CV.findByIdAndUpdate(idUsuario, req.body).catch(
+        const resp = await CV.findByIdAndUpdate(idUsuario , req.body).catch(
           catcher
         );
         res.json(resp);

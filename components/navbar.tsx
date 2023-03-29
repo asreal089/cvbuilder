@@ -26,7 +26,7 @@ const Navbar = () => {
         </IconButton>
         <ul className="menu">
           <li>
-            <Link href="/sobre" className="white">
+            <Link href="/about-us" className="white">
               <Typography>ABOUT US</Typography>
             </Link>
           </li>

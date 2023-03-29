@@ -3,6 +3,7 @@ import { Cv } from "../../util/models/types";
 import axios from "axios";
 import Head from "next/head";
 import CvView from "../../components/cvView";
+import { padding } from "@mui/system";
 
 interface Data {
   data: Cv;
@@ -16,7 +17,9 @@ const ViewCv: NextPage<Data> = (props) => {
         <meta name="CV BUILDER" content="Site para armazenar o CV." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <CvView data={props.data} />
+      <body className="content">
+        <CvView data={props.data} />
+      </body>
     </div>
   );
 };

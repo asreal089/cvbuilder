@@ -52,6 +52,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
 
   async function saveCV() {
     var cv = buildCV();
+    console.log("objeto CV: " + JSON.stringify(cv))
     if (data._id) {
       await fetch("/api/cv/" + data._id, {
         method: "put",

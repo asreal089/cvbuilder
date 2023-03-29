@@ -33,6 +33,10 @@ a {
 * {
   box-sizing: border-box;
 }
+.content{
+  padding: 2rem 0;
+  background-color: var(--primary-dark);
+}
 .container{
   padding-top: 80px;
 }
