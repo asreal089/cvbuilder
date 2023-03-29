@@ -27,7 +27,7 @@ const aboutUs: NextPage = () => {
         <h2>Our Mission</h2>
         <p>
           At CvBuild, we believe that everyone deserves a chance to pursue their
-          dream career. That's why we've created a platform that's accessible to
+          dream career. That&apos;s why we&apos;ve created a platform that&apos;s accessible to
           anyone, regardless of their background or experience level. Our goal
           is to help job seekers stand out from the competition by providing
           them with the tools they need to create a standout CV.
@@ -50,7 +50,7 @@ const aboutUs: NextPage = () => {
         </p>
         <p>
           At the heart of our mission is the desire to make a real difference in
-          people's lives. We are dedicated to helping job seekers overcome
+          people&apos;s lives. We are dedicated to helping job seekers overcome
           barriers and achieve their career aspirations, and we will continue to
           innovate and improve our platform to better serve the needs of our
           diverse user base.

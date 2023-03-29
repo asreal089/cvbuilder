@@ -36,7 +36,7 @@ function CvView({ data }: Data): JSX.Element {
         <section className={styles.section}>
           <h2>Links:</h2>
             {data.links.map((link, index) => (
-                <p className={styles.texticon}>
+                <p key={index} className={styles.texticon}>
                   {((link.tipo.includes("Git") || link.tipo.includes("git") )  && <GitHubIcon /> ) ||
                   ((link.tipo.includes("Linked") || link.tipo.includes("linked") )  && <LinkedInIcon /> )||
                   <InsertLinkIcon/>
