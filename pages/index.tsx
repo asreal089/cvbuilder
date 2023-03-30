@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Navbar from "../components/navbar";
 import { Container } from "@material-ui/core";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Footer from "../components/footer";
 
 const Home: NextPage = () => {
@@ -13,7 +13,7 @@ const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>CV Builder</title>
+        <title>CV Build</title>
         <meta
           name="description"
           content="a place where you can store your cv"
@@ -25,10 +25,10 @@ const Home: NextPage = () => {
         <Navbar />
 
         <main className={styles.main}>
-          <h1 className={styles.title}>Welcome to CV Storage!</h1>
+          <h1 className={styles.title}>Welcome to CV Build!</h1>
 
           <p className={styles.description}>
-            Store and manage all your CVs in one place.
+            Build, store, manage and display your CV in one place.
           </p>
 
           <div className={styles.grid}>

@@ -3,7 +3,6 @@ import React from "react";
 import styles from "../styles/Cv.module.css";
 
 import { Cv } from "../util/models/types";
-import { Container } from "@material-ui/core";
 import { parseISO, format } from "date-fns";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";

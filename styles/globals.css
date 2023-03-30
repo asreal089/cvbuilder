@@ -38,7 +38,7 @@ a {
   background-color: var(--primary-dark);
 }
 .container{
-  padding-top: 80px;
+  padding: 5rem 0;
 }
 .experiencia{
   padding-bottom: 0.5rem;
@@ -113,6 +113,11 @@ button:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   border-radius: 5px;
+}
+
+.register{
+  align-self: center;
+
 }
 
 .heading {
