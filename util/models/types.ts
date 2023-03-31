@@ -36,12 +36,15 @@ export interface Experiencia {
   empresa: string;
   incio: string;
   fim: string;
+  is_current: boolean;
   descricao: string;
 }
 
 export interface Curso {
   instituicao: string;
   duracao: string;
+  is_concluded: boolean;
+  termino: string;
   descricao: string;
 }
 

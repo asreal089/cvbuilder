@@ -30,10 +30,13 @@ export const connectToDatabase = async () => {
       empresa: String,
       incio: String,
       fim: String,
+      is_current: Boolean,
       descricao: String
     }],
     cursos: [{
       instituicao: String,
+      is_concluded: Boolean,
+      termino: String,
       duracao: String,
       descricao: String
     }],

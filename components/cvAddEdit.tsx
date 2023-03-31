@@ -17,6 +17,8 @@ import {
   TextField,
   CardContent,
   Typography,
+  Switch,
+  FormControlLabel,
 } from "@material-ui/core";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Alert, AlertTitle } from "@mui/material";
@@ -186,10 +188,32 @@ function CvAddEdit({ data }: Data): JSX.Element {
     temp[index].descricao = e.target.value;
     setExperiencia(temp);
   }
+
+  function setNovaExperienciaIsCurrent(
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    index: number
+  ) {
+    let temp = experiencia.map((i: Experiencia) => i);
+
+    console.log(e.target.value);
+    temp[index].is_current = !temp[index].is_current;
+    if(temp[index].is_current){
+      temp[index].fim = "";
+    }
+    setExperiencia(temp);
+  }
+
   function pushExperiencia() {
     setExperiencia([
       ...experiencia,
-      { titulo: "", descricao: "", empresa: "", incio: "", fim: "" },
+      {
+        titulo: "",
+        descricao: "",
+        empresa: "",
+        incio: "",
+        fim: "",
+        is_current: false,
+      },
     ]);
   }
 
@@ -218,13 +242,23 @@ function CvAddEdit({ data }: Data): JSX.Element {
   }
 
   function setExperienciaFim(e: any, index: number) {
+    console.log(e);
     let temp = experiencia.map((i: Experiencia) => i);
     temp[index].fim = e;
     setExperiencia(temp);
   }
 
   function pushCurso() {
-    setCursos([...cursos, { instituicao: "", duracao: "", descricao: "" }]);
+    setCursos([
+      ...cursos,
+      {
+        instituicao: "",
+        duracao: "",
+        descricao: "",
+        is_concluded: false,
+        termino: "",
+      },
+    ]);
   }
 
   function setNovoCursoDescricao(
@@ -251,6 +285,26 @@ function CvAddEdit({ data }: Data): JSX.Element {
   ) {
     let temp = cursos.map((i: Curso) => i);
     temp[index].instituicao = e.target.value;
+    setCursos(temp);
+  }
+
+  function setNovoCursoIsConcluded(
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    index: number
+  ) {
+    let temp = cursos.map((i: Curso) => i);
+
+    temp[index].is_concluded = !temp[index].is_concluded;
+    if(temp[index].is_concluded){
+      temp[index].termino = "";
+    }
+    setCursos(temp);
+  }
+
+  function setCursoFim(e: any, index: number) {
+    console.log(e);
+    let temp = cursos.map((i: Curso) => i);
+    temp[index].termino = e;
     setCursos(temp);
   }
 
@@ -534,7 +588,6 @@ function CvAddEdit({ data }: Data): JSX.Element {
                       setNovaExperienciaDescricao(e, index);
                     }}
                   />
-
                   <span className="campoFull campoComPadding">
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                       <DesktopDatePicker
@@ -548,18 +601,37 @@ function CvAddEdit({ data }: Data): JSX.Element {
                         renderInput={(params: any) => <TextField {...params} />}
                       />
                     </LocalizationProvider>
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                      <DesktopDatePicker
-                        className="data_picker campoFull campoComPadding"
-                        label="end date"
-                        inputFormat="MM/dd/yyyy"
-                        value={experiencia[index].fim}
-                        onChange={(e) => {
-                          setExperienciaFim(e, index);
-                        }}
-                        renderInput={(params: any) => <TextField {...params} />}
-                      />
-                    </LocalizationProvider>
+
+                    <FormControlLabel
+                      control={
+                        <Switch
+                          checked={experiencia[index].is_current}
+                          onChange={(e) => {
+                            setNovaExperienciaIsCurrent(e, index);
+                          }}
+                          value={experiencia[index].is_current}
+                          name="chechIsCurrent"
+                          color="primary"
+                        />
+                      }
+                      label="Is Current"
+                    />
+                    {!experiencia[index].is_current && (
+                      <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <DesktopDatePicker
+                          className="data_picker campoFull campoComPadding"
+                          label="end date"
+                          inputFormat="MM/dd/yyyy"
+                          value={experiencia[index].fim}
+                          onChange={(e) => {
+                            setCursoFim(e, index);
+                          }}
+                          renderInput={(params: any) => (
+                            <TextField {...params} />
+                          )}
+                        />
+                      </LocalizationProvider>
+                    )}
                   </span>
                 </span>
               );
@@ -625,18 +697,49 @@ function CvAddEdit({ data }: Data): JSX.Element {
                       setNovoCursoDescricao(e, index);
                     }}
                   />
+                   <FormControlLabel
+                      control={
+                        <Switch
+                          checked={cursos[index].is_concluded}
+                          onChange={(e) => {
+                            setNovoCursoIsConcluded(e, index);
+                          }}
+                          value={cursos[index].is_concluded}
+                          name="chechIsConcluded"
+                          color="primary"
+                        />
+                      }
+                      label="Is concluded"
+                    />
+                  {cursos[index].is_concluded && (
+                      <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <DesktopDatePicker
+                          className="data_picker campoFull campoComPadding"
+                          label="end date"
+                          inputFormat="MM/dd/yyyy"
+                          value={cursos[index].termino}
+                          onChange={(e) => {
+                            setCursoFim(e, index);
+                          }}
+                          renderInput={(params: any) => (
+                            <TextField {...params} />
+                          )}
+                        />
+                      </LocalizationProvider>
+                    )}
                 </span>
               );
             })}
+            <br />
             <span className="center campoFull campoComPadding">
               <Button variant="contained" color="primary" onClick={pushCurso}>
-                Curso <AddCircleIcon className="center"></AddCircleIcon>
+              Course <AddCircleIcon className="center"></AddCircleIcon>
               </Button>
             </span>
           </CardContent>
         </Card>
         <br />
-        <span className="register" >
+        <span className="register">
           <Button variant="contained" color="primary" onClick={saveCV}>
             Register
           </Button>
