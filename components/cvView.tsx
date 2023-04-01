@@ -65,8 +65,8 @@ function CvView({ data }: Data): JSX.Element {
               <h4>{exp.empresa}</h4>
               <p>
                 {" "}
-                from: {format(parseISO(exp.incio), "dd-MM-yyyy")} to:
-                {exp.fim ? format(parseISO(exp.fim), "dd-MM-yyyy") : " current"}
+                from: {format(parseISO(exp.incio), "dd-MM-yyyy")} to:{" "}
+                {exp.is_current ? " current" : format(parseISO(exp.fim), "dd-MM-yyyy")}
               </p>
               <p className={styles.texto}>{exp.descricao}</p>
             </div>
@@ -77,7 +77,7 @@ function CvView({ data }: Data): JSX.Element {
           {data.cursos.map((edu, index) => (
             <div key={index} className={styles.item}>
               <h4>{edu.instituicao}</h4>
-              <h4>{edu.duracao}</h4>
+              <h4>{edu.duracao} - {(edu.is_concluded &&  format(parseISO(edu.termino), "dd-MM-yyyy"))|| <>pending</>}</h4>
               <p>{edu.descricao}</p>
             </div>
           ))}
