@@ -56,6 +56,21 @@ function CvAddEdit({ data }: Data): JSX.Element {
   const [conquistas, setConquistas] = useState<Conquistas[]>(
     data?.conquistas || []
   );
+  
+  async function deleteCV(){
+    await fetch("/api/cv/" + data._id, {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   async function saveCV() {
     var cv = buildCV();
@@ -624,7 +639,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
                           inputFormat="MM/dd/yyyy"
                           value={experiencia[index].fim}
                           onChange={(e) => {
-                            setCursoFim(e, index);
+                            setExperienciaFim(e, index);
                           }}
                           renderInput={(params: any) => (
                             <TextField {...params} />
@@ -742,6 +757,9 @@ function CvAddEdit({ data }: Data): JSX.Element {
         <span className="register">
           <Button variant="contained" color="primary" onClick={saveCV}>
             Register
+          </Button>
+          <Button variant="contained" color="secondary" onClick={deleteCV}>
+            Delete your CV
           </Button>
         </span>
       </FormGroup>

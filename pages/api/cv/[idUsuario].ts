@@ -30,7 +30,8 @@ export default async function handleGetEPutPorUsuario(
     // RESPONSE POST REQUESTS
     PUT: async (req: NextApiRequest, res: NextApiResponse) => {
       const { CV } = await connectToDatabase();
-      if (!session) {
+      const cv = await CV.findById(idUsuario).catch(catcher);
+      if (!session || session.user?.email !== cv.id_usuario) {
         res.status(403).json({ error: "Acesso negado" });
       } else {
         const resp = await CV.findByIdAndUpdate(idUsuario , req.body).catch(
@@ -39,6 +40,16 @@ export default async function handleGetEPutPorUsuario(
         res.json(resp);
       }
     },
+    DELETE: async (req: NextApiRequest, res: NextApiResponse) => {
+      const { CV } = await connectToDatabase();
+      const cv = await CV.findById(idUsuario).catch(catcher);
+      if (!session || session.user?.email !== cv.id_usuario) {
+        res.status(403).json({ error: "Acesso negado" });
+      } else {
+        const resp = await CV.findByIdAndDelete(idUsuario).catch(catcher);
+        res.json(resp);
+      }
+    }
   };
   const response = handleCase[method];
   if (response) response(req, res);
