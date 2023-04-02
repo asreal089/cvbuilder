@@ -20,11 +20,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     },
     // RESPONSE POST REQUESTS
     POST: async (req: NextApiRequest, res: NextApiResponse) => {
-      /*
+      
       const session = await getSession({ req })
 
       if (!session) return res.status(403).json({ error: "Acesso negado" })
-      */
+      
       const { CV } = await connectToDatabase() 
       const resp= await CV.create(req.body).catch(catcher)
       res.json(resp)
