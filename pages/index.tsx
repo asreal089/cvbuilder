@@ -16,8 +16,11 @@ const Home: NextPage = () => {
         <title>CV Build</title>
         <meta
           name="description"
-          content="a place where you can store your cv"
+          content="a place where you can store your cv. Browse our collection of CVs from professionals in various industries."
         />
+        <meta name="description" content="" />
+        <meta name="keywords" content="CV, resume, job, career, professionals" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -70,6 +73,7 @@ const Home: NextPage = () => {
               <h3>Share Your CVs</h3>
               <p>You can easily share your CVs with potential employers.</p>
             </div>
+            <p>Get started today – sign in to create and share your standout CV!</p>
           </div>
         </main>
 
