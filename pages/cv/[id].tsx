@@ -28,6 +28,14 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { id } = query;
   const axioscfg = { baseURL: process.env.URL };
   const res = await axios.get("/api/cv/" + id, axioscfg);
+  if(res.data == null || res.data == undefined){
+    return {
+      redirect: {
+        destination: '/404',
+        permanent: false,
+      },
+    }
+  }
   return {
     props: {
       data: res.data,

@@ -32,19 +32,16 @@ const Navbar = () => {
           </li>
 
           <li>
-            {!session.data && (
+      
               <Link href={"/cv"} className="white">
-                <Typography>CV</Typography>
+                <Typography>CVs</Typography>
               </Link>
-            )}
-            {session.data && (
-              <Link href={"/cv/" + session.data.user.email} className="white">
-                <Typography>CV</Typography>
-              </Link>
-            )}
+          
+          
           </li>
 
           {session.data && (
+            <>
             <li>
               <Link
                 href={"/build-cv/" + session.data.user.email}
@@ -53,6 +50,13 @@ const Navbar = () => {
                 <Typography>BUILD</Typography>
               </Link>
             </li>
+            <li>
+                <Link href={"/cv/" + session.data.user.email} className="white">
+                  <Typography>MY CV</Typography>
+                </Link>
+            </li>
+            </>
+              
           )}
         </ul>
         <div className="right">
