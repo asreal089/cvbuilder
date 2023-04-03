@@ -157,3 +157,14 @@
 .searchBoxContainer{
   padding-top: 20vh;
 }
+
+.searchButton{
+  display: flex;
+  flex-direction: column;
+  padding-top: 5vh ;
+  align-items: center;
+  justify-items: center;
+  align-self: center;
+  justify-self: center;
+
+}

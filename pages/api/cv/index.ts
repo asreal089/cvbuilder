@@ -15,8 +15,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const handleCase: ResponseFuncs = {
     // RESPONSE FOR GET REQUESTS
     GET: async (req: NextApiRequest, res: NextApiResponse) => {
+      
       const { CV } = await connectToDatabase() 
       res.json(await CV.find({}).catch(catcher))
+
     },
     // RESPONSE POST REQUESTS
     POST: async (req: NextApiRequest, res: NextApiResponse) => {
