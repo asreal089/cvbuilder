@@ -12,7 +12,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     GET: async (req: NextApiRequest, res: NextApiResponse) => {
       const { query } = req;
       const keywords = query.keywords
-        ? (query.keywords as string).split(",")
+        ? (query.keywords as string).split(",").filter((keyword) => keyword.trim() !== "")
         : [];
       // Connect to MongoDB
       const { CV } = await connectToDatabase();

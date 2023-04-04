@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 
-import { Button, Container, TextField } from "@material-ui/core";
+import { Button, Card, Container, Grid, TextField } from "@material-ui/core";
 import SearchIcon from "@mui/icons-material/Search";
 import styles from "../styles/Home.module.css";
-
+import axios from "axios";
+import {
+  Conquistas,
+  Curso,
+  Experiencia,
+  Cv,
+  Links,
+  Lingua,
+} from "../util/models/types";
+import SearchCard from "./searchCard";
 
 
 
@@ -13,15 +22,23 @@ function SearchCV(): JSX.Element {
 
   // search input field with useState
   const [search, setSearch] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState<Cv[]>([]);
 
 
-  function searchCVs() {
+  async function searchCVs() {
 
-    console.log("searchCVs");
-    console.log(search);
-  
+    let keywords = "";
+    search.split(" ").forEach((word) => { keywords += word + ",";});
+    keywords = keywords.slice(0, -1);
+    const axioscfg = { baseURL: process.env.URL };
+    const res = await axios.get("/api/search?keywords=" + keywords, axioscfg);
+
+    console.log(res.data);
+
+    setSearchResults(res.data);
   }
+
+  
 
   return (
     <Container className="container">
@@ -48,6 +65,15 @@ function SearchCV(): JSX.Element {
             Search
           </Button>
         </div>
+    <div className={styles.showResults}>
+
+      {searchResults.map((cv) => {
+        return (
+          <SearchCard cv={cv} />
+          );
+        })} 
+    </div>
+
     </Container>
   );
 }

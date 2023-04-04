@@ -168,3 +168,21 @@
   justify-self: center;
 
 }
+
+.showResults{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 2vh;
+}
+
+.card{
+  padding-top: 1vh;
+  flex: 1 0 calc(45% - 16px);
+}
+
+@media (max-width: 800px) {
+  .card {
+    flex-basis: 100%;
+  }
+}
