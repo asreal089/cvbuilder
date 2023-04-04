@@ -7,6 +7,7 @@ export interface ResponseFuncs {
 
 export interface Cv {
   _id?: string;
+  img_url: string;
   id_usuario: string;
   nome: string;
   titulo_palavras_chave: string[];

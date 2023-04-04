@@ -73,7 +73,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
   }
 
   async function saveCV() {
-    var cv = buildCV();
+    let cv = buildCV();
     if ( data && data._id) {
       await fetch("/api/cv/" + data._id, {
         method: "put",
@@ -109,6 +109,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
   function buildCV() {
     let cv: Cv = {
       id_usuario: session.data.user.email,
+      img_url: session.data.user.image,
       nome: nome,
       localidade: localidade,
       email: email,

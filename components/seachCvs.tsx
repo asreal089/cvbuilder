@@ -1,34 +1,22 @@
 import React, { useState } from "react";
 
-import { Button, Card, Container, Grid, TextField } from "@material-ui/core";
+import { Button, Container, TextField } from "@material-ui/core";
 import SearchIcon from "@mui/icons-material/Search";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
-import {
-  Conquistas,
-  Curso,
-  Experiencia,
-  Cv,
-  Links,
-  Lingua,
-} from "../util/models/types";
+import { Cv } from "../util/models/types";
 import SearchCard from "./searchCard";
 
-
-
-
-
 function SearchCV(): JSX.Element {
-
   // search input field with useState
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState<Cv[]>([]);
 
-
   async function searchCVs() {
-
     let keywords = "";
-    search.split(" ").forEach((word) => { keywords += word + ",";});
+    search.split(" ").forEach((word) => {
+      keywords += word + ",";
+    });
     keywords = keywords.slice(0, -1);
     const axioscfg = { baseURL: process.env.URL };
     const res = await axios.get("/api/search?keywords=" + keywords, axioscfg);
@@ -38,8 +26,6 @@ function SearchCV(): JSX.Element {
     setSearchResults(res.data);
   }
 
-  
-
   return (
     <Container className="container">
       <div className={styles.searchBoxContainer}>
@@ -48,32 +34,26 @@ function SearchCV(): JSX.Element {
             <SearchIcon />
           </div>
           <TextField
-                  name="skill"
-                  className="habilidade campoFull campoComPadding"
-                  type="text"
-                  label="search ..."
-                  variant="standard"
-                  onChange={e => setSearch(e.target.value)}
-                />
-          
+            name="skill"
+            className="habilidade campoFull campoComPadding"
+            type="text"
+            label="search ..."
+            variant="standard"
+            onChange={(e) => setSearch(e.target.value)}
+          />
         </div>
       </div>
 
-   
       <div className={styles.searchButton}>
-          <Button variant="contained" color="primary" onClick={searchCVs}>
-            Search
-          </Button>
-        </div>
-    <div className={styles.showResults}>
-
-      {searchResults.map((cv, index) => {
-        return (
-          <SearchCard  cv={cv} key={index} />
-          );
-        })} 
-    </div>
-
+        <Button variant="contained" color="primary" onClick={searchCVs}>
+          Search
+        </Button>
+      </div>
+      <div className={styles.showResults}>
+        {searchResults.map((cv, index) => {
+          return <SearchCard cv={cv} key={index} />;
+        })}
+      </div>
     </Container>
   );
 }

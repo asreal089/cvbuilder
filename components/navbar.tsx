@@ -32,31 +32,27 @@ const Navbar = () => {
           </li>
 
           <li>
-      
-              <Link href={"/cv"} className="white">
-                <Typography>CVs</Typography>
-              </Link>
-          
-          
+            <Link href={"/cv"} className="white">
+              <Typography>CVs</Typography>
+            </Link>
           </li>
 
           {session.data && (
             <>
-            <li>
-              <Link
-                href={"/build-cv/" + session.data.user.email}
-                className="white"
-              >
-                <Typography>BUILD</Typography>
-              </Link>
-            </li>
-            <li>
+              <li>
+                <Link
+                  href={"/build-cv/" + session.data.user.email}
+                  className="white"
+                >
+                  <Typography>BUILD</Typography>
+                </Link>
+              </li>
+              <li>
                 <Link href={"/cv/" + session.data.user.email} className="white">
                   <Typography>MY CV</Typography>
                 </Link>
-            </li>
+              </li>
             </>
-              
           )}
         </ul>
         <div className="right">
@@ -77,7 +73,7 @@ const Navbar = () => {
           {session.data && (
             <>
               <Button className="white right" onClick={() => signOut()}>
-              <Typography>Sign out</Typography>
+                <Typography>Sign out</Typography>
                 <LogoutIcon className="white" />
               </Button>
             </>

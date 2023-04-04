@@ -24,7 +24,7 @@ function CvView({ data }: Data): JSX.Element {
         <h1 className={styles.name}>{data.nome}</h1>
         <div className={styles.keywords}>
           {data.titulo_palavras_chave.map((keyword, index) => (
-            <span key={index} className={styles.keyword}>
+            <span key={keyword} className={styles.keyword}>
               {keyword}
             </span>
           ))}
