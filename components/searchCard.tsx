@@ -16,9 +16,10 @@ import {
 
 interface CardData {
   cv: Cv;
+  key: number;
 }
 
-const SearchCard: FunctionComponent<CardData> = ({ cv }): JSX.Element => {
+const SearchCard: FunctionComponent<CardData> = ({ cv, key }): JSX.Element => {
   const router = useRouter();
 
   const handleClick = () => {
@@ -26,26 +27,25 @@ const SearchCard: FunctionComponent<CardData> = ({ cv }): JSX.Element => {
   };
 
   return (
-    <Card className={styles.card} key={cv._id} onClick={handleClick}>
+    <Card className={styles.card} key={key} onClick={handleClick}>
       <CardContent>
-      <Typography variant="h5" component="div">
+        <Typography variant="h5" component="div">
           {cv.nome}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-
-        <p>{cv.email}</p>
-        <p>{cv.localidade}</p>
-        <ul>
-          {cv.titulo_palavras_chave.map((keyword) => {
-              return <li>{keyword}</li>;
+          <p>{cv.email}</p>
+          <p>{cv.localidade}</p>
+          <ul>
+            {cv.titulo_palavras_chave.map((keyword, index) => {
+              return <li key={index}>{keyword}</li>;
             })}
-        </ul>
-        <ul>
-          {cv.habilidades.map((skill) => {
-              return <li>{skill}</li>;
+          </ul>
+          <ul>
+            {cv.habilidades.map((skill, index) => {
+              return <li key={index}>{skill}</li>;
             })}
-        </ul>
-            </Typography>
+          </ul>
+        </Typography>
       </CardContent>
     </Card>
   );

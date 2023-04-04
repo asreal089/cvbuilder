@@ -67,9 +67,9 @@ function SearchCV(): JSX.Element {
         </div>
     <div className={styles.showResults}>
 
-      {searchResults.map((cv) => {
+      {searchResults.map((cv, index) => {
         return (
-          <SearchCard cv={cv} />
+          <SearchCard  cv={cv} key={index} />
           );
         })} 
     </div>
