@@ -15,6 +15,18 @@
   background-color: #ffffff;
 }
 
+@media screen and (max-width: 768px) {
+  .cvcontent {
+    width: 100%;
+  }
+}
+
+.link{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .section {
   margin-bottom: 2rem;
 }

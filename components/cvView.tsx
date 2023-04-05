@@ -39,7 +39,7 @@ function CvView({ data }: Data): JSX.Element {
                   {((link.tipo.includes("Git") || link.tipo.includes("git") )  && <GitHubIcon /> ) ||
                   ((link.tipo.includes("Linked") || link.tipo.includes("linked") )  && <LinkedInIcon /> )||
                   <InsertLinkIcon/>
-                  } {link.tipo} : <Link href={link.link}>{link.link}</Link> 
+                  } {link.tipo}: <Link href={link.link} shallow={true}><p className={styles.link}>{link.link}</p></Link> 
                 </p>
             ))}
         </section>
