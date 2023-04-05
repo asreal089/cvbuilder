@@ -80,15 +80,14 @@
 
 .card {
   margin: 1rem;
-  padding: 1.5rem;
+  padding: 1rem;
   text-align: left;
   color: inherit;
   text-decoration: none;
-  border: 1px solid var(--color-light-gray);
+  border: 1px  solid var(--secondary-dark);
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   width: 45%;
-  padding-top: 1vh;
   flex: 1 0 calc(45% - 16px);
 }
 
@@ -119,6 +118,16 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+  .card{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+  }
+  .main{
+    padding-top: 10vh;
   }
 }
 .mainbody{

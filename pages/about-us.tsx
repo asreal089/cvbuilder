@@ -2,6 +2,7 @@ import { Container } from "@material-ui/core";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Navbar from "../components/navbar";
+import styles from "../styles/Home.module.css";
 
 const aboutUs: NextPage = () => {
   return (
@@ -15,7 +16,7 @@ const aboutUs: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container>
+      <Container className={styles.main}>
         <Navbar />
         <h1>About CvBuild</h1>
         <p>

@@ -18,13 +18,16 @@ const Navbar = () => {
 
   return (
     <AppBar position="fixed" className="center">
-      <Toolbar>
+      <Toolbar className="toolBar">
         <IconButton edge="start" aria-label="menu">
           <Link href="/">
             <HomeIcon className="white" />
           </Link>
         </IconButton>
         <ul className="menu">
+          <li>
+            
+          </li>
           <li>
             <Link href="/about-us" className="white">
               <Typography>ABOUT US</Typography>
