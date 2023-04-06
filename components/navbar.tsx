@@ -71,7 +71,7 @@ const Navbar = () => {
 
           {session.data && (
             <>
-              <Button className="white right" onClick={() => signOut()}>
+              <Button className="white" onClick={() => signOut()}>
                 <Typography>Sign out</Typography>
                 <LogoutIcon className="white" />
               </Button>
