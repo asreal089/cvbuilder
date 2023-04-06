@@ -19,50 +19,46 @@ const Navbar = () => {
   return (
     <AppBar position="fixed" className="center">
       <Toolbar className="toolBar">
-        <IconButton edge="start" aria-label="menu">
-          <Link href="/">
-            <HomeIcon className="white" />
-          </Link>
-        </IconButton>
-        <ul className="menu">
-          <li>
-            
-          </li>
-          <li>
+        <div className="left">
+
+          <IconButton edge="start" aria-label="menu">
+            <Link href="/">
+              <HomeIcon className="white" />
+            </Link>
+          </IconButton>
+        
             <Link href="/about-us" className="white">
               <Typography>ABOUT US</Typography>
             </Link>
-          </li>
 
-          <li>
+          
             <Link href={"/cv"} className="white">
               <Typography>CVs</Typography>
             </Link>
-          </li>
+         
 
           {session.data && (
             <>
-              <li>
+              
                 <Link
                   href={"/build-cv/" + session.data.user.email}
                   className="white"
-                >
+                  >
                   <Typography>BUILD</Typography>
                 </Link>
-              </li>
-              <li>
+              
                 <Link href={"/cv/" + session.data.user.email} className="white">
                   <Typography>MY CV</Typography>
                 </Link>
-              </li>
+              
             </>
           )}
-        </ul>
+        </div>
         <div className="right">
           {!session.data && (
             <>
               <Button
-                className="white right"
+                className="white"
                 onClick={() =>
                   signIn("google", { callbackUrl: process.env.URL })
                 }

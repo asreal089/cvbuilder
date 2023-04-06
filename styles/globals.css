@@ -75,6 +75,16 @@ a {
   width: 50%;
 }
 
+.left{
+  justify-content: left;
+  float: left;
+  display: flex;
+  justify-content: left;
+  justify-self: left;
+  align-items: center;
+  width: 80%;
+}
+
 .toolBar{
   width: 80%;
 }
@@ -93,6 +103,7 @@ a {
 .right{
   align-items: right !important; 
   float: right !important;  
+  width: 20%;
 }
 
 .login-button{
@@ -101,22 +112,9 @@ a {
   align-items: right;
 }
 
-.menu {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  align-items: center;
-  padding: 1rem 0;
-}
-
-ul.menu li {
-  display:inline-block;
-  padding-right: 1rem;
-  justify-content: center;
-}
-
 .white{
   color:white !important;
+  margin-right: 1rem !important;
 }
 
 button {
@@ -160,4 +158,28 @@ button:hover {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
+}
+
+@media (max-width: 800px) {
+  .left {
+    white-space: nowrap;
+    display: flex;
+    justify-content: left;
+    justify-self: left;
+    align-items: center;
+  }
+  .right {
+    justify-content: center;
+    white-space: nowrap;
+    display: inline-block;
+    margin-right: 1rem ;
+  }
+
+  .toolBar{
+    width: 100%;
+    justify-self: center;
+    justify-content: center;
+    justify-items: center;
+  }
+
 }
