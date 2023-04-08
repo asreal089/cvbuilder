@@ -20,8 +20,8 @@ const notFound: NextPage = () => {
       <Navbar />
       <Container className="container">
         <main className={styles.main}>
-            <h1>404</h1>
-            <p>It seems like the page you are trying to access is not found, and you are seeing a 404 Page Not Found error. This resource was not found, that could be due to a variety of reasons, such as the page being removed, renamed, or never existed in the first place.</p>
+            <h1>500</h1>
+            <p>It seems like the server is currently unable to fulfill your request, and as a result, you are seeing the 500 Internal Server Error page. This may be due to a temporary glitch or a more serious issue with the server.</p>
         </main>
       </Container>
     </div>
