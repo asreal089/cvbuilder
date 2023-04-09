@@ -25,7 +25,6 @@ const Home: NextPage = () => {
       </Head>
 
       <Container>
-        <Navbar />
 
         <main className={styles.main}>
           <h1 className={styles.title}>Welcome to CV Build!</h1>

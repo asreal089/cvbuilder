@@ -6,12 +6,12 @@ import {
   Typography,
   Button,
   Link,
-  Box,
 } from "@material-ui/core";
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
+import styles from "../styles/Navbar.module.css";
 
 const Navbar = () => {
   const session: any = useSession();
@@ -27,13 +27,13 @@ const Navbar = () => {
             </Link>
           </IconButton>
         
-            <Link href="/about-us" className="white">
-              <Typography>ABOUT US</Typography>
+            <Link href="/about-us" className="whiteMenu">
+              <Typography className="navText">About us</Typography>
             </Link>
 
           
-            <Link href={"/cv"} className="white">
-              <Typography>CVs</Typography>
+            <Link href={"/cv"} className="whiteMenu">
+              <Typography className="navText">CVs</Typography>
             </Link>
          
 
@@ -42,13 +42,13 @@ const Navbar = () => {
               
                 <Link
                   href={"/build-cv/" + session.data.user.email}
-                  className="white"
+                  className="whiteMenu"
                   >
-                  <Typography>BUILD</Typography>
+                  <Typography className="navText">Build</Typography>
                 </Link>
               
-                <Link href={"/cv/" + session.data.user.email} className="white">
-                  <Typography>MY CV</Typography>
+                <Link href={"/cv/" + session.data.user.email} className="whiteMenu">
+                  <Typography className="navText">My cv</Typography>
                 </Link>
               
             </>
@@ -58,12 +58,12 @@ const Navbar = () => {
           {!session.data && (
             <>
               <Button
-                className="white"
+                className="whiteMenu"
                 onClick={() =>
                   signIn("google", { callbackUrl: process.env.URL })
                 }
               >
-                <Typography>Sing In</Typography>
+                <Typography className="navText">Sing In</Typography>
                 <LoginIcon className="white" />
               </Button>
             </>
@@ -71,8 +71,8 @@ const Navbar = () => {
 
           {session.data && (
             <>
-              <Button className="white" onClick={() => signOut()}>
-                <Typography>Sign out</Typography>
+              <Button className="whiteMenu" onClick={() => signOut()}>
+                <Typography className="navText">Sign out</Typography>
                 <LogoutIcon className="white" />
               </Button>
             </>

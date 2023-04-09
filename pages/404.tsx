@@ -17,7 +17,6 @@ const notFound: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar />
       <Container className="container">
         <main className={styles.main}>
             <h1>404</h1>

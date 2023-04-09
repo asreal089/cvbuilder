@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import type { AppContext, AppProps } from 'next/app'
 import { SessionProvider } from "next-auth/react"
 import { Session } from 'next-auth';
+import Layout from '../components/layout';
 
 interface AppPropsWithSession extends AppProps {
   pageProps: {
@@ -12,7 +13,9 @@ interface AppPropsWithSession extends AppProps {
 export default function App({ Component, pageProps }: AppPropsWithSession) {
   return (
     <SessionProvider session={pageProps.session}>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </SessionProvider>
   );
 }

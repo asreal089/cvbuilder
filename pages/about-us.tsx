@@ -17,7 +17,6 @@ const aboutUs: NextPage = () => {
       </Head>
 
       <Container className={styles.main}>
-        <Navbar />
         <h1>About CvBuild</h1>
         <p>
           Welcome to CvBuild, a platform designed to help job seekers showcase

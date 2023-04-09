@@ -22,7 +22,6 @@ const EditCv: NextPage<Data> = (props) => {
       </Head>
 
       <Container>
-        <Navbar />
         <cvAddEdit.default data={props.data} />
       </Container>
     </div>

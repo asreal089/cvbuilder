@@ -51,8 +51,8 @@ a {
   box-sizing: border-box;
 }
 .content{
-  padding: 2rem 0;
-  background-color: var(--primary-dark);
+  padding: 3rem 0;
+  background-color: #3f51b5;
 }
 .container{
   padding: 5rem 0;
@@ -82,7 +82,7 @@ a {
   justify-content: left;
   justify-self: left;
   align-items: center;
-  width: 80%;
+  width: 70%;
 }
 
 .toolBar{
@@ -101,9 +101,9 @@ a {
 }
 
 .right{
-  align-items: right !important; 
   float: right !important;  
-  width: 20%;
+  justify-content: right !important;
+  width: 30%;
 }
 
 .login-button{
@@ -112,9 +112,9 @@ a {
   align-items: right;
 }
 
+
 .white{
   color:white !important;
-  margin-right: 1rem !important;
 }
 
 button {
@@ -160,6 +160,14 @@ button:hover {
   margin-bottom: 1rem;
 }
 
+.whiteMenu {
+  color:white !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 1rem;
+}
+
 @media (max-width: 800px) {
   .left {
     white-space: nowrap;
@@ -169,10 +177,10 @@ button:hover {
     align-items: center;
   }
   .right {
-    justify-content: center;
+    width: 20%;
+    justify-content: right;
     white-space: nowrap;
     display: inline-block;
-    margin-right: 1rem ;
   }
 
   .toolBar{
@@ -180,6 +188,10 @@ button:hover {
     justify-self: center;
     justify-content: center;
     justify-items: center;
+  }
+
+  .navText{
+    font-size: small !important;
   }
 
 }
