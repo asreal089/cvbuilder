@@ -5,6 +5,9 @@
   font-size: 2rem;
   margin-bottom: 2rem;
 }
+.content{
+  padding-top: 5rem;
+}
 
 .cvcontent{
   width: 80%;
@@ -76,7 +79,6 @@
 .texto {
   white-space: pre-line;
 }
-
 
 .texticon {
   display: flex;

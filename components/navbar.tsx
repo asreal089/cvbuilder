@@ -1,85 +1,82 @@
 import HomeIcon from "@mui/icons-material/Home";
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Button,
-  Link,
-} from "@material-ui/core";
+import { IconButton, Button } from "@material-ui/core";
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
 import styles from "../styles/Navbar.module.css";
+import Link from "next/link";
 
 const Navbar = () => {
   const session: any = useSession();
 
   return (
-    <AppBar position="fixed" className="center">
-      <Toolbar className="toolBar">
-        <div className="left">
-
+    <div className={styles.navbar}>
+      <div className={styles.navbarContainer}>
+        <div className={styles.menuLeft}>
           <IconButton edge="start" aria-label="menu">
             <Link href="/">
-              <HomeIcon className="white" />
+              <HomeIcon className={styles.linkIcon} />
             </Link>
           </IconButton>
-        
-            <Link href="/about-us" className="whiteMenu">
-              <Typography className="navText">About us</Typography>
+          <div className={styles.navbarItem}>
+            <Link href="/about-us" className={styles.link}>
+              About us
             </Link>
-
-          
-            <Link href={"/cv"} className="whiteMenu">
-              <Typography className="navText">CVs</Typography>
+          </div>
+          <div className={styles.navbarItem}>
+            <Link href={"/cv"} className={styles.link}>
+              CVs
             </Link>
-         
+          </div>
 
           {session.data && (
             <>
-              
+              <div className={styles.navbarItem}>
                 <Link
                   href={"/build-cv/" + session.data.user.email}
-                  className="whiteMenu"
-                  >
-                  <Typography className="navText">Build</Typography>
+                  className={styles.link}
+                >
+                  Build
                 </Link>
-              
-                <Link href={"/cv/" + session.data.user.email} className="whiteMenu">
-                  <Typography className="navText">My cv</Typography>
+              </div>
+              <div className={styles.navbarItem}>
+                <Link
+                  href={"/cv/" + session.data.user.email}
+                  className={styles.link}
+                >
+                  My cv
                 </Link>
-              
+              </div>
             </>
           )}
         </div>
-        <div className="right">
+        <div className={styles.menuRight}>
           {!session.data && (
-            <>
+            <div className={styles.navbarItem}>
               <Button
-                className="whiteMenu"
+                className={styles.link}
                 onClick={() =>
                   signIn("google", { callbackUrl: process.env.URL })
                 }
               >
-                <Typography className="navText">Sing In</Typography>
-                <LoginIcon className="white" />
+                Sing In
+                <LoginIcon className={styles.linkIcon} />
               </Button>
-            </>
+            </div>
           )}
 
           {session.data && (
-            <>
-              <Button className="whiteMenu" onClick={() => signOut()}>
-                <Typography className="navText">Sign out</Typography>
-                <LogoutIcon className="white" />
+            <div className={styles.navbarItem}>
+              <Button className={styles.link} onClick={() => signOut()}>
+                Sign out
+                <LogoutIcon className={styles.linkIcon} />
               </Button>
-            </>
+            </div>
           )}
         </div>
-      </Toolbar>
-    </AppBar>
+      </div>
+    </div>
   );
 };
 

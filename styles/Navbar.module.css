@@ -1,0 +1,88 @@
+.navbar {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+}
+
+.navbarContainer {
+    display: flex;
+    justify-content: space-between;
+    justify-self: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.menuRight {
+    display: flex;
+    justify-content: flex-end !important;
+    align-items: center;
+    margin: auto;
+}
+
+
+.menuLeft {
+    display: flex;
+    justify-content: flex-start !important;
+    justify-self: left;
+    align-items: center;
+    margin: auto;
+}
+
+.link{
+    padding-right: 1rem;
+    font-size: small;
+    color: var(--white) !important;
+}
+
+.linkIcon{
+    size: 1rem;
+    color: var(--white);
+}
+
+.navbarItem{
+    font-size: 1rem;
+    padding-right: 1rem;
+}
+
+@media (max-width: 800px) {
+    .navbarContainer {
+        width: 100%;
+    }
+
+    .menuLeft {
+        white-space: nowrap;
+        display: flex;
+        justify-content: left;
+        justify-self: left;
+        align-items: center;
+    }
+
+    .menuRight {
+        justify-content: right;
+        white-space: nowrap;
+        display: inline-block;
+    }
+
+    .toolBar {
+        width: 100%;
+        justify-self: center;
+        justify-content: center;
+        justify-items: center;
+    }
+
+    .navText {
+        font-size: small !important;
+    }
+
+    .navbarItem{
+        font-size: 1rem;
+        padding-right: 0.75rem;
+    }
+
+}
