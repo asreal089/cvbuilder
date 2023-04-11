@@ -53,7 +53,7 @@ const Navbar = () => {
         </div>
         <div className={styles.menuRight}>
           {!session.data && (
-            <div className={styles.navbarItem}>
+
               <Button
                 className={styles.link}
                 onClick={() =>
@@ -63,16 +63,15 @@ const Navbar = () => {
                 Sing In
                 <LoginIcon className={styles.linkIcon} />
               </Button>
-            </div>
+
           )}
 
           {session.data && (
-            <div className={styles.navbarItem}>
+            
               <Button className={styles.link} onClick={() => signOut()}>
                 Sign out
                 <LogoutIcon className={styles.linkIcon} />
               </Button>
-            </div>
           )}
         </div>
       </div>

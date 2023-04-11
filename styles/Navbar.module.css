@@ -50,8 +50,13 @@
 }
 
 .navbarItem {
+    border-radius: 5px;
+    padding: 10px 20px;
     font-size: 1rem;
-    padding-right: 1rem;
+    font-weight: 600;
+}
+.navbarItem:hover {
+    background-color: var(--primary-dark);   
 }
 
 @media (max-width: 800px) {
