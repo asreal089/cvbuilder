@@ -3,6 +3,7 @@ import { getSession } from "next-auth/react";
 import { Cv } from "../../util/models/types";
 import * as cvAddEdit from "../../components/cvAddEdit";
 import axios, { AxiosRequestConfig } from "axios";
+import styles from "../../styles/CvForm.module.css";
 
 
 interface Data {
@@ -11,7 +12,7 @@ interface Data {
 
 const EditCv: NextPage<Data> = (props) => {
   return (
-    <div>
+    <div className={styles.content}>
       <cvAddEdit.default data={props.data} />
     </div>
   );

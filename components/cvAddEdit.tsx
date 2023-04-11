@@ -9,7 +9,6 @@ import {
   Lingua,
 } from "../util/models/types";
 import {
-  Container,
   Card,
   Button,
   FormGroup,
@@ -26,6 +25,7 @@ import { useSession } from "next-auth/react";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import styles from "../styles/CvForm.module.css";
 
 interface Data {
   data: Cv;
@@ -56,8 +56,8 @@ function CvAddEdit({ data }: Data): JSX.Element {
   const [conquistas, setConquistas] = useState<Conquistas[]>(
     data?.conquistas || []
   );
-  
-  async function deleteCV(){
+
+  async function deleteCV() {
     await fetch("/api/cv/" + data._id, {
       method: "delete",
       headers: {
@@ -74,7 +74,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
 
   async function saveCV() {
     let cv = buildCV();
-    if ( data && data._id) {
+    if (data && data._id) {
       await fetch("/api/cv/" + data._id, {
         method: "put",
         headers: {
@@ -212,7 +212,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
 
     console.log(e.target.value);
     temp[index].is_current = !temp[index].is_current;
-    if(temp[index].is_current){
+    if (temp[index].is_current) {
       temp[index].fim = "";
     }
     setExperiencia(temp);
@@ -310,7 +310,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
     let temp = cursos.map((i: Curso) => i);
 
     temp[index].is_concluded = !temp[index].is_concluded;
-    if(temp[index].is_concluded){
+    if (temp[index].is_concluded) {
       temp[index].termino = "";
     }
     setCursos(temp);
@@ -324,8 +324,8 @@ function CvAddEdit({ data }: Data): JSX.Element {
   }
 
   return (
-    <Container className="container">
-      <FormGroup>
+    <div className={styles.formContainer}>
+      <FormGroup className={styles.formItems}>
         <Card>
           <CardContent>
             <Typography variant="h5" component="h2">
@@ -375,6 +375,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
             />
           </CardContent>
         </Card>
+        <br />
 
         <Card>
           <CardContent>
@@ -409,6 +410,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
             </span>
           </CardContent>
         </Card>
+        <br />
 
         <Card>
           <CardContent>
@@ -452,6 +454,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
             </span>
           </CardContent>
         </Card>
+        <br />
 
         <Card>
           <CardContent>
@@ -495,6 +498,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
             </span>
           </CardContent>
         </Card>
+        <br />
 
         <Card>
           <CardContent>
@@ -520,6 +524,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
             />
           </CardContent>
         </Card>
+        <br />
         <Card>
           <CardContent>
             <Typography variant="h5" component="h2">
@@ -555,6 +560,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
             </span>
           </CardContent>
         </Card>
+        <br />
         <Card>
           <CardContent>
             <Typography variant="h5" component="h2">
@@ -664,6 +670,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
             </span>
           </CardContent>
         </Card>
+        <br />
 
         <Divider />
         <Card>
@@ -712,47 +719,46 @@ function CvAddEdit({ data }: Data): JSX.Element {
                       setNovoCursoDescricao(e, index);
                     }}
                   />
-                   <FormControlLabel
-                      control={
-                        <Switch
-                          checked={cursos[index].is_concluded}
-                          onChange={(e) => {
-                            setNovoCursoIsConcluded(e, index);
-                          }}
-                          value={cursos[index].is_concluded}
-                          name="chechIsConcluded"
-                          color="primary"
-                        />
-                      }
-                      label="Is concluded"
-                    />
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        checked={cursos[index].is_concluded}
+                        onChange={(e) => {
+                          setNovoCursoIsConcluded(e, index);
+                        }}
+                        value={cursos[index].is_concluded}
+                        name="chechIsConcluded"
+                        color="primary"
+                      />
+                    }
+                    label="Is concluded"
+                  />
                   {cursos[index].is_concluded && (
-                      <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <DesktopDatePicker
-                          className="data_picker campoFull campoComPadding"
-                          label="end date"
-                          inputFormat="MM/dd/yyyy"
-                          value={cursos[index].termino}
-                          onChange={(e) => {
-                            setCursoFim(e, index);
-                          }}
-                          renderInput={(params: any) => (
-                            <TextField {...params} />
-                          )}
-                        />
-                      </LocalizationProvider>
-                    )}
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                      <DesktopDatePicker
+                        className="data_picker campoFull campoComPadding"
+                        label="end date"
+                        inputFormat="MM/dd/yyyy"
+                        value={cursos[index].termino}
+                        onChange={(e) => {
+                          setCursoFim(e, index);
+                        }}
+                        renderInput={(params: any) => <TextField {...params} />}
+                      />
+                    </LocalizationProvider>
+                  )}
                 </span>
               );
             })}
             <br />
             <span className="center campoFull campoComPadding">
               <Button variant="contained" color="primary" onClick={pushCurso}>
-              Course <AddCircleIcon className="center"></AddCircleIcon>
+                Course <AddCircleIcon className="center"></AddCircleIcon>
               </Button>
             </span>
           </CardContent>
         </Card>
+        <br />
         <br />
         <span className="register">
           <Button variant="contained" color="primary" onClick={saveCV}>
@@ -775,7 +781,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
           </Alert>
         </>
       )}
-    </Container>
+    </div>
   );
 }
 

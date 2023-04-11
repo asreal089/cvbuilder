@@ -1,9 +1,9 @@
 import { NextPage } from "next";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Error.module.css";
 
 const notFound: NextPage = () => {
   return (
-    <div className="container">
+    <div className={styles.container}>
       <main className={styles.main}>
         <h1>404</h1>
         <p>

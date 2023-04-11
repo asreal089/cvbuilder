@@ -7,7 +7,7 @@ type LayoutProps = PropsWithChildren<{}>;
 
 
 const Layout = ({ children  }: LayoutProps): JSX.Element => {
-  const navbar = useMemo(() => <Navbar />, []);
+
   return (
     <>
       <Head>

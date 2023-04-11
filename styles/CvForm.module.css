@@ -1,0 +1,19 @@
+.content{
+  padding-top: 5rem;
+}
+
+.formContainer {
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+.formItems{
+  padding-top: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .formContainer {
+    width: 100%;
+  }
+}

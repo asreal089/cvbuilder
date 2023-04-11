@@ -75,7 +75,6 @@
     .menuRight {
         justify-content: right;
         white-space: nowrap;
-        display: inline-block;
     }
 
     .toolBar {
@@ -90,8 +89,10 @@
     }
 
     .navbarItem {
+        border-radius: 5px;
+        padding: 10px 5px;
         font-size: 1rem;
-        padding-right: 0.75rem;
+        font-weight: 600;
     }
 
 }
