@@ -1,6 +1,7 @@
 import React, { PropsWithChildren, useMemo } from 'react';
 import Navbar from './navbar';
 import Head from 'next/head';
+import Footer from './footer';
 
 type LayoutProps = PropsWithChildren<{}>;
 
@@ -22,6 +23,7 @@ const Layout = ({ children  }: LayoutProps): JSX.Element => {
       <body>
         <Navbar />
         {children}
+        <Footer/>
       </body>
     </>
   );

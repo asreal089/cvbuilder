@@ -55,13 +55,11 @@ const Home: NextPage = () => {
             <h3>Share Your CVs</h3>
             <p>You can easily share your CVs with potential employers.</p>
           </div>
-          <p>
+          <p className={styles.description}>
             Get started today – sign in to create and share your standout CV!
           </p>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 };
