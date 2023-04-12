@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 
 import {
   Conquistas,
@@ -26,6 +27,8 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import styles from "../styles/CvForm.module.css";
+import PrivacyModal from "./privacyTermsModal";
+import DeleteCvModal from "./deleteCvModal";
 
 interface Data {
   data: Cv;
@@ -33,7 +36,9 @@ interface Data {
 
 function CvAddEdit({ data }: Data): JSX.Element {
   const session: any = useSession();
-
+  const router = useRouter();
+  const [showPrivacyModal, setShowPrivacyModal] = useState<boolean>(false);
+  const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
   const [saveSucefull, setSaveSucefull] = useState<boolean>(false);
   const [nome, setNome] = useState<string>(data?.nome || "");
   const [localidade, setLocalidade] = useState<string>(data?.localidade || "");
@@ -66,6 +71,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
     })
       .then((res) => {
         console.log(res);
+        router.push('/');
       })
       .catch((error) => {
         console.log(error);
@@ -103,6 +109,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
           console.log(error);
         });
     }
+    togglePrivacyModal();
     setSaveSucefull(true);
   }
 
@@ -321,6 +328,14 @@ function CvAddEdit({ data }: Data): JSX.Element {
     let temp = cursos.map((i: Curso) => i);
     temp[index].termino = e;
     setCursos(temp);
+  }
+
+  function togglePrivacyModal(){
+    setShowPrivacyModal(!showPrivacyModal);
+  }
+
+  function toggleDeleteModal(){
+    setShowDeleteModal(!showDeleteModal);
   }
 
   return (
@@ -761,14 +776,17 @@ function CvAddEdit({ data }: Data): JSX.Element {
         <br />
         <br />
         <span className="register">
-          <Button variant="contained" color="primary" onClick={saveCV}>
+          <Button variant="contained" color="primary" onClick={togglePrivacyModal}>
             Register
           </Button>
-          <Button variant="contained" color="secondary" onClick={deleteCV}>
+          <Button variant="contained" color="secondary" onClick={toggleDeleteModal}>
             Delete your CV
           </Button>
         </span>
       </FormGroup>
+      <br />
+      <PrivacyModal show={showPrivacyModal} onClose={togglePrivacyModal} onSubmit={saveCV}/>
+      <DeleteCvModal show={showDeleteModal} onClose={toggleDeleteModal} onDelete={deleteCV} />
       {saveSucefull && (
         <>
           <Alert
@@ -779,6 +797,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
           >
             <AlertTitle>Sucesso!</AlertTitle>Seu Cv foi salvo.
           </Alert>
+          <br />
         </>
       )}
     </div>
