@@ -23,8 +23,8 @@ const DeleteCvModal: FC<ModalProps> = ({ show, onClose, onDelete }) => {
           from our system.
         </p>
         <p>
-          If you are sure you want to delete your CV, please click the "Delete"
-          button below. If you have changed your mind, you can click "Cancel" to
+          If you are sure you want to delete your CV, please click the &quot;Delete&quot;
+          button below. If you have changed your mind, you can click &quot;Cancel&quot; to
           return to your CV and personal information.
         </p>
         <p>
