@@ -795,7 +795,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
               setSaveSucefull(false);
             }}
           >
-            <AlertTitle>Sucesso!</AlertTitle>Seu Cv foi salvo.
+            <AlertTitle>Success!</AlertTitle>Your CV has been registered.
           </Alert>
           <br />
         </>
