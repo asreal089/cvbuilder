@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 import styles from "../styles/Cv.module.css";
 
@@ -12,6 +12,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import Link from "next/link";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import { generatePdf } from "../util/pdf/exportPdf";
+import ExportingModal from "./exportingModal";
 
 interface Data {
   data: Cv;
@@ -19,8 +20,10 @@ interface Data {
 
 function CvView({ data }: Data): JSX.Element {
   const componentRef = useRef<HTMLDivElement>(null);
+  const [loadingFlag, setLoadingFlag] = useState<boolean>(false);
 
   function handleDownload() {
+    setLoadingFlag(true);
     generatePdf(componentRef);
   }
 
@@ -30,6 +33,7 @@ function CvView({ data }: Data): JSX.Element {
         <button onClick={handleDownload}>
           <PictureAsPdfIcon />
         </button>
+        <ExportingModal show={loadingFlag} />
       </div>
       <div className={styles.cvcontent}>
         <div ref={componentRef}>
