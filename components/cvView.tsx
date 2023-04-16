@@ -17,6 +17,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import ShareModal from "./shareModal";
 import ContactModal from "./contactModal";
+import ContactMailIcon from '@mui/icons-material/ContactMail';
 import { closestIndexTo } from "date-fns/fp";
 
 interface Data {
@@ -62,7 +63,7 @@ function CvView({ data }: Data): JSX.Element {
           <ShareIcon />
         </button>
         <button onClick={handleContact}>
-          <WhatsAppIcon />
+          <ContactMailIcon />
         </button>
       </div>
       <ExportingModal show={loadingFlag} />

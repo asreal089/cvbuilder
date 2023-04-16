@@ -19,6 +19,7 @@ const ContactModal: FC<ModalProps> = ({ show, onClose }) => {
           <CloseIcon />
         </button>
         <h2>Send this person a message</h2>
+        
       </div>
     </div>
   );
