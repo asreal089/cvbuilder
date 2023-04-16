@@ -43,6 +43,9 @@ function CvAddEdit({ data }: Data): JSX.Element {
   const [nome, setNome] = useState<string>(data?.nome || "");
   const [localidade, setLocalidade] = useState<string>(data?.localidade || "");
   const [email, setEmail] = useState<string>(data?.email || "");
+  const [phone_whatsapp, setPhone_whatsapp] = useState<string>(
+    data?.phone_whatsapp || ""
+  );
   const [titulo_palavras_chave, setTitulo_palavras_chave] = useState<string[]>(
     data?.titulo_palavras_chave || []
   );
@@ -71,7 +74,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
     })
       .then((res) => {
         console.log(res);
-        router.push('/');
+        router.push("/");
       })
       .catch((error) => {
         console.log(error);
@@ -120,6 +123,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
       nome: nome,
       localidade: localidade,
       email: email,
+      phone_whatsapp: phone_whatsapp,
       titulo_palavras_chave: titulo_palavras_chave,
       links: links,
       linguas: linguas,
@@ -330,11 +334,11 @@ function CvAddEdit({ data }: Data): JSX.Element {
     setCursos(temp);
   }
 
-  function togglePrivacyModal(){
+  function togglePrivacyModal() {
     setShowPrivacyModal(!showPrivacyModal);
   }
 
-  function toggleDeleteModal(){
+  function toggleDeleteModal() {
     setShowDeleteModal(!showDeleteModal);
   }
 
@@ -372,6 +376,20 @@ function CvAddEdit({ data }: Data): JSX.Element {
               required
               onChange={(e) => {
                 setLocalidade(e.target.value);
+              }}
+            />
+
+            <TextField
+              className="campoFull campoComPadding"
+              id="phone_whatsapp"
+              label="phone/whatsapp"
+              type="text"
+              value={phone_whatsapp}
+              variant="outlined"
+              autoComplete="email"
+              required
+              onChange={(e) => {
+                setPhone_whatsapp(e.target.value);
               }}
             />
 
@@ -776,17 +794,33 @@ function CvAddEdit({ data }: Data): JSX.Element {
         <br />
         <br />
         <span className="register">
-          <Button variant="contained" color="primary" onClick={togglePrivacyModal}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={togglePrivacyModal}
+          >
             Register
           </Button>
-          <Button variant="contained" color="secondary" onClick={toggleDeleteModal}>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={toggleDeleteModal}
+          >
             Delete your CV
           </Button>
         </span>
       </FormGroup>
       <br />
-      <PrivacyModal show={showPrivacyModal} onClose={togglePrivacyModal} onSubmit={saveCV}/>
-      <DeleteCvModal show={showDeleteModal} onClose={toggleDeleteModal} onDelete={deleteCV} />
+      <PrivacyModal
+        show={showPrivacyModal}
+        onClose={togglePrivacyModal}
+        onSubmit={saveCV}
+      />
+      <DeleteCvModal
+        show={showDeleteModal}
+        onClose={toggleDeleteModal}
+        onDelete={deleteCV}
+      />
       {saveSucefull && (
         <>
           <Alert

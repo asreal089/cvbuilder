@@ -13,6 +13,7 @@ export interface Cv {
   titulo_palavras_chave: string[];
   localidade: string;
   email: string;
+  phone_whatsapp: string;
   links: Links[];
   linguas: Lingua[];
   cover_letter: string;

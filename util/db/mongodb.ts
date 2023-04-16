@@ -16,6 +16,7 @@ export const connectToDatabase = async () => {
     localidade: String,
     titulo_palavras_chave: [String],
     email: String,
+    phone_whatsapp: String,
     links: [
       {
         tipo: String,

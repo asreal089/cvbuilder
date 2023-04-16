@@ -17,7 +17,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import ShareModal from "./shareModal";
 import ContactModal from "./contactModal";
-import ContactMailIcon from '@mui/icons-material/ContactMail';
+import ContactMailIcon from "@mui/icons-material/ContactMail";
 import { closestIndexTo } from "date-fns/fp";
 
 interface Data {
@@ -29,6 +29,8 @@ function CvView({ data }: Data): JSX.Element {
   const [loadingFlag, setLoadingFlag] = useState<boolean>(false);
   const [shareModalFlag, setShareModalFlag] = useState<boolean>(false);
   const [contactModalFlag, setContactModalFlag] = useState<boolean>(false);
+
+  const whatsappLink = `https://wa.me/${data.phone_whatsapp}`;
 
   function handleDownload() {
     setLoadingFlag(true);
@@ -86,6 +88,10 @@ function CvView({ data }: Data): JSX.Element {
             <p className={styles.texticon}>
               <EmailIcon />
               {data.email}
+            </p>
+            <p className={styles.texticon}>
+              <WhatsAppIcon />
+              <Link href={whatsappLink}>{data.phone_whatsapp}</Link>
             </p>
             <p className={styles.texticon}>
               <LocationOnIcon />
