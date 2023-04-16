@@ -13,6 +13,8 @@ import Link from "next/link";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import { generatePdf } from "../util/pdf/exportPdf";
 import ExportingModal from "./exportingModal";
+import ShareIcon from "@mui/icons-material/Share";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 interface Data {
   data: Cv;
@@ -27,14 +29,28 @@ function CvView({ data }: Data): JSX.Element {
     generatePdf(componentRef);
   }
 
+  function handleContact() {
+    console.log("contact");
+  }
+
+  function handleShare() {
+    console.log("share");
+  }
+
   return (
     <>
       <div className={styles.exportButtonContainer}>
         <button onClick={handleDownload}>
           <PictureAsPdfIcon />
         </button>
-        <ExportingModal show={loadingFlag} />
+        <button onClick={handleShare}>
+          <ShareIcon />
+        </button>
+        <button onClick={handleContact}>
+          <WhatsAppIcon />
+        </button>
       </div>
+      <ExportingModal show={loadingFlag} />
       <div className={styles.cvcontent}>
         <div ref={componentRef}>
           <h1 className={styles.title}>CV</h1>
