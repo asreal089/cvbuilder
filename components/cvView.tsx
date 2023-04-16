@@ -24,11 +24,21 @@ interface Data {
   data: Cv;
 }
 
+interface Contact {
+  email: string;
+  whatsapp: string;
+}
+
 function CvView({ data }: Data): JSX.Element {
   const componentRef = useRef<HTMLDivElement>(null);
   const [loadingFlag, setLoadingFlag] = useState<boolean>(false);
   const [shareModalFlag, setShareModalFlag] = useState<boolean>(false);
   const [contactModalFlag, setContactModalFlag] = useState<boolean>(false);
+
+  const contact: Contact = {
+    email: data.email,
+    whatsapp: data.phone_whatsapp,
+  }
 
   const whatsappLink = `https://wa.me/${data.phone_whatsapp}`;
 
@@ -70,7 +80,7 @@ function CvView({ data }: Data): JSX.Element {
       </div>
       <ExportingModal show={loadingFlag} />
       <ShareModal show={shareModalFlag} onClose={closeShareModal} />
-      <ContactModal show={contactModalFlag} onClose={closeContactModal} />
+      <ContactModal show={contactModalFlag} onClose={closeContactModal} contact={contact} />
       <div className={styles.cvcontent}>
         <div ref={componentRef}>
           <h1 className={styles.title}>CV</h1>
