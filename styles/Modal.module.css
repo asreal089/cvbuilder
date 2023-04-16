@@ -25,6 +25,21 @@
     padding-top: 1rem;
 }
 
+.buttonCloseModal {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.buttonCloseModal:hover {
+    background-color: #fff !important;
+    color: var(--primary) !important;
+    border: none;
+}
+
 @media screen and (max-width: 768px) {
     .modalContent {
         width: 100%;

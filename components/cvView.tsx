@@ -15,6 +15,9 @@ import { generatePdf } from "../util/pdf/exportPdf";
 import ExportingModal from "./exportingModal";
 import ShareIcon from "@mui/icons-material/Share";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import ShareModal from "./shareModal";
+import ContactModal from "./contactModal";
+import { closestIndexTo } from "date-fns/fp";
 
 interface Data {
   data: Cv;
@@ -23,6 +26,8 @@ interface Data {
 function CvView({ data }: Data): JSX.Element {
   const componentRef = useRef<HTMLDivElement>(null);
   const [loadingFlag, setLoadingFlag] = useState<boolean>(false);
+  const [shareModalFlag, setShareModalFlag] = useState<boolean>(false);
+  const [contactModalFlag, setContactModalFlag] = useState<boolean>(false);
 
   function handleDownload() {
     setLoadingFlag(true);
@@ -30,11 +35,21 @@ function CvView({ data }: Data): JSX.Element {
   }
 
   function handleContact() {
+    setContactModalFlag(true);
     console.log("contact");
   }
 
   function handleShare() {
+    setShareModalFlag(true);
     console.log("share");
+  }
+
+  function closeShareModal() {
+    setShareModalFlag(false);
+  }
+
+  function closeContactModal() {
+    setContactModalFlag(false);
   }
 
   return (
@@ -51,6 +66,8 @@ function CvView({ data }: Data): JSX.Element {
         </button>
       </div>
       <ExportingModal show={loadingFlag} />
+      <ShareModal show={shareModalFlag} onClose={closeShareModal} />
+      <ContactModal show={contactModalFlag} onClose={closeContactModal} />
       <div className={styles.cvcontent}>
         <div ref={componentRef}>
           <h1 className={styles.title}>CV</h1>
