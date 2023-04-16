@@ -16,11 +16,11 @@ interface ModalProps {
 const ShareModal: FC<ModalProps> = ({ show, onClose }) => {
   if (!show) return null;
   const url = window.location.href;
-  const shareTextEmail = "Check out this amazing link:";
+  const shareTextEmail = "Check out this CV link:";
   const shareTextWhatsApp = "Check out this CV:";
 
   const handleEmailClick = () => {
-    const subject = "Amazing Link";
+    const subject = "Amazing CV Link";
     const body = `${shareTextEmail} ${url}`;
     const mailtoLink = `mailto:?subject=${encodeURIComponent(
       subject
