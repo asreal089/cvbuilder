@@ -2,7 +2,7 @@ import { toPng } from "html-to-image";
 import jsPDF from "jspdf";
 import { applyA4Style } from "./a4Style";
 
-export async function generatePdf(ref: React.RefObject<HTMLElement>) {
+export async function generatePdf(ref: React.RefObject<HTMLElement>, name : String) {
   if (!ref.current) return;
   applyA4Style(ref);
   try {
@@ -28,7 +28,7 @@ export async function generatePdf(ref: React.RefObject<HTMLElement>) {
       const y = (pdfHeight - imgHeight) / 2;
 
       pdf.addImage(img, "PNG", x, y, imgWidth, imgHeight);
-      pdf.save("my-cv.pdf");
+      pdf.save(`${name.trim().replace(" ", "")}.pdf`);
 
       window.location.reload();
     };

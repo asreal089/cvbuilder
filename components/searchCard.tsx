@@ -20,8 +20,6 @@ const SearchCard: FunctionComponent<CardData> = ({ cv, key }): JSX.Element => {
     router.push(`/cv/${cv.id_usuario}`);
   };
 
-  console.log(cv.img_url);
-
   return (
     <Card className={styles.card} key={key} onClick={handleClick}>
       

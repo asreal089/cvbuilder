@@ -21,8 +21,6 @@ function SearchCV(): JSX.Element {
     const axioscfg = { baseURL: process.env.URL };
     const res = await axios.get("/api/search?keywords=" + keywords, axioscfg);
 
-    console.log(res.data);
-
     setSearchResults(res.data);
   }
 

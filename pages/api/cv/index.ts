@@ -1,12 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import { getSession } from "next-auth/react"
 import { connectToDatabase } from "../../../util/db/mongodb"
 import { ResponseFuncs } from "../../../util/models/types"
+import { authOptions } from "../auth/[...nextauth]";
+import { getServerSession } from "next-auth/next";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   //capture request method, we type it as a key of ResponseFunc to reduce typing later
   const method: keyof ResponseFuncs = req.method as keyof ResponseFuncs
-
+  const session = await getServerSession(req, res, authOptions);
   
   //function for catch errors
   const catcher = (error: Error) => res.status(400).json({ error })
@@ -22,8 +23,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     },
     // RESPONSE POST REQUESTS
     POST: async (req: NextApiRequest, res: NextApiResponse) => {
-      
-      const session = await getSession({ req })
 
       if (!session) return res.status(403).json({ error: "Acesso negado" })
       

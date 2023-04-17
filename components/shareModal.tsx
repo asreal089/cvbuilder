@@ -8,6 +8,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 
+
 interface ModalProps {
   show: boolean;
   onClose: () => void;
@@ -44,7 +45,7 @@ const ShareModal: FC<ModalProps> = ({ show, onClose }) => {
         <button className={styles.buttonCloseModal} onClick={onClose}>
           <CloseIcon />
         </button>
-        <h2>
+        <h2 className={styles.modalTitle}> 
           <ShareIcon /> Share this CV
         </h2>
 

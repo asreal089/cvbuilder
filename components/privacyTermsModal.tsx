@@ -3,6 +3,7 @@
 import React, { FC } from "react";
 import styles from "../styles/Modal.module.css";
 import { Button } from "@material-ui/core";
+import ShieldIcon from '@mui/icons-material/Shield';
 
 interface ModalProps {
   show: boolean;
@@ -16,7 +17,7 @@ const PrivacyModal: FC<ModalProps> = ({ show, onClose, onSubmit }) => {
   return (
     <div className={styles.modal}>
       <div className={styles.modalContent}>
-        <h2>Privacy Policy</h2>
+        <h2 className={styles.modalTitle}><ShieldIcon /> Privacy Policy</h2>
         <p>
           We take your privacy seriously and are committed to protecting your
           personal information. We only collect and use information that you

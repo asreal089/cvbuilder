@@ -268,7 +268,6 @@ function CvAddEdit({ data }: Data): JSX.Element {
   }
 
   function setExperienciaFim(e: any, index: number) {
-    console.log(e);
     let temp = experiencia.map((i: Experiencia) => i);
     temp[index].fim = e;
     setExperiencia(temp);
@@ -328,7 +327,6 @@ function CvAddEdit({ data }: Data): JSX.Element {
   }
 
   function setCursoFim(e: any, index: number) {
-    console.log(e);
     let temp = cursos.map((i: Curso) => i);
     temp[index].termino = e;
     setCursos(temp);

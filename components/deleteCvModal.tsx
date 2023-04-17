@@ -3,6 +3,7 @@
 import React, { FC } from "react";
 import styles from "../styles/Modal.module.css";
 import { Button } from "@material-ui/core";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 interface ModalProps {
   show: boolean;
@@ -16,7 +17,7 @@ const DeleteCvModal: FC<ModalProps> = ({ show, onClose, onDelete }) => {
   return (
     <div className={styles.modal}>
       <div className={styles.modalContent}>
-        <h2></h2>
+        <h2 className={styles.modalTitle}><DeleteForeverIcon /> Deleting CV</h2>
         <p>
           Are you sure you want to delete your CV? This action cannot be undone
           and all associated personal information will be permanently removed

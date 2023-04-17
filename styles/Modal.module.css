@@ -11,6 +11,10 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.modalTitle {
+    align-items: center;
+}
+
 .modalContent {
     background-color: #fff;
     width: 80%;
@@ -19,7 +23,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.modalButtons{
+.modalButtons {
     display: flex;
     justify-content: center;
     padding-top: 1rem;
@@ -39,17 +43,18 @@
     color: var(--primary) !important;
     border: none;
 }
+
 .shareButtonsDiv {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.shareButtonsDiv >* {
+.shareButtonsDiv>* {
     margin: 0 0.5rem;
 }
 
-.shareButtons{
+.shareButtons {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,4 +67,3 @@
         width: 100%;
     }
 }
-    

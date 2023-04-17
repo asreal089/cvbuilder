@@ -38,23 +38,21 @@ function CvView({ data }: Data): JSX.Element {
   const contact: Contact = {
     email: data.email,
     whatsapp: data.phone_whatsapp,
-  }
+  };
 
   const whatsappLink = `https://wa.me/${data.phone_whatsapp}`;
 
   function handleDownload() {
     setLoadingFlag(true);
-    generatePdf(componentRef);
+    generatePdf(componentRef, data.nome);
   }
 
   function handleContact() {
     setContactModalFlag(true);
-    console.log("contact");
   }
 
   function handleShare() {
     setShareModalFlag(true);
-    console.log("share");
   }
 
   function closeShareModal() {
@@ -80,7 +78,11 @@ function CvView({ data }: Data): JSX.Element {
       </div>
       <ExportingModal show={loadingFlag} />
       <ShareModal show={shareModalFlag} onClose={closeShareModal} />
-      <ContactModal show={contactModalFlag} onClose={closeContactModal} contact={contact} />
+      <ContactModal
+        show={contactModalFlag}
+        onClose={closeContactModal}
+        contact={contact}
+      />
       <div className={styles.cvcontent}>
         <div ref={componentRef}>
           <h1 className={styles.title}>CV</h1>
@@ -99,10 +101,12 @@ function CvView({ data }: Data): JSX.Element {
               <EmailIcon />
               {data.email}
             </p>
-            <p className={styles.texticon}>
-              <WhatsAppIcon />
-              <Link href={whatsappLink}>{data.phone_whatsapp}</Link>
-            </p>
+            {data.phone_whatsapp && (
+              <p className={styles.texticon}>
+                <WhatsAppIcon />
+                <Link href={whatsappLink}>{data.phone_whatsapp}</Link>
+              </p>
+            )}
             <p className={styles.texticon}>
               <LocationOnIcon />
               {data.localidade}
