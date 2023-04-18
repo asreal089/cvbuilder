@@ -88,91 +88,116 @@ function CvView({ data }: Data): JSX.Element {
 
           <div className={styles.header}>
             <h1 className={styles.name}>{data.nome}</h1>
-            <div className={styles.keywords}>
-              {data.titulo_palavras_chave.map((keyword, index) => (
-                <span key={keyword} className={styles.keyword}>
-                  {keyword}
-                </span>
-              ))}
-            </div>
-
-            <p className={styles.texticon}>
-              <EmailIcon />
-              {data.email}
-            </p>
+            {data.titulo_palavras_chave.length > 0 && (
+              <div className={styles.keywords}>
+                {data.titulo_palavras_chave.map((keyword, index) => (
+                  <span key={keyword} className={styles.keyword}>
+                    {keyword}
+                  </span>
+                ))}
+              </div>
+            )}
+            {data.email && (
+              <p className={styles.texticon}>
+                <EmailIcon />
+                {data.email}
+              </p>
+            )}
             {data.phone_whatsapp && (
               <p className={styles.texticon}>
                 <WhatsAppIcon />
                 <Link href={whatsappLink}>{data.phone_whatsapp}</Link>
               </p>
             )}
-            <p className={styles.texticon}>
-              <LocationOnIcon />
-              {data.localidade}
-            </p>
-            <section className={styles.section}>
-              <h2>Links:</h2>
-              {data.links.map((link, index) => (
-                <p key={index} className={styles.texticon}>
-                  {((link.tipo.includes("Git") ||
-                    link.tipo.includes("git")) && <GitHubIcon />) ||
-                    ((link.tipo.includes("Linked") ||
-                      link.tipo.includes("linked")) && <LinkedInIcon />) || (
-                      <InsertLinkIcon />
-                    )}{" "}
-                  {link.tipo}:{" "}
-                  <Link href={link.link} shallow={true}>
-                    <span className={styles.link}>{link.link}</span>
-                  </Link>
-                </p>
-              ))}
-            </section>
-            <section className={styles.section}>
-              <h2>Skills</h2>
-              <ul className={styles.skillsList}>
-                {data.habilidades.map((skill, index) => (
-                  <li key={index}>{skill}</li>
-                ))}
-              </ul>
-            </section>
-
-            <section className={styles.section}>
-              <h2>Cover Letter</h2>
-              <p className={styles.texto}>{data.cover_letter}</p>
-            </section>
-
-            <section className={styles.section}>
-              <h2>Experience</h2>
-              {data.experiencia.map((exp, index) => (
-                <div key={index} className={styles.item}>
-                  <h4>{exp.titulo}</h4>
-                  <h4>{exp.empresa}</h4>
-                  <p>
-                    {" "}
-                    from: {format(parseISO(exp.incio), "yyyy-MM-dd")} to:{" "}
-                    {exp.is_current
-                      ? " current"
-                      : format(parseISO(exp.fim), "yyyy-MM-dd")}
+            {data.localidade && (
+              <p className={styles.texticon}>
+                <LocationOnIcon />
+                {data.localidade}
+              </p>
+            )}
+            {data.links.length > 0 && (
+              <section className={styles.section}>
+                <h2>Links:</h2>
+                {data.links.map((link, index) => (
+                  <p key={index} className={styles.texticon}>
+                    {((link.tipo.includes("Git") ||
+                      link.tipo.includes("git")) && <GitHubIcon />) ||
+                      ((link.tipo.includes("Linked") ||
+                        link.tipo.includes("linked")) && <LinkedInIcon />) || (
+                        <InsertLinkIcon />
+                      )}{" "}
+                    {link.tipo}:{" "}
+                    <Link href={link.link} shallow={true}>
+                      <span className={styles.link}>{link.link}</span>
+                    </Link>
                   </p>
-                  <p className={styles.texto}>{exp.descricao}</p>
-                </div>
-              ))}
-            </section>
-            <section className={styles.section}>
-              <h2>Education</h2>
-              {data.cursos.map((edu, index) => (
-                <div key={index} className={styles.item}>
-                  <h4>{edu.instituicao} -{" "}
-                    {edu.duracao} {" "}
-                    -{" "}{(edu.is_concluded &&
-                      format(parseISO(edu.termino), "yyyy-MM-dd")) || (
+                ))}
+              </section>
+            )}
+            {data.linguas.length > 0 && (
+              <section className={styles.section}>
+                <h2>Languages:</h2>
+                {data.linguas.map((lingua, index) => (
+                  <p key={index} className={styles.texticon}>
+                    {lingua.lingua}: {lingua.nivel}
+                  </p>
+                ))}
+              </section>
+            )}
+            {data.habilidades.length > 0 && (
+              <section className={styles.section}>
+                <h2>Skills</h2>
+                <ul className={styles.skillsList}>
+                  {data.habilidades.map((skill, index) => (
+                    <li key={index}>{skill}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {data.cover_letter && (
+              <section className={styles.section}>
+                <h2>Cover Letter</h2>
+                <p className={styles.texto}>{data.cover_letter}</p>
+              </section>
+            )}
+
+            {data.experiencia.length > 0 && (
+              <section className={styles.section}>
+                <h2>Experience</h2>
+                {data.experiencia.map((exp, index) => (
+                  <div key={index} className={styles.item}>
+                    <h4>{exp.titulo}</h4>
+                    <h4>{exp.empresa}</h4>
+                    <p>
+                      {" "}
+                      from: {format(parseISO(exp.incio), "yyyy-MM-dd")} to:{" "}
+                      {exp.is_current
+                        ? " current"
+                        : format(parseISO(exp.fim), "yyyy-MM-dd")}
+                    </p>
+                    <p className={styles.texto}>{exp.descricao}</p>
+                  </div>
+                ))}
+              </section>
+            )}
+            {data.cursos.length > 0 && (
+              <section className={styles.section}>
+                <h2>Education</h2>
+                {data.cursos.map((edu, index) => (
+                  <div key={index} className={styles.item}>
+                    <h4>
+                      {edu.instituicao} - {edu.duracao} -{" "}
+                      {(edu.is_concluded &&
+                        format(parseISO(edu.termino), "yyyy-MM-dd")) || (
                         <>pending</>
-                    )}
-                  </h4>
-                  <p>{edu.descricao}</p>
-                </div>
-              ))}
-            </section>
+                      )}
+                    </h4>
+                    <p>{edu.descricao}</p>
+                  </div>
+                ))}
+              </section>
+            )}
           </div>
         </div>
       </div>
