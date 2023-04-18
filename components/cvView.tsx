@@ -18,7 +18,6 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import ShareModal from "./shareModal";
 import ContactModal from "./contactModal";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
-import { closestIndexTo } from "date-fns/fp";
 
 interface Data {
   data: Cv;
@@ -163,12 +162,11 @@ function CvView({ data }: Data): JSX.Element {
               <h2>Education</h2>
               {data.cursos.map((edu, index) => (
                 <div key={index} className={styles.item}>
-                  <h4>{edu.instituicao}</h4>
-                  <h4>
-                    {edu.duracao} -{" "}
-                    {(edu.is_concluded &&
+                  <h4>{edu.instituicao} -{" "}
+                    {edu.duracao} {" "}
+                    -{" "}{(edu.is_concluded &&
                       format(parseISO(edu.termino), "yyyy-MM-dd")) || (
-                      <>pending</>
+                        <>pending</>
                     )}
                   </h4>
                   <p>{edu.descricao}</p>

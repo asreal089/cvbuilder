@@ -15,6 +15,7 @@ export const authOptions:NextAuthOptions ={
       clientSecret: googleClientSecret,
     }),
   ],
+  secret: jwtSecret,
   session: {
     strategy: sessionStrategy
   },
