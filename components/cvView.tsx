@@ -186,14 +186,18 @@ function CvView({ data }: Data): JSX.Element {
                 <h2>Education</h2>
                 {data.cursos.map((edu, index) => (
                   <div key={index} className={styles.item}>
-                    <h4>
-                      {edu.instituicao} - {edu.duracao} -{" "}
+                    
+                      <strong>
+                      {edu.instituicao}
+                      </strong>
+                      {": "}
+                      {edu.duracao} -{" "}
                       {(edu.is_concluded &&
                         format(parseISO(edu.termino), "yyyy-MM-dd")) || (
                         <>pending</>
                       )}
-                    </h4>
-                    <p>{edu.descricao}</p>
+                    {": "}
+                    {edu.descricao}
                   </div>
                 ))}
               </section>
