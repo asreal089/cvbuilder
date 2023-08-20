@@ -128,7 +128,7 @@ function CvView({ data }: Data): JSX.Element {
                       )}{" "}
                     {link.tipo}:{" "}
                     <Link href={link.link} shallow={true}>
-                      <span className={styles.link}>{link.link}</span>
+                      {link.link}
                     </Link>
                   </p>
                 ))}
