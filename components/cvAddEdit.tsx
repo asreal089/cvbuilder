@@ -29,6 +29,7 @@ import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import styles from "../styles/CvForm.module.css";
 import PrivacyModal from "./privacyTermsModal";
 import DeleteCvModal from "./deleteCvModal";
+import PersonalDataForm from "./cvAddEditComponents/personalData";
 
 interface Data {
   data: Cv;
@@ -343,69 +344,16 @@ function CvAddEdit({ data }: Data): JSX.Element {
   return (
     <div className={styles.formContainer}>
       <FormGroup className={styles.formItems}>
-        <Card>
-          <CardContent>
-            <Typography variant="h5" component="h2">
-              Personal Data
-            </Typography>
-            <br />
-            <TextField
-              className="campoFull campoComPadding"
-              id="name"
-              label="name"
-              value={nome}
-              type="text"
-              autoComplete="name"
-              variant="outlined"
-              required
-              onChange={(e) => {
-                setNome(e.target.value);
-              }}
-            />
-
-            <TextField
-              className="campoFull campoComPadding"
-              id="location"
-              label="location"
-              type="text"
-              variant="outlined"
-              value={localidade}
-              autoComplete="location"
-              required
-              onChange={(e) => {
-                setLocalidade(e.target.value);
-              }}
-            />
-
-            <TextField
-              className="campoFull campoComPadding"
-              id="phone_whatsapp"
-              label="phone/whatsapp"
-              type="text"
-              value={phone_whatsapp}
-              variant="outlined"
-              autoComplete="email"
-              required
-              onChange={(e) => {
-                setPhone_whatsapp(e.target.value);
-              }}
-            />
-
-            <TextField
-              className="campoFull campoComPadding"
-              id="email"
-              label="email"
-              type="text"
-              value={email}
-              variant="outlined"
-              autoComplete="email"
-              required
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-          </CardContent>
-        </Card>
+        <PersonalDataForm
+          nome={nome}
+          localidade={localidade}
+          phone_whatsapp={phone_whatsapp}
+          email={email}
+          setNome={setNome}
+          setLocalidade={setLocalidade}
+          setPhone_whatsapp={setPhone_whatsapp}
+          setEmail={setEmail}
+        />
         <br />
 
         <Card>
