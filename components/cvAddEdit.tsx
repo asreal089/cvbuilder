@@ -30,6 +30,7 @@ import styles from "../styles/CvForm.module.css";
 import PrivacyModal from "./privacyTermsModal";
 import DeleteCvModal from "./deleteCvModal";
 import PersonalDataForm from "./cvAddEditComponents/personalData";
+import LanguageForm from "./cvAddEditComponents/languageForm";
 
 interface Data {
   data: Cv;
@@ -391,48 +392,14 @@ function CvAddEdit({ data }: Data): JSX.Element {
         </Card>
         <br />
 
-        <Card>
-          <CardContent>
-            <Typography variant="h5" component="h2">
-              Languages
-            </Typography>
-            {linguas.map((_element, index: number) => (
-              <span key={index} className="linguas">
-                <TextField
-                  name="language"
-                  className="lingua campoFull campoComPadding"
-                  type="text"
-                  label="language"
-                  variant="outlined"
-                  value={linguas[index].lingua}
-                  required
-                  onChange={(e) => {
-                    setNovaLinguaLingua(e, index);
-                  }}
-                />
+        <LanguageForm
+          linguas={linguas}
+          setLinguas={setLinguas}
+          setNovaLinguaLingua={setNovaLinguaLingua}
+          setNovaLinguaNivel={setNovaLinguaNivel}
+          pushLingua={pushLingua}
+        />
 
-                <TextField
-                  name="language-level"
-                  className="lingua campoFull campoComPadding"
-                  type="text"
-                  label="language level"
-                  variant="outlined"
-                  value={linguas[index].nivel}
-                  required
-                  onChange={(e) => {
-                    setNovaLinguaNivel(e, index);
-                  }}
-                />
-              </span>
-            ))}
-
-            <span className="center campoFull campoComPadding">
-              <Button variant="contained" color="primary" onClick={pushLingua}>
-                Língua <AddCircleIcon className="center"></AddCircleIcon>
-              </Button>
-            </span>
-          </CardContent>
-        </Card>
         <br />
 
         <Card>
