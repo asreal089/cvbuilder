@@ -31,6 +31,7 @@ import PrivacyModal from "./privacyTermsModal";
 import DeleteCvModal from "./deleteCvModal";
 import PersonalDataForm from "./cvAddEditComponents/personalData";
 import LanguageForm from "./cvAddEditComponents/languageForm";
+import KeyWordsForm from "./cvAddEditComponents/keyWordsForm";
 
 interface Data {
   data: Cv;
@@ -357,39 +358,12 @@ function CvAddEdit({ data }: Data): JSX.Element {
         />
         <br />
 
-        <Card>
-          <CardContent>
-            <Typography variant="h5" component="h2">
-              Key words
-            </Typography>
-            <br />
-            {titulo_palavras_chave.map((_element, index: number) => (
-              <span key={index} className="campoFull campoComPadding">
-                <TextField
-                  name="keyword"
-                  className="palavra-chave campoFull campoComPadding"
-                  type="text"
-                  label="key word"
-                  variant="outlined"
-                  value={titulo_palavras_chave[index]}
-                  required
-                  onChange={(e) => {
-                    setNovaPalavraChave(e, index);
-                  }}
-                />
-              </span>
-            ))}
-            <span className="center campoFull campoComPadding">
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={pushPalavraChave}
-              >
-                Key word <AddCircleIcon className="center"></AddCircleIcon>
-              </Button>
-            </span>
-          </CardContent>
-        </Card>
+        <KeyWordsForm
+          titulo_palavras_chave={titulo_palavras_chave}
+          setTitulo_palavras_chave={setTitulo_palavras_chave}
+          pushPalavraChave={pushPalavraChave}
+          setNovaPalavraChave={setNovaPalavraChave}
+        />
         <br />
 
         <LanguageForm
