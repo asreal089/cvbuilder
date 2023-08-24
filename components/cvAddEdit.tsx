@@ -32,6 +32,7 @@ import DeleteCvModal from "./deleteCvModal";
 import PersonalDataForm from "./cvAddEditComponents/personalData";
 import LanguageForm from "./cvAddEditComponents/languageForm";
 import KeyWordsForm from "./cvAddEditComponents/keyWordsForm";
+import LinkForm from "./cvAddEditComponents/linkForm";
 
 interface Data {
   data: Cv;
@@ -375,49 +376,12 @@ function CvAddEdit({ data }: Data): JSX.Element {
         />
 
         <br />
-
-        <Card>
-          <CardContent>
-            <Typography variant="h5" component="h2">
-              Links
-            </Typography>
-            <br />
-            {links.map((_element, index: number) => (
-              <span key={index} className="links">
-                <TextField
-                  name="link-desc"
-                  className="link campoFull campoComPadding"
-                  type="text"
-                  label="Link description"
-                  variant="outlined"
-                  value={links[index].tipo}
-                  required
-                  onChange={(e) => {
-                    setNovoLinkTipo(e, index);
-                  }}
-                />
-
-                <TextField
-                  name="link-link"
-                  className="link campoFull campoComPadding"
-                  type="text"
-                  label="link"
-                  variant="outlined"
-                  value={links[index].link}
-                  required
-                  onChange={(e) => {
-                    setNovoLinkLink(e, index);
-                  }}
-                />
-              </span>
-            ))}
-            <span className="center campoFull campoComPadding">
-              <Button variant="contained" color="primary" onClick={pushLink}>
-                Link <AddCircleIcon className="center"></AddCircleIcon>
-              </Button>
-            </span>
-          </CardContent>
-        </Card>
+        <LinkForm
+          links={links}
+          pushLink={pushLink}
+          setNovoLinkTipo={setNovoLinkTipo}
+          setNovoLinkLink={setNovoLinkLink}
+        />
         <br />
 
         <Card>
