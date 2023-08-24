@@ -11,14 +11,8 @@ import { Lingua } from "../../util/models/types";
 interface LanguageFormProps {
   linguas: Lingua[];
   setLinguas: (linguas: Lingua[]) => void;
-  setNovaLinguaLingua: (
-    e: React.ChangeEvent<HTMLInputElement>,
-    index: number
-  ) => void;
-  setNovaLinguaNivel: (
-    e: React.ChangeEvent<HTMLInputElement>,
-    index: number
-  ) => void;
+  setNovaLinguaLingua: (e: any, index: number) => void;
+  setNovaLinguaNivel: (e: any, index: number) => void;
   pushLingua: () => void;
 }
 
