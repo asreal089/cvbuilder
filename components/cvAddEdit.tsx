@@ -33,6 +33,7 @@ import PersonalDataForm from "./cvAddEditComponents/personalData";
 import LanguageForm from "./cvAddEditComponents/languageForm";
 import KeyWordsForm from "./cvAddEditComponents/keyWordsForm";
 import LinkForm from "./cvAddEditComponents/linkForm";
+import EducationForm from "./cvAddEditComponents/educationForm";
 
 interface Data {
   data: Cv;
@@ -557,91 +558,15 @@ function CvAddEdit({ data }: Data): JSX.Element {
         <br />
 
         <Divider />
-        <Card>
-          <CardContent>
-            <Typography variant="h5" component="h2">
-              Education
-            </Typography>
-            <br />
-
-            {cursos.map((_element, index: number) => {
-              return (
-                <span key={index} className="campoFull campoComPadding">
-                  <TextField
-                    name="Institution"
-                    className="cursos campoFull campoComPadding"
-                    type="text"
-                    label="Institution"
-                    value={cursos[index].instituicao}
-                    variant="outlined"
-                    required
-                    onChange={(e) => {
-                      setNovoCursoInstituicao(e, index);
-                    }}
-                  />
-                  <TextField
-                    name="cursos"
-                    className="cursos campoFull campoComPadding"
-                    type="text"
-                    variant="outlined"
-                    label="Duration"
-                    value={cursos[index].duracao}
-                    required
-                    onChange={(e) => {
-                      setNovoCursoDuracao(e, index);
-                    }}
-                  />
-                  <TextField
-                    name="cursos"
-                    className="cursos campoFull campoComPadding"
-                    type="text"
-                    variant="outlined"
-                    label="description"
-                    value={cursos[index].descricao}
-                    required
-                    onChange={(e) => {
-                      setNovoCursoDescricao(e, index);
-                    }}
-                  />
-                  <FormControlLabel
-                    control={
-                      <Switch
-                        checked={cursos[index].is_concluded}
-                        onChange={(e) => {
-                          setNovoCursoIsConcluded(e, index);
-                        }}
-                        value={cursos[index].is_concluded}
-                        name="chechIsConcluded"
-                        color="primary"
-                      />
-                    }
-                    label="Is concluded"
-                  />
-                  {cursos[index].is_concluded && (
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                      <DesktopDatePicker
-                        className="data_picker campoFull campoComPadding"
-                        label="end date"
-                        inputFormat="MM/dd/yyyy"
-                        value={cursos[index].termino}
-                        onChange={(e) => {
-                          setCursoFim(e, index);
-                        }}
-                        renderInput={(params: any) => <TextField {...params} />}
-                      />
-                    </LocalizationProvider>
-                  )}
-                </span>
-              );
-            })}
-            <br />
-            <span className="center campoFull campoComPadding">
-              <Button variant="contained" color="primary" onClick={pushCurso}>
-                Course <AddCircleIcon className="center"></AddCircleIcon>
-              </Button>
-            </span>
-          </CardContent>
-        </Card>
+        <EducationForm
+          cursos={cursos}
+          setNovoCursoInstituicao={setNovoCursoInstituicao}
+          setNovoCursoDuracao={setNovoCursoDuracao}
+          setNovoCursoDescricao={setNovoCursoDescricao}
+          setNovoCursoIsConcluded={setNovoCursoIsConcluded}
+          setCursoFim={setCursoFim}
+          pushCurso={pushCurso}
+        />
         <br />
         <br />
         <span className="register">
