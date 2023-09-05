@@ -388,7 +388,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
         <Card>
           <CardContent>
             <Typography variant="h5" component="h2">
-              Covver Letter
+              Cover Letter
             </Typography>
             <br />
 
