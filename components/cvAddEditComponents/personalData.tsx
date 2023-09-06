@@ -1,4 +1,5 @@
 import { Card, CardContent, TextField, Typography } from "@mui/material";
+import validateFields from "../../util/validateUtils";
 
 interface PersonalDataFormProps {
     nome: string;
@@ -20,9 +21,7 @@ const PersonalDataForm : React.FC<PersonalDataFormProps> = (props) => {
     return validRegex.test(email) === false;
   }
 
-  function validateFields(field: string) {
-    return field.trim() !== "" && field !== undefined && field !== null && field.trim().length < 3;
-  }
+  
   
   return(
 

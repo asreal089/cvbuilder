@@ -158,6 +158,13 @@ function CvAddEdit({ data }: Data): JSX.Element {
     setTitulo_palavras_chave([...titulo_palavras_chave, ""]);
   }
 
+  function removePalavraChave(index: number) {
+    let temp = titulo_palavras_chave.map((i: any) => i);
+    temp.splice(index, 1);
+    setTitulo_palavras_chave(temp);
+  }
+
+
   function pushLink() {
     setLinks([...links, { tipo: "", link: "" }]);
   }
@@ -364,8 +371,8 @@ function CvAddEdit({ data }: Data): JSX.Element {
           titulo_palavras_chave={titulo_palavras_chave}
           setTitulo_palavras_chave={setTitulo_palavras_chave}
           pushPalavraChave={pushPalavraChave}
-          setNovaPalavraChave={setNovaPalavraChave}
-        />
+          setNovaPalavraChave={setNovaPalavraChave} 
+          removePalavraChave={removePalavraChave}        />
         <br />
 
         <LanguageForm
