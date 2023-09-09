@@ -34,6 +34,7 @@ import LanguageForm from "./cvAddEditComponents/languageForm";
 import KeyWordsForm from "./cvAddEditComponents/keyWordsForm";
 import LinkForm from "./cvAddEditComponents/linkForm";
 import EducationForm from "./cvAddEditComponents/educationForm";
+import ExpirienceForm from "./cvAddEditComponents/expirienceForm";
 
 interface Data {
   data: Cv;
@@ -453,115 +454,15 @@ function CvAddEdit({ data }: Data): JSX.Element {
           </CardContent>
         </Card>
         <br />
-        <Card>
-          <CardContent>
-            <Typography variant="h5" component="h2">
-              Experiences
-            </Typography>
-            <br />
-            {experiencia.map((_element, index: number) => {
-              return (
-                <span key={index} className="campoFull campoComPadding">
-                  <TextField
-                    name="experience-title"
-                    className="experiencia-empresa campoFull campoComPadding"
-                    type="text"
-                    label="Title"
-                    value={experiencia[index].titulo}
-                    variant="outlined"
-                    required
-                    onChange={(e) => {
-                      setNovaExperienciaTitulo(e, index);
-                    }}
-                  />
-                  <TextField
-                    name="experience-company"
-                    className="experiencia-empresa campoFull campoComPadding"
-                    type="text"
-                    label="Company"
-                    value={experiencia[index].empresa}
-                    variant="outlined"
-                    required
-                    onChange={(e) => {
-                      setNovaExperienciaEmpresa(e, index);
-                    }}
-                  />
-
-                  <TextField
-                    name="experience-description"
-                    className="experiencia campoFull campoComPadding"
-                    type="text"
-                    minRows={5}
-                    variant="outlined"
-                    multiline
-                    label="Description"
-                    value={experiencia[index].descricao}
-                    required
-                    onChange={(e) => {
-                      setNovaExperienciaDescricao(e, index);
-                    }}
-                  />
-                  <span className="campoFull campoComPadding">
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                      <DesktopDatePicker
-                        className="data_picker campoFull campoComPadding"
-                        label="begin date"
-                        inputFormat="MM/dd/yyyy"
-                        value={experiencia[index].incio}
-                        onChange={(e) => {
-                          setNovaExperienciaInicio(e, index);
-                        }}
-                        renderInput={(params: any) => <TextField {...params} />}
-                      />
-                    </LocalizationProvider>
-
-                    <FormControlLabel
-                      control={
-                        <Switch
-                          checked={experiencia[index].is_current}
-                          onChange={(e) => {
-                            setNovaExperienciaIsCurrent(e, index);
-                          }}
-                          value={experiencia[index].is_current}
-                          name="chechIsCurrent"
-                          color="primary"
-                        />
-                      }
-                      label="Is Current"
-                    />
-                    {!experiencia[index].is_current && (
-                      <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <DesktopDatePicker
-                          className="data_picker campoFull campoComPadding"
-                          label="end date"
-                          inputFormat="MM/dd/yyyy"
-                          value={experiencia[index].fim}
-                          onChange={(e) => {
-                            setExperienciaFim(e, index);
-                          }}
-                          renderInput={(params: any) => (
-                            <TextField {...params} />
-                          )}
-                        />
-                      </LocalizationProvider>
-                    )}
-                  </span>
-                </span>
-              );
-            })}
-            <br />
-
-            <span className="center campoFull campoComPadding">
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={pushExperiencia}
-              >
-                Experiences <AddCircleIcon className="center"></AddCircleIcon>
-              </Button>
-            </span>
-          </CardContent>
-        </Card>
+        <ExpirienceForm 
+        experiencias={experiencia} 
+        setNovaExperienciaTitulo={setNovaExperienciaTitulo}
+        setNovaExperienciaEmpresa={setNovaExperienciaEmpresa}
+        setNovaExperienciaDescricao={setNovaExperienciaDescricao} 
+        setNovaExperienciaInicio={setNovaExperienciaInicio}
+        setNovaExperienciaIsCurrent={setNovaExperienciaIsCurrent} 
+        setExperienciaFim={setExperienciaFim}
+        pushExperiencia={pushExperiencia} />
         <br />
 
         <Divider />

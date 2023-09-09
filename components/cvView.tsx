@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 
 import styles from "../styles/Cv.module.css";
 
-import { Cv } from "../util/models/types";
+import { Cv, Experiencia } from "../util/models/types";
 import { parseISO, format } from "date-fns";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -165,20 +165,30 @@ function CvView({ data }: Data): JSX.Element {
             {data.experiencia.length > 0 && (
               <section className={styles.section}>
                 <h2>Experience</h2>
-                {data.experiencia.map((exp, index) => (
-                  <div key={index} className={styles.item}>
-                    <h4>{exp.titulo}</h4>
-                    <h4>{exp.empresa}</h4>
-                    <p>
-                      {" "}
-                      from: {format(parseISO(exp.incio), "yyyy-MM-dd")} to:{" "}
-                      {exp.is_current
-                        ? " current"
-                        : format(parseISO(exp.fim), "yyyy-MM-dd")}
-                    </p>
-                    <p className={styles.texto}>{exp.descricao}</p>
-                  </div>
-                ))}
+                {data.experiencia
+                  .sort(function (a: Experiencia, b: Experiencia) {
+                    let x = a.incio.split("-").reverse().join("");
+                    let y = b.incio.split("-").reverse().join("");
+                    return x < y ? 1 : x > y ? -1 : 0;
+                    // return a.localeCompare(b);   
+                  })
+                  .map((exp, index) => (
+                    <div key={index} className={styles.item}>
+                      <h4>{exp.titulo}</h4>
+                      <h4>{exp.empresa}</h4>
+                      <p>
+                        {" "}
+                        from: {format(
+                          parseISO(exp.incio),
+                          "yyyy-MM-dd"
+                        )} to:{" "}
+                        {exp.is_current
+                          ? " current"
+                          : format(parseISO(exp.fim), "yyyy-MM-dd")}
+                      </p>
+                      <p className={styles.texto}>{exp.descricao}</p>
+                    </div>
+                  ))}
               </section>
             )}
             {data.cursos.length > 0 && (
@@ -186,16 +196,13 @@ function CvView({ data }: Data): JSX.Element {
                 <h2>Education</h2>
                 {data.cursos.map((edu, index) => (
                   <div key={index} className={styles.item}>
-                    
-                      <strong>
-                      {edu.instituicao}
-                      </strong>
-                      {": "}
-                      {edu.duracao} -{" "}
-                      {(edu.is_concluded &&
-                        format(parseISO(edu.termino), "yyyy-MM-dd")) || (
-                        <>pending</>
-                      )}
+                    <strong>{edu.instituicao}</strong>
+                    {": "}
+                    {edu.duracao} -{" "}
+                    {(edu.is_concluded &&
+                      format(parseISO(edu.termino), "yyyy-MM-dd")) || (
+                      <>pending</>
+                    )}
                     {": "}
                     {edu.descricao}
                   </div>
