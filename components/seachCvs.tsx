@@ -6,7 +6,7 @@ import styles from "../styles/Home.module.css";
 import axios from "axios";
 import { Cv } from "../util/models/types";
 import SearchCard from "./searchCard";
-import NoSearchResult from "./NoSearchResult";
+import NoSearchResult from "./noResponseSearch";
 
 function SearchCV(): JSX.Element {
   // search input field with useState
