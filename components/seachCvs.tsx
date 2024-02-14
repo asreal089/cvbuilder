@@ -6,11 +6,14 @@ import styles from "../styles/Home.module.css";
 import axios from "axios";
 import { Cv } from "../util/models/types";
 import SearchCard from "./searchCard";
+import NoSearchResult from "./noResponseSearch";
 
 function SearchCV(): JSX.Element {
   // search input field with useState
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState<Cv[]>([]);
+  const [searched, setSearched] = useState(false);
+
 
   async function searchCVs() {
     let keywords = "";
@@ -20,7 +23,7 @@ function SearchCV(): JSX.Element {
     keywords = keywords.slice(0, -1);
     const axioscfg = { baseURL: process.env.URL };
     const res = await axios.get("/api/search?keywords=" + keywords, axioscfg);
-
+    setSearched(true);
     setSearchResults(res.data);
   }
 
@@ -48,6 +51,7 @@ function SearchCV(): JSX.Element {
         </Button>
       </div>
       <div className={styles.showResults}>
+        {(searched && searchResults.length === 0) && <NoSearchResult searchQuery={search} />}
         {searchResults.map((cv, index) => {
           return <SearchCard cv={cv} key={index} />;
         })}
