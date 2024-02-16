@@ -2,7 +2,6 @@
 
 import React, { FC } from "react";
 import styles from "../styles/Modal.module.css";
-import { Button } from "@material-ui/core";
 import ShieldIcon from '@mui/icons-material/Shield';
 
 interface ModalProps {
@@ -56,12 +55,12 @@ const PrivacyModal: FC<ModalProps> = ({ show, onClose, onSubmit }) => {
         </p>
         <div className={styles.modalButtons}>
 
-        <Button variant="contained" color="primary" onClick={onSubmit}>
+        <div color="primary" onClick={onSubmit}>
           Accept
-        </Button>
-        <Button variant="contained" color="secondary" onClick={onClose}>
+        </div>
+        <div  color="secondary" onClick={onClose}>
           Cancel
-        </Button>
+        </div>
         </div>
       </div>
     </div>

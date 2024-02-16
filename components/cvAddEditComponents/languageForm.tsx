@@ -1,10 +1,3 @@
-import {
-  Button,
-  Card,
-  CardContent,
-  TextField,
-  Typography,
-} from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Lingua } from "../../util/models/types";
 
@@ -18,19 +11,17 @@ interface LanguageFormProps {
 
 const LanguageForm: React.FC<LanguageFormProps> = (props) => {
   return (
-    <Card>
-      <CardContent>
-        <Typography variant="h5" component="h2">
+    <div>
+      <div>
+        <div >
           Languages
-        </Typography>
+        </div>
         {props.linguas.map((_element, index: number) => (
           <span key={index} className="linguas">
-            <TextField
+            <input
               name="language"
               className="lingua campoFull campoComPadding"
               type="text"
-              label="language"
-              variant="outlined"
               value={props.linguas[index].lingua}
               required
               onChange={(e) => {
@@ -38,12 +29,10 @@ const LanguageForm: React.FC<LanguageFormProps> = (props) => {
               }}
             />
 
-            <TextField
+            <input
               name="language-level"
               className="lingua campoFull campoComPadding"
               type="text"
-              label="language level"
-              variant="outlined"
               value={props.linguas[index].nivel}
               required
               onChange={(e) => {
@@ -54,16 +43,15 @@ const LanguageForm: React.FC<LanguageFormProps> = (props) => {
         ))}
 
         <span className="center campoFull campoComPadding">
-          <Button
-            variant="contained"
+          <div
             color="primary"
             onClick={props.pushLingua}
           >
             Língua <AddCircleIcon className="center"></AddCircleIcon>
-          </Button>
+          </div>
         </span>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 };
 export default LanguageForm;

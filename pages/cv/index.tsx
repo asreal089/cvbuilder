@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { Cv } from "../../util/models/types";
-import SearchCV from "../../components/seachCvs";
+import SearchCV from "../../components/searchCvs";
 
 interface Data {
   data: Cv;

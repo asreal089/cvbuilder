@@ -2,7 +2,6 @@
 
 import React, { FC } from "react";
 import styles from "../styles/Modal.module.css";
-import { Button } from "@material-ui/core";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 interface ModalProps {
@@ -36,12 +35,12 @@ const DeleteCvModal: FC<ModalProps> = ({ show, onClose, onDelete }) => {
         </p>
         <p>Thank You for Using Our Site</p>
         <div className={styles.modalButtons}>
-          <Button variant="contained" color="primary" onClick={onClose}>
+          <div color="primary" onClick={onClose}>
             Cancel
-          </Button>
-          <Button variant="contained" color="secondary" onClick={onDelete}>
+          </div>
+          <div color="secondary" onClick={onDelete}>
             Delete
-          </Button>
+          </div>
         </div>
       </div>
     </div>

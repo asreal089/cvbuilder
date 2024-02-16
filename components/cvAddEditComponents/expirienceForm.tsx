@@ -1,16 +1,7 @@
-import {
-  Button,
-  Card,
-  CardContent,
-  FormControlLabel,
-  Switch,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Experiencia } from "../../util/models/types";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+
 
 interface ExpirienceFormProps {
   experiencias: Experiencia[];
@@ -25,48 +16,41 @@ interface ExpirienceFormProps {
 
 export default function Experience(props: ExpirienceFormProps) {
   return (
-    <Card>
-      <CardContent>
-        <Typography variant="h5" component="h2">
+    <div>
+      <div>
+        <div >
           Experiences
-        </Typography>
+        </div>
         <br />
         {props.experiencias.map((_element: any, index: number) => {
           return (
             <span key={index} className="campoFull campoComPadding">
-              <TextField
+              <input
                 name="experience-title"
                 className="experiencia-empresa campoFull campoComPadding"
                 type="text"
-                label="Title"
                 value={props.experiencias[index].titulo}
-                variant="outlined"
                 required
                 onChange={(e) => {
                   props.setNovaExperienciaTitulo(e, index);
                 }}
               />
-              <TextField
+              <input
                 name="experience-company"
                 className="experiencia-empresa campoFull campoComPadding"
                 type="text"
-                label="Company"
                 value={props.experiencias[index].empresa}
-                variant="outlined"
                 required
                 onChange={(e) => {
                   props.setNovaExperienciaEmpresa(e, index);
                 }}
               />
 
-              <TextField
+              <input
                 name="experience-description"
                 className="experiencia campoFull campoComPadding"
                 type="text"
-                minRows={5}
-                variant="outlined"
-                multiline
-                label="Description"
+
                 value={props.experiencias[index].descricao}
                 required
                 onChange={(e) => {
@@ -74,46 +58,46 @@ export default function Experience(props: ExpirienceFormProps) {
                 }}
               />
               <span className="campoFull campoComPadding">
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <DesktopDatePicker
-                    className="data_picker campoFull campoComPadding"
-                    label="begin date"
-                    inputFormat="MM/dd/yyyy"
-                    value={props.experiencias[index].incio}
-                    onChange={(e) => {
-                      props.setNovaExperienciaInicio(e, index);
-                    }}
-                    renderInput={(params: any) => <TextField {...params} />}
+                <div >
+                  <div
+                    // className="data_picker campoFull campoComPadding"
+                    // label="begin date"
+                    // inputFormat="MM/dd/yyyy"
+                    // value={props.experiencias[index].incio}
+                    // onChange={(e) => {
+                    //   props.setNovaExperienciaInicio(e, index);
+                    // }}
+                    // renderInput={(params: any) => <TextField {...params} />}
                   />
-                </LocalizationProvider>
+                </div>
 
-                <FormControlLabel
-                  control={
-                    <Switch
-                      checked={props.experiencias[index].is_current}
-                      onChange={(e) => {
-                        props.setNovaExperienciaIsCurrent(e, index);
-                      }}
-                      value={props.experiencias[index].is_current}
-                      name="chechIsCurrent"
-                      color="primary"
-                    />
-                  }
-                  label="Is Current"
+                <input
+                  // control={
+                  //   <Switch
+                  //     checked={props.experiencias[index].is_current}
+                  //     onChange={(e) => {
+                  //       props.setNovaExperienciaIsCurrent(e, index);
+                  //     }}
+                  //     value={props.experiencias[index].is_current}
+                  //     name="chechIsCurrent"
+                  //     color="primary"
+                  //   />
+                  // }
+                  // label="Is Current"
                 />
                 {!props.experiencias[index].is_current && (
-                  <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <DesktopDatePicker
-                      className="data_picker campoFull campoComPadding"
-                      label="end date"
-                      inputFormat="MM/dd/yyyy"
-                      value={props.experiencias[index].fim}
-                      onChange={(e) => {
-                        props.setExperienciaFim(e, index);
-                      }}
-                      renderInput={(params: any) => <TextField {...params} />}
+                  <div>
+                    <input
+                      // className="data_picker campoFull campoComPadding"
+                      // label="end date"
+                      // inputFormat="MM/dd/yyyy"
+                      // value={props.experiencias[index].fim}
+                      // onChange={(e) => {
+                      //   props.setExperienciaFim(e, index);
+                      // }}
+                      // renderInput={(params: any) => <TextField {...params} />}
                     />
-                  </LocalizationProvider>
+                  </div>
                 )}
               </span>
             </span>
@@ -122,15 +106,14 @@ export default function Experience(props: ExpirienceFormProps) {
         <br />
 
         <span className="center campoFull campoComPadding">
-          <Button
-            variant="contained"
+          <div
             color="primary"
             onClick={props.pushExperiencia}
           >
             Experiences <AddCircleIcon className="center"></AddCircleIcon>
-          </Button>
+          </div>
         </span>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

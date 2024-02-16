@@ -1,4 +1,3 @@
-import { Button, Card, CardContent, TextField, Typography } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Links } from "../../util/models/types";
 
@@ -15,20 +14,18 @@ const LinkForm = (props: LinkFormProps) => {
 
     return (
 
-        <Card>
-          <CardContent>
-            <Typography variant="h5" component="h2">
+        <div>
+          <div>
+            <div>
               Links
-            </Typography>
+            </div>
             <br />
             {props.links.map((_element, index: number) => (
               <span key={index} className="links">
-                <TextField
+                <input
                   name="link-desc"
                   className="link campoFull campoComPadding"
                   type="text"
-                  label="Link description"
-                  variant="outlined"
                   value={props.links[index].tipo}
                   required
                   onChange={(e) => {
@@ -36,12 +33,10 @@ const LinkForm = (props: LinkFormProps) => {
                   }}
                 />
 
-                <TextField
+                <input
                   name="link-link"
                   className="link campoFull campoComPadding"
                   type="text"
-                  label="link"
-                  variant="outlined"
                   value={props.links[index].link}
                   required
                   onChange={(e) => {
@@ -51,12 +46,12 @@ const LinkForm = (props: LinkFormProps) => {
               </span>
             ))}
             <span className="center campoFull campoComPadding">
-              <Button variant="contained" color="primary" onClick={props.pushLink}>
+              <div color="primary" onClick={props.pushLink}>
                 Link <AddCircleIcon className="center"></AddCircleIcon>
-              </Button>
+              </div>
             </span>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
     )
 }

@@ -9,23 +9,9 @@ import {
   Links,
   Lingua,
 } from "../util/models/types";
-import {
-  Card,
-  Button,
-  FormGroup,
-  Divider,
-  TextField,
-  CardContent,
-  Typography,
-  Switch,
-  FormControlLabel,
-} from "@material-ui/core";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { Alert, AlertTitle } from "@mui/material";
+
 import { useSession } from "next-auth/react";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import styles from "../styles/CvForm.module.css";
 import PrivacyModal from "./privacyTermsModal";
 import DeleteCvModal from "./deleteCvModal";
@@ -355,7 +341,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
 
   return (
     <div className={styles.formContainer}>
-      <FormGroup className={styles.formItems}>
+      <div className={styles.formItems}>
         <PersonalDataForm
           nome={nome}
           localidade={localidade}
@@ -393,47 +379,41 @@ function CvAddEdit({ data }: Data): JSX.Element {
         />
         <br />
 
-        <Card>
-          <CardContent>
-            <Typography variant="h5" component="h2">
+        <div>
+          <div>
+            <div >
               Cover Letter
-            </Typography>
+            </div>
             <br />
 
-            <TextField
+            <input
               id="cover-letter"
               className="campoFull campoComPadding"
-              label="Cover Later"
+
               type="text"
               value={cover_letter}
-              variant="outlined"
               autoComplete="cover-letter"
-              minRows={5}
-              multiline
               required
               onChange={(e) => {
                 setCover_letter(e.target.value);
               }}
             />
-          </CardContent>
-        </Card>
+          </div>
+        </div>
         <br />
-        <Card>
-          <CardContent>
-            <Typography variant="h5" component="h2">
+        <div>
+          <div>
+            <div>
               Skills:
-            </Typography>
+            </div>
             <br />
 
             {habilidades.map((_element, index: number) => (
               <span key={index} className="campoFull campoComPadding">
-                <TextField
-                  name="skill"
+                <input
                   className="habilidade campoFull campoComPadding"
                   type="text"
-                  label="skill"
                   value={habilidades[index]}
-                  variant="outlined"
                   required
                   onChange={(e) => {
                     setNovaHabilidade(e, index);
@@ -443,16 +423,15 @@ function CvAddEdit({ data }: Data): JSX.Element {
             ))}
 
             <span className="center campoFull campoComPadding">
-              <Button
-                variant="contained"
+              <div
                 color="primary"
                 onClick={pushHabilidade}
               >
                 Skill <AddCircleIcon className="center"></AddCircleIcon>
-              </Button>
+              </div>
             </span>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
         <br />
         <ExpirienceForm 
         experiencias={experiencia} 
@@ -465,7 +444,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
         pushExperiencia={pushExperiencia} />
         <br />
 
-        <Divider />
+        <tr />
         <EducationForm
           cursos={cursos}
           setNovoCursoInstituicao={setNovoCursoInstituicao}
@@ -478,43 +457,41 @@ function CvAddEdit({ data }: Data): JSX.Element {
         <br />
         <br />
         <span className="register">
-          <Button
-            variant="contained"
+          <div
             color="primary"
             onClick={togglePrivacyModal}
           >
             Register
-          </Button>
-          <Button
-            variant="contained"
+          </div>
+          <div
             color="secondary"
             onClick={toggleDeleteModal}
           >
             Delete your CV
-          </Button>
+          </div>
         </span>
-      </FormGroup>
+      </div>
       <br />
-      <PrivacyModal
-        show={showPrivacyModal}
-        onClose={togglePrivacyModal}
-        onSubmit={saveCV}
+      <div
+        //onClick={showPrivacyModal}
+        //onClose={togglePrivacyModal}
+        //onSubmit={saveCV}
       />
-      <DeleteCvModal
-        show={showDeleteModal}
-        onClose={toggleDeleteModal}
-        onDelete={deleteCV}
+      <div
+        //show={showDeleteModal}
+        //onClose={toggleDeleteModal}
+        //onDelete={deleteCV}
       />
       {saveSucefull && (
         <>
-          <Alert
-            severity="success"
-            onClose={() => {
+          <div
+
+            onClick={() => {
               setSaveSucefull(false);
             }}
           >
-            <AlertTitle>Success!</AlertTitle>Your CV has been registered.
-          </Alert>
+            <div>Success!</div>Your CV has been registered.
+          </div>
           <br />
         </>
       )}

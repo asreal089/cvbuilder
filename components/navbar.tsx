@@ -1,5 +1,4 @@
 import HomeIcon from "@mui/icons-material/Home";
-import { IconButton, Button } from "@material-ui/core";
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import LoginIcon from "@mui/icons-material/Login";
@@ -14,11 +13,11 @@ const Navbar = () => {
     <div className={styles.navbar}>
       <div className={styles.navbarContainer}>
         <div className={styles.menuLeft}>
-          <IconButton edge="start" aria-label="menu">
+          <div aria-label="menu">
             <Link href="/">
               <HomeIcon className={styles.linkIcon} />
             </Link>
-          </IconButton>
+          </div>
           <div className={styles.navbarItem}>
             <Link href="/about-us" className={styles.link}>
               About us
@@ -54,7 +53,7 @@ const Navbar = () => {
         <div className={styles.menuRight}>
           {!session.data && (
 
-              <Button
+              <div
                 className={styles.link}
                 onClick={() =>
                   signIn("google", { callbackUrl: process.env.URL })
@@ -62,16 +61,16 @@ const Navbar = () => {
               >
                 Sing In
                 <LoginIcon className={styles.linkIcon} />
-              </Button>
+              </div>
 
           )}
 
           {session.data && (
             
-              <Button className={styles.link} onClick={() => signOut()}>
+              <div className={styles.link} onClick={() => signOut()}>
                 Sign out
                 <LogoutIcon className={styles.linkIcon} />
-              </Button>
+              </div>
           )}
         </div>
       </div>

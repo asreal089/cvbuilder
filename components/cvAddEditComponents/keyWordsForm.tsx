@@ -1,4 +1,3 @@
-import { Button, Card, CardContent, TextField, Typography } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import validateFields from "../../util/validateUtils";
@@ -14,50 +13,47 @@ interface KeyWordsFormProps {
 const KeyWordsForm = (props: KeyWordsFormProps) => {
 
     return (
-        <Card>
-          <CardContent>
-            <Typography variant="h5" component="h2">
+        <div>
+          <div>
+            <div >
               Key words
-            </Typography>
+            </div>
             <br />
             {props.titulo_palavras_chave.map((_element, index: number) => (
               <span key={index} className="campoFullFlex campoComPadding">
 
-                <TextField
+                <input
                   name="keyword"
                   className="palavra-chave campoInterno campoComPadding"
                   type="text"
-                  label="key word"
-                  variant="outlined"
-                  error={validateFields(props.titulo_palavras_chave[index])}
-                  helperText={validateFields(props.titulo_palavras_chave[index]) ? 'Field cannot be blank' : null}
+
+                  //error={validateFields(props.titulo_palavras_chave[index])}
+                  //helperText={validateFields(props.titulo_palavras_chave[index]) ? 'Field cannot be blank' : null}
                   value={props.titulo_palavras_chave[index]}
                   required
                   onChange={(e) => {
                     props.setNovaPalavraChave(e, index);
                   }}
                 />
-                <Button
-                variant="text"
+                <div
                 color="warning"
                 className="botaoRemover"
                 onClick={props.removePalavraChave.bind(this, index)}
               >
                 <RemoveCircleIcon className="center" ></RemoveCircleIcon>
-              </Button>
+              </div>
               </span>
             ))}
             <span className="center campoFull campoComPadding">
-              <Button
-                variant="contained"
+              <div
                 color="primary"
                 onClick={props.pushPalavraChave}
               >
                 Key word <AddCircleIcon className="center buttonRemoveIcon"></AddCircleIcon>
-              </Button>
+              </div>
             </span>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
     )
 }
 

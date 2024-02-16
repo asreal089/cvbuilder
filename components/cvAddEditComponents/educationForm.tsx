@@ -1,15 +1,6 @@
-import {
-  Button,
-  Card,
-  CardContent,
-  FormControlLabel,
-  Switch,
-  TextField,
-  Typography,
-} from "@mui/material";
+
 import { Curso } from "../../util/models/types";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 interface EducationFormProps {
@@ -24,69 +15,64 @@ interface EducationFormProps {
 
 const EducationForm = (props: EducationFormProps) => {
   return (
-    <Card>
-      <CardContent>
-        <Typography variant="h5" component="h2">
+    <div>
+      <div>
+        <div >
           Education
-        </Typography>
+        </div>
         <br />
 
         {props.cursos.map((_element, index: number) => {
           return (
             <span key={index} className="campoFull campoComPadding">
-              <TextField
+              <input
                 name="Institution"
                 className="cursos campoFull campoComPadding"
                 type="text"
-                label="Institution"
+                
                 value={props.cursos[index].instituicao}
-                variant="outlined"
                 required
                 onChange={(e) => {
                   props.setNovoCursoInstituicao(e, index);
                 }}
               />
-              <TextField
+              <input
                 name="cursos"
                 className="cursos campoFull campoComPadding"
                 type="text"
-                variant="outlined"
-                label="Duration"
                 value={props.cursos[index].duracao}
                 required
                 onChange={(e) => {
                   props.setNovoCursoDuracao(e, index);
                 }}
               />
-              <TextField
+              <input
                 name="cursos"
                 className="cursos campoFull campoComPadding"
                 type="text"
-                variant="outlined"
-                label="description"
                 value={props.cursos[index].descricao}
                 required
                 onChange={(e) => {
                   props.setNovoCursoDescricao(e, index);
                 }}
               />
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={props.cursos[index].is_concluded}
-                    onChange={(e) => {
-                      props.setNovoCursoIsConcluded(e, index);
-                    }}
-                    value={props.cursos[index].is_concluded}
-                    name="chechIsConcluded"
-                    color="primary"
-                  />
-                }
-                label="Is concluded"
+              <input
+                // control={
+                //   <Switch
+                //     checked={props.cursos[index].is_concluded}
+                //     onChange={(e) => {
+                //       props.setNovoCursoIsConcluded(e, index);
+                //     }}
+                //     value={props.cursos[index].is_concluded}
+                //     name="chechIsConcluded"
+                //     color="primary"
+                //   />
+                // }
+                // label="Is concluded"
               />
               {props.cursos[index].is_concluded && (
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <DesktopDatePicker
+                <div>
+                  {/* <DesktopDatePicker
                     className="data_picker campoFull campoComPadding"
                     label="end date"
                     inputFormat="MM/dd/yyyy"
@@ -95,20 +81,20 @@ const EducationForm = (props: EducationFormProps) => {
                       props.setCursoFim(e, index);
                     }}
                     renderInput={(params: any) => <TextField {...params} />}
-                  />
-                </LocalizationProvider>
+                  /> */}
+                </div>
               )}
             </span>
           );
         })}
         <br />
         <span className="center campoFull campoComPadding">
-          <Button variant="contained" color="primary" onClick={props.pushCurso}>
+          <div color="primary" onClick={props.pushCurso}>
             Course <AddCircleIcon className="center"></AddCircleIcon>
-          </Button>
+          </div>
         </span>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 };
 export default EducationForm;
