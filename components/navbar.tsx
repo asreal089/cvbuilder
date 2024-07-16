@@ -1,5 +1,5 @@
 import HomeIcon from "@mui/icons-material/Home";
-import { IconButton, Button } from "@material-ui/core";
+import { IconButton, Button } from "@mui/material";
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import LoginIcon from "@mui/icons-material/Login";

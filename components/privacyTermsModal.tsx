@@ -2,7 +2,7 @@
 
 import React, { FC } from "react";
 import styles from "../styles/Modal.module.css";
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 import ShieldIcon from '@mui/icons-material/Shield';
 
 interface ModalProps {

@@ -6,7 +6,7 @@ import styles from "../styles/Home.module.css";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { Cv } from "../util/models/types";
-import { Avatar } from "@material-ui/core";
+import { Avatar } from "@mui/material";
 
 interface CardData {
   cv: Cv;

@@ -19,7 +19,7 @@ import {
   Typography,
   Switch,
   FormControlLabel,
-} from "@material-ui/core";
+} from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Alert, AlertTitle } from "@mui/material";
 import { useSession } from "next-auth/react";

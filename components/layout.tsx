@@ -20,11 +20,11 @@ const Layout = ({ children  }: LayoutProps): JSX.Element => {
         <meta name="keywords" content="CV, resume, job, career, professionals" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body>
+      <div>
         <Navbar />
         {children}
         <Footer/>
-      </body>
+      </div>
     </>
   );
 };

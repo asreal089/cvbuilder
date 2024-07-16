@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Button, Container, TextField } from "@material-ui/core";
+import { Button, Container, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
