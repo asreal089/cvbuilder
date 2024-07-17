@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { Experiencia } from "../../util/models/types";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
@@ -21,6 +22,7 @@ interface ExpirienceFormProps {
   setNovaExperienciaIsCurrent: (e: any, index: number) => void;
   setExperienciaFim: (e: any, index: number) => void;
   pushExperiencia: () => void;
+  removeExperiencia: (e: any, index: number) => void;
 }
 
 export default function Experience(props: ExpirienceFormProps) {
@@ -87,20 +89,8 @@ export default function Experience(props: ExpirienceFormProps) {
                   />
                 </LocalizationProvider>
 
-                <FormControlLabel
-                  control={
-                    <Switch
-                      checked={props.experiencias[index].is_current}
-                      onChange={(e) => {
-                        props.setNovaExperienciaIsCurrent(e, index);
-                      }}
-                      value={props.experiencias[index].is_current}
-                      name="chechIsCurrent"
-                      color="primary"
-                    />
-                  }
-                  label="Is Current"
-                />
+
+
                 {!props.experiencias[index].is_current && (
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DesktopDatePicker
@@ -115,7 +105,35 @@ export default function Experience(props: ExpirienceFormProps) {
                     />
                   </LocalizationProvider>
                 )}
+
+                <span className="center campoFull campoComPadding">
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={props.experiencias[index].is_current}
+                      onChange={(e) => {
+                        props.setNovaExperienciaIsCurrent(e, index);
+                      }}
+                      value={props.experiencias[index].is_current}
+                      name="chechIsCurrent"
+                      color="primary"
+                    />
+                  }
+                  label="Is Current"
+                />
+                  <Button
+                    variant="contained"
+                    color="warning"
+                    onClick={(e) => props.removeExperiencia.bind(e, index)}
+                  >
+                    Remove Experience
+                    <RemoveCircleIcon className="center"></RemoveCircleIcon>
+                  </Button>
+                </span>
+                <br />
+                <br />
               </span>
+
             </span>
           );
         })}

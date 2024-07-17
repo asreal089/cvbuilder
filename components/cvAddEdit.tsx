@@ -166,6 +166,8 @@ function CvAddEdit({ data }: Data): JSX.Element {
   }
 
 
+
+
   function pushLink() {
     setLinks([...links, { tipo: "", link: "" }]);
   }
@@ -217,6 +219,12 @@ function CvAddEdit({ data }: Data): JSX.Element {
     let temp = links.map((i: Links) => i);
     temp[index].link = e.target.value;
     setLinks(temp);
+  }
+
+  function removeExperiencia(e:React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>, index: number) {
+    let temp = experiencia.map((i: any) => i);
+    temp.splice(index, 1);
+    setExperiencia(temp);
   }
 
   function setNovaExperienciaDescricao(
@@ -462,7 +470,8 @@ function CvAddEdit({ data }: Data): JSX.Element {
         setNovaExperienciaInicio={setNovaExperienciaInicio}
         setNovaExperienciaIsCurrent={setNovaExperienciaIsCurrent} 
         setExperienciaFim={setExperienciaFim}
-        pushExperiencia={pushExperiencia} />
+        pushExperiencia={pushExperiencia}
+        removeExperiencia={removeExperiencia} />
         <br />
 
         <Divider />
