@@ -23,9 +23,6 @@ import {
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Alert, AlertTitle } from "@mui/material";
 import { useSession } from "next-auth/react";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import styles from "../styles/CvForm.module.css";
 import PrivacyModal from "./privacyTermsModal";
 import DeleteCvModal from "./deleteCvModal";
