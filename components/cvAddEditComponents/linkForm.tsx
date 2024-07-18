@@ -27,7 +27,7 @@ const LinkForm = (props: LinkFormProps) => {
               <span key={index} className="links">
                 <TextField
                   name="link-desc"
-                  className="link campoFull campoComPadding"
+                  className=" campoFull campoComPadding"
                   type="text"
                   label="Link description"
                   variant="outlined"
@@ -40,7 +40,7 @@ const LinkForm = (props: LinkFormProps) => {
 
                 <TextField
                   name="link-link"
-                  className="link campoFull campoComPadding"
+                  className="campoFull campoComPadding"
                   type="text"
                   label="link"
                   variant="outlined"
