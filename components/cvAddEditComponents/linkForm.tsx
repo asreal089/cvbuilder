@@ -9,7 +9,7 @@ interface LinkFormProps {
     pushLink: () => void;
     setNovoLinkTipo: (e: any, index: number) => void;
     setNovoLinkLink: (e: any, index: number) => void;
-    removeLink: (e:any, index: number) => void;
+    removeLink: (index: number) => void;
 }
 
 
@@ -54,7 +54,7 @@ const LinkForm = (props: LinkFormProps) => {
                 <Button
                     variant="contained"
                     color="warning"
-                    onClick={(e) => props.removeLink.bind(e, index)}
+                    onClick={props.removeLink.bind(this, index)}
                   >
                     Remove Link
                     <RemoveCircleIcon className="center"></RemoveCircleIcon>

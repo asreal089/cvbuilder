@@ -160,9 +160,6 @@ function CvAddEdit({ data }: Data): JSX.Element {
     setTitulo_palavras_chave(temp);
   }
 
-
-
-
   function pushLink() {
     setLinks([...links, { tipo: "", link: "" }]);
   }
@@ -207,10 +204,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
     setLinks(temp);
   }
 
-  function removeLink(
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-    index: number
-  ){
+  function removeLink(index: number) {
     let temp = links.map((i: Links) => i);
     temp.splice(index, 1);
     setLinks(temp);
@@ -225,7 +219,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
     setLinks(temp);
   }
 
-  function removeExperiencia(e:React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>, index: number) {
+  function removeExperiencia(index: number) {
     let temp = experiencia.map((i: any) => i);
     temp.splice(index, 1);
     setExperiencia(temp);
@@ -384,8 +378,9 @@ function CvAddEdit({ data }: Data): JSX.Element {
           titulo_palavras_chave={titulo_palavras_chave}
           setTitulo_palavras_chave={setTitulo_palavras_chave}
           pushPalavraChave={pushPalavraChave}
-          setNovaPalavraChave={setNovaPalavraChave} 
-          removePalavraChave={removePalavraChave}        />
+          setNovaPalavraChave={setNovaPalavraChave}
+          removePalavraChave={removePalavraChave}
+        />
         <br />
 
         <LanguageForm
@@ -467,16 +462,17 @@ function CvAddEdit({ data }: Data): JSX.Element {
           </CardContent>
         </Card>
         <br />
-        <ExpirienceForm 
-        experiencias={experiencia} 
-        setNovaExperienciaTitulo={setNovaExperienciaTitulo}
-        setNovaExperienciaEmpresa={setNovaExperienciaEmpresa}
-        setNovaExperienciaDescricao={setNovaExperienciaDescricao} 
-        setNovaExperienciaInicio={setNovaExperienciaInicio}
-        setNovaExperienciaIsCurrent={setNovaExperienciaIsCurrent} 
-        setExperienciaFim={setExperienciaFim}
-        pushExperiencia={pushExperiencia}
-        removeExperiencia={removeExperiencia} />
+        <ExpirienceForm
+          experiencias={experiencia}
+          setNovaExperienciaTitulo={setNovaExperienciaTitulo}
+          setNovaExperienciaEmpresa={setNovaExperienciaEmpresa}
+          setNovaExperienciaDescricao={setNovaExperienciaDescricao}
+          setNovaExperienciaInicio={setNovaExperienciaInicio}
+          setNovaExperienciaIsCurrent={setNovaExperienciaIsCurrent}
+          setExperienciaFim={setExperienciaFim}
+          pushExperiencia={pushExperiencia}
+          removeExperiencia={removeExperiencia}
+        />
         <br />
 
         <Divider />

@@ -22,7 +22,7 @@ interface ExpirienceFormProps {
   setNovaExperienciaIsCurrent: (e: any, index: number) => void;
   setExperienciaFim: (e: any, index: number) => void;
   pushExperiencia: () => void;
-  removeExperiencia: (e: any, index: number) => void;
+  removeExperiencia: (index: number) => void;
 }
 
 export default function Experience(props: ExpirienceFormProps) {
@@ -124,7 +124,7 @@ export default function Experience(props: ExpirienceFormProps) {
                   <Button
                     variant="contained"
                     color="warning"
-                    onClick={(e) => props.removeExperiencia.bind(e, index)}
+                    onClick={(e) => props.removeExperiencia(index)}
                   >
                     Remove Experience
                     <RemoveCircleIcon className="center"></RemoveCircleIcon>
