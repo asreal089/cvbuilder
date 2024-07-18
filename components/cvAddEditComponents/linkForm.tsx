@@ -1,5 +1,6 @@
 import { Button, Card, CardContent, TextField, Typography } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { Links } from "../../util/models/types";
 
 
@@ -8,6 +9,7 @@ interface LinkFormProps {
     pushLink: () => void;
     setNovoLinkTipo: (e: any, index: number) => void;
     setNovoLinkLink: (e: any, index: number) => void;
+    removeLink: (e:any, index: number) => void;
 }
 
 
@@ -48,6 +50,17 @@ const LinkForm = (props: LinkFormProps) => {
                     props.setNovoLinkLink(e, index);
                   }}
                 />
+                <span className="center campoFull campoComPadding">
+                <Button
+                    variant="contained"
+                    color="warning"
+                    onClick={(e) => props.removeLink.bind(e, index)}
+                  >
+                    Remove Link
+                    <RemoveCircleIcon className="center"></RemoveCircleIcon>
+                  </Button>
+                  <br /><br />
+                </span>
               </span>
             ))}
             <span className="center campoFull campoComPadding">

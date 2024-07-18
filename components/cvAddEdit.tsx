@@ -17,8 +17,6 @@ import {
   TextField,
   CardContent,
   Typography,
-  Switch,
-  FormControlLabel,
 } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Alert, AlertTitle } from "@mui/material";
@@ -209,6 +207,15 @@ function CvAddEdit({ data }: Data): JSX.Element {
     setLinks(temp);
   }
 
+  function removeLink(
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    index: number
+  ){
+    let temp = links.map((i: Links) => i);
+    temp.splice(index, 1);
+    setLinks(temp);
+  }
+
   function setNovoLinkLink(
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
     index: number
@@ -395,6 +402,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
           pushLink={pushLink}
           setNovoLinkTipo={setNovoLinkTipo}
           setNovoLinkLink={setNovoLinkLink}
+          removeLink={removeLink}
         />
         <br />
 
@@ -447,7 +455,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
               </span>
             ))}
 
-            <span className="center campoFull campoComPadding">
+            <span className="link center campoFull campoComPadding">
               <Button
                 variant="contained"
                 color="primary"
