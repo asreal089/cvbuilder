@@ -232,6 +232,12 @@ function CvAddEdit({ data }: Data): JSX.Element {
     setExperiencia(temp);
   }
 
+  function removeEducation(index: number) {
+    let temp = cursos.map((i: any) => i);
+    temp.splice(index, 1);
+    setCursos(temp);
+  }
+
   function removeLanguage(index: number) {
     let temp = linguas.map((i: any) => i);
     temp.splice(index, 1);
@@ -506,6 +512,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
           setNovoCursoIsConcluded={setNovoCursoIsConcluded}
           setCursoFim={setCursoFim}
           pushCurso={pushCurso}
+          removeEducation={removeEducation}
         />
         <br />
         <br />

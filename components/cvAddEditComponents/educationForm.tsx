@@ -11,6 +11,8 @@ import { Curso } from "../../util/models/types";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+
 
 interface EducationFormProps {
   cursos: Curso[];
@@ -19,6 +21,7 @@ interface EducationFormProps {
   setNovoCursoDescricao: (e: any, index: number) => void;
   setNovoCursoIsConcluded: (e: any, index: number) => void;
   setCursoFim: (e: any, index: number) => void;
+  removeEducation: (index: number) => void;
   pushCurso: () => void;
 }
 
@@ -70,20 +73,6 @@ const EducationForm = (props: EducationFormProps) => {
                   props.setNovoCursoDescricao(e, index);
                 }}
               />
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={props.cursos[index].is_concluded}
-                    onChange={(e) => {
-                      props.setNovoCursoIsConcluded(e, index);
-                    }}
-                    value={props.cursos[index].is_concluded}
-                    name="chechIsConcluded"
-                    color="primary"
-                  />
-                }
-                label="Is concluded"
-              />
               {props.cursos[index].is_concluded && (
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <DesktopDatePicker
@@ -98,6 +87,30 @@ const EducationForm = (props: EducationFormProps) => {
                   />
                 </LocalizationProvider>
               )}
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={props.cursos[index].is_concluded}
+                    onChange={(e) => {
+                      props.setNovoCursoIsConcluded(e, index);
+                    }}
+                    value={props.cursos[index].is_concluded}
+                    name="chechIsConcluded"
+                    color="primary"
+                  />
+                }
+                label="Is concluded"
+              />
+              <Button
+                variant="contained"
+                color="warning"
+                onClick={(e) => props.removeEducation(index)}
+              >
+                Remove Education
+                <RemoveCircleIcon className="center"></RemoveCircleIcon>
+              </Button>
+              <br />
+              <br />
             </span>
           );
         })}
