@@ -17,8 +17,9 @@ import {
   TextField,
   CardContent,
   Typography,
+  Alert,
+  AlertTitle,
 } from "@mui/material";
-import { Alert, AlertTitle } from "@mui/material";
 import { useSession } from "next-auth/react";
 import styles from "../styles/CvForm.module.css";
 import PrivacyModal from "./privacyTermsModal";
@@ -444,14 +445,13 @@ function CvAddEdit({ data }: Data): JSX.Element {
           </CardContent>
         </Card>
         <br />
-        <SkillsForm 
+        <SkillsForm
           habilidades={habilidades}
-          setHabilidades={setHabilidades}
           setNovaHabilidade={setNovaHabilidade}
           pushHabilidade={pushHabilidade}
           removeHabilidade={removeHabilidade}
         />
-        
+
         <br />
         <ExpirienceForm
           experiencias={experiencia}

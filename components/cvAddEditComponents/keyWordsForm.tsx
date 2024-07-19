@@ -20,7 +20,7 @@ const KeyWordsForm = (props: KeyWordsFormProps) => {
             </Typography>
             <br />
             {props.titulo_palavras_chave.map((_element, index: number) => (
-              <span key={index} className="campoFullFlex campoComPadding">
+              <span key={'keyword'+index} className="campoFullFlex campoComPadding">
 
                 <TextField
                   name="keyword"

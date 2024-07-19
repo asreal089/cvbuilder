@@ -10,7 +10,6 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 
 interface SkillsFormProps {
   habilidades: string[];
-  setHabilidades: (habilidades: string[]) => void;
   pushHabilidade: () => void;
   removeHabilidade: (index: number) => void;
   setNovaHabilidade: (e: any, index: number) => void;
