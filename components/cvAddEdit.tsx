@@ -19,6 +19,7 @@ import {
   Typography,
 } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import { Alert, AlertTitle } from "@mui/material";
 import { useSession } from "next-auth/react";
 import styles from "../styles/CvForm.module.css";
@@ -210,6 +211,12 @@ function CvAddEdit({ data }: Data): JSX.Element {
     setLinks(temp);
   }
 
+  function removeHabilidade(index: number) {
+    let temp = habilidades.map((i: any) => i);
+    temp.splice(index, 1);
+    setHabilidades(temp);
+  }
+
   function setNovoLinkLink(
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
     index: number
@@ -223,6 +230,12 @@ function CvAddEdit({ data }: Data): JSX.Element {
     let temp = experiencia.map((i: any) => i);
     temp.splice(index, 1);
     setExperiencia(temp);
+  }
+
+  function removeLanguage(index: number) {
+    let temp = linguas.map((i: any) => i);
+    temp.splice(index, 1);
+    setLinguas(temp);
   }
 
   function setNovaExperienciaDescricao(
@@ -389,6 +402,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
           setNovaLinguaLingua={setNovaLinguaLingua}
           setNovaLinguaNivel={setNovaLinguaNivel}
           pushLingua={pushLingua}
+          removeLanguage={removeLanguage}
         />
 
         <br />
@@ -434,10 +448,10 @@ function CvAddEdit({ data }: Data): JSX.Element {
             <br />
 
             {habilidades.map((_element, index: number) => (
-              <span key={index} className="campoFull campoComPadding">
+              <span key={index} className="campoFullFlex campoComPadding">
                 <TextField
                   name="skill"
-                  className="habilidade campoFull campoComPadding"
+                  className="campoInterno campoComPadding"
                   type="text"
                   label="skill"
                   value={habilidades[index]}
@@ -447,6 +461,14 @@ function CvAddEdit({ data }: Data): JSX.Element {
                     setNovaHabilidade(e, index);
                   }}
                 />
+                <Button
+                  variant="text"
+                  color="warning"
+                  className="botaoRemover"
+                  onClick={(e)=>removeHabilidade(index)}
+                >
+                <RemoveCircleIcon className="center" ></RemoveCircleIcon>
+                </Button>
               </span>
             ))}
 

@@ -6,6 +6,7 @@ import {
   Typography,
 } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { Lingua } from "../../util/models/types";
 
 interface LanguageFormProps {
@@ -13,6 +14,7 @@ interface LanguageFormProps {
   setLinguas: (linguas: Lingua[]) => void;
   setNovaLinguaLingua: (e: any, index: number) => void;
   setNovaLinguaNivel: (e: any, index: number) => void;
+  removeLanguage: (index: number) => void; 
   pushLingua: () => void;
 }
 
@@ -23,8 +25,9 @@ const LanguageForm: React.FC<LanguageFormProps> = (props) => {
         <Typography variant="h5" component="h2">
           Languages
         </Typography>
+        <br />
         {props.linguas.map((_element, index: number) => (
-          <span key={index} className="linguas">
+          <span key={index} className="linguas campoComPadding">
             <TextField
               name="language"
               className="lingua campoFull campoComPadding"
@@ -50,6 +53,17 @@ const LanguageForm: React.FC<LanguageFormProps> = (props) => {
                 props.setNovaLinguaNivel(e, index);
               }}
             />
+
+            <Button
+              variant="contained"
+              color="warning"
+              onClick={(e) => props.removeLanguage(index)}
+            >
+              Remove Experience
+              <RemoveCircleIcon className="center"></RemoveCircleIcon>
+            </Button>
+            <br />
+            <br />
           </span>
         ))}
 

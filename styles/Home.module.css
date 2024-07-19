@@ -188,19 +188,7 @@
   justify-content: center;
 }
 
-.keywords {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-}
 
-.keyword {
-  font-size: 0.9rem;
-  background-color: #f0f0f0;
-  border-radius: 4px;
-  padding: 0.25rem 0.5rem;
-}
 @media (max-width: 800px) {
   .card {
     flex-basis: 100%;

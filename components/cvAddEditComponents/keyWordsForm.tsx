@@ -25,7 +25,7 @@ const KeyWordsForm = (props: KeyWordsFormProps) => {
 
                 <TextField
                   name="keyword"
-                  className="palavra-chave campoInterno campoComPadding"
+                  className="campoInterno campoComPadding"
                   type="text"
                   label="key word"
                   variant="outlined"
