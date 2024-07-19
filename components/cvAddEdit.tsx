@@ -18,8 +18,6 @@ import {
   CardContent,
   Typography,
 } from "@mui/material";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import { Alert, AlertTitle } from "@mui/material";
 import { useSession } from "next-auth/react";
 import styles from "../styles/CvForm.module.css";
@@ -31,6 +29,7 @@ import KeyWordsForm from "./cvAddEditComponents/keyWordsForm";
 import LinkForm from "./cvAddEditComponents/linkForm";
 import EducationForm from "./cvAddEditComponents/educationForm";
 import ExpirienceForm from "./cvAddEditComponents/expirienceForm";
+import SkillsForm from "./cvAddEditComponents/skillsForm";
 
 interface Data {
   data: Cv;
@@ -395,7 +394,6 @@ function CvAddEdit({ data }: Data): JSX.Element {
 
         <KeyWordsForm
           titulo_palavras_chave={titulo_palavras_chave}
-          setTitulo_palavras_chave={setTitulo_palavras_chave}
           pushPalavraChave={pushPalavraChave}
           setNovaPalavraChave={setNovaPalavraChave}
           removePalavraChave={removePalavraChave}
@@ -446,49 +444,14 @@ function CvAddEdit({ data }: Data): JSX.Element {
           </CardContent>
         </Card>
         <br />
-        <Card>
-          <CardContent>
-            <Typography variant="h5" component="h2">
-              Skills:
-            </Typography>
-            <br />
-
-            {habilidades.map((_element, index: number) => (
-              <span key={index} className="campoFullFlex campoComPadding">
-                <TextField
-                  name="skill"
-                  className="campoInterno campoComPadding"
-                  type="text"
-                  label="skill"
-                  value={habilidades[index]}
-                  variant="outlined"
-                  required
-                  onChange={(e) => {
-                    setNovaHabilidade(e, index);
-                  }}
-                />
-                <Button
-                  variant="text"
-                  color="warning"
-                  className="botaoRemover"
-                  onClick={(e)=>removeHabilidade(index)}
-                >
-                <RemoveCircleIcon className="center" ></RemoveCircleIcon>
-                </Button>
-              </span>
-            ))}
-
-            <span className="link center campoFull campoComPadding">
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={pushHabilidade}
-              >
-                Skill <AddCircleIcon className="center"></AddCircleIcon>
-              </Button>
-            </span>
-          </CardContent>
-        </Card>
+        <SkillsForm 
+          habilidades={habilidades}
+          setHabilidades={setHabilidades}
+          setNovaHabilidade={setNovaHabilidade}
+          pushHabilidade={pushHabilidade}
+          removeHabilidade={removeHabilidade}
+        />
+        
         <br />
         <ExpirienceForm
           experiencias={experiencia}

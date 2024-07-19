@@ -5,7 +5,6 @@ import validateFields from "../../util/validateUtils";
 
 interface KeyWordsFormProps {
     titulo_palavras_chave: string[];
-    setTitulo_palavras_chave: (titulo_palavras_chave: string[]) => void;
     pushPalavraChave: () => void;
     removePalavraChave: (index: number) => void;
     setNovaPalavraChave: (e: any, index: number) => void;
