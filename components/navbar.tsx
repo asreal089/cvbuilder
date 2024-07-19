@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className={styles.navbarContainer}>
         <div className={styles.menuLeft}>
           <IconButton edge="start" aria-label="menu">
-            <Link href="/">
+            <Link href="/" passHref>
               <HomeIcon className={styles.linkIcon} />
             </Link>
           </IconButton>
