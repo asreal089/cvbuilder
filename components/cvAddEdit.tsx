@@ -31,6 +31,7 @@ import LinkForm from "./cvAddEditComponents/linkForm";
 import EducationForm from "./cvAddEditComponents/educationForm";
 import ExpirienceForm from "./cvAddEditComponents/expirienceForm";
 import SkillsForm from "./cvAddEditComponents/skillsForm";
+import CoverLetterForm from "./cvAddEditComponents/coverLetterForm";
 
 interface Data {
   data: Cv;
@@ -419,31 +420,8 @@ function CvAddEdit({ data }: Data): JSX.Element {
           removeLink={removeLink}
         />
         <br />
-
-        <Card>
-          <CardContent>
-            <Typography variant="h5" component="h2">
-              Cover Letter
-            </Typography>
-            <br />
-
-            <TextField
-              id="cover-letter"
-              className="campoFull campoComPadding"
-              label="Cover Later"
-              type="text"
-              value={cover_letter}
-              variant="outlined"
-              autoComplete="cover-letter"
-              minRows={5}
-              multiline
-              required
-              onChange={(e) => {
-                setCover_letter(e.target.value);
-              }}
-            />
-          </CardContent>
-        </Card>
+        <CoverLetterForm cover_letter={cover_letter}
+          setCover_letter={setCover_letter}/>
         <br />
         <SkillsForm
           habilidades={habilidades}
