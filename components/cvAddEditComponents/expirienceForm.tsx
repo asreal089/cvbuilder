@@ -33,110 +33,113 @@ export default function Experience(props: ExpirienceFormProps) {
           Experiences
         </Typography>
         <br />
-        {props.experiencias.map((_element: any, index: number) => {
-          return (
-            <span key={index} className="campoFull campoComPadding">
-              <TextField
-                name="experience-title"
-                className="experiencia-empresa campoFull campoComPadding"
-                type="text"
-                label="Title"
-                value={props.experiencias[index].titulo}
-                variant="outlined"
-                required
-                onChange={(e) => {
-                  props.setNovaExperienciaTitulo(e, index);
-                }}
-              />
-              <TextField
-                name="experience-company"
-                className="experiencia-empresa campoFull campoComPadding"
-                type="text"
-                label="Company"
-                value={props.experiencias[index].empresa}
-                variant="outlined"
-                required
-                onChange={(e) => {
-                  props.setNovaExperienciaEmpresa(e, index);
-                }}
-              />
+        {props.experiencias
+          .toSorted((a: Experiencia, b: Experiencia) => {
+            if (a.incio > b.incio) return 1;
+            if (a.incio < b.incio) return -1;
+            return 0;
+          })
+          .map((_element: any, index: number) => {
+            return (
+              <span key={index} className="campoFull campoComPadding">
+                <TextField
+                  name="experience-title"
+                  className="experiencia-empresa campoFull campoComPadding"
+                  type="text"
+                  label="Title"
+                  value={props.experiencias[index].titulo}
+                  variant="outlined"
+                  required
+                  onChange={(e) => {
+                    props.setNovaExperienciaTitulo(e, index);
+                  }}
+                />
+                <TextField
+                  name="experience-company"
+                  className="experiencia-empresa campoFull campoComPadding"
+                  type="text"
+                  label="Company"
+                  value={props.experiencias[index].empresa}
+                  variant="outlined"
+                  required
+                  onChange={(e) => {
+                    props.setNovaExperienciaEmpresa(e, index);
+                  }}
+                />
 
-              <TextField
-                name="experience-description"
-                className="experiencia campoFull campoComPadding"
-                type="text"
-                minRows={5}
-                variant="outlined"
-                multiline
-                label="Description"
-                value={props.experiencias[index].descricao}
-                required
-                onChange={(e) => {
-                  props.setNovaExperienciaDescricao(e, index);
-                }}
-              />
-              <span className="campoFull campoComPadding">
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <DesktopDatePicker
-                    className="data_picker campoFull campoComPadding"
-                    label="begin date"
-                    inputFormat="MM/dd/yyyy"
-                    value={props.experiencias[index].incio}
-                    onChange={(e) => {
-                      props.setNovaExperienciaInicio(e, index);
-                    }}
-                    renderInput={(params: any) => <TextField {...params} />}
-                  />
-                </LocalizationProvider>
-
-
-
-                {!props.experiencias[index].is_current && (
+                <TextField
+                  name="experience-description"
+                  className="experiencia campoFull campoComPadding"
+                  type="text"
+                  minRows={5}
+                  variant="outlined"
+                  multiline
+                  label="Description"
+                  value={props.experiencias[index].descricao}
+                  required
+                  onChange={(e) => {
+                    props.setNovaExperienciaDescricao(e, index);
+                  }}
+                />
+                <span className="campoFull campoComPadding">
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DesktopDatePicker
                       className="data_picker campoFull campoComPadding"
-                      label="end date"
+                      label="begin date"
                       inputFormat="MM/dd/yyyy"
-                      value={props.experiencias[index].fim}
+                      value={props.experiencias[index].incio}
                       onChange={(e) => {
-                        props.setExperienciaFim(e, index);
+                        props.setNovaExperienciaInicio(e, index);
                       }}
                       renderInput={(params: any) => <TextField {...params} />}
                     />
                   </LocalizationProvider>
-                )}
 
-                <span className="center campoFull campoComPadding">
-                <FormControlLabel
-                  control={
-                    <Switch
-                      checked={props.experiencias[index].is_current}
-                      onChange={(e) => {
-                        props.setNovaExperienciaIsCurrent(e, index);
-                      }}
-                      value={props.experiencias[index].is_current}
-                      name="chechIsCurrent"
-                      color="primary"
+                  {!props.experiencias[index].is_current && (
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                      <DesktopDatePicker
+                        className="data_picker campoFull campoComPadding"
+                        label="end date"
+                        inputFormat="MM/dd/yyyy"
+                        value={props.experiencias[index].fim}
+                        onChange={(e) => {
+                          props.setExperienciaFim(e, index);
+                        }}
+                        renderInput={(params: any) => <TextField {...params} />}
+                      />
+                    </LocalizationProvider>
+                  )}
+
+                  <span className="center campoFull campoComPadding">
+                    <FormControlLabel
+                      control={
+                        <Switch
+                          checked={props.experiencias[index].is_current}
+                          onChange={(e) => {
+                            props.setNovaExperienciaIsCurrent(e, index);
+                          }}
+                          value={props.experiencias[index].is_current}
+                          name="chechIsCurrent"
+                          color="primary"
+                        />
+                      }
+                      label="Is Current"
                     />
-                  }
-                  label="Is Current"
-                />
-                  <Button
-                    variant="contained"
-                    color="warning"
-                    onClick={(e) => props.removeExperiencia(index)}
-                  >
-                    Remove Experience
-                    <RemoveCircleIcon className="center"></RemoveCircleIcon>
-                  </Button>
+                    <Button
+                      variant="contained"
+                      color="warning"
+                      onClick={(e) => props.removeExperiencia(index)}
+                    >
+                      Remove Experience
+                      <RemoveCircleIcon className="center"></RemoveCircleIcon>
+                    </Button>
+                  </span>
+                  <br />
+                  <br />
                 </span>
-                <br />
-                <br />
               </span>
-
-            </span>
-          );
-        })}
+            );
+          })}
         <br />
 
         <span className="center campoFull campoComPadding">
