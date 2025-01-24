@@ -34,11 +34,6 @@ export default function Experience(props: ExpirienceFormProps) {
         </Typography>
         <br />
         {props.experiencias
-          .toSorted((a: Experiencia, b: Experiencia) => {
-            if (a.incio > b.incio) return 1;
-            if (a.incio < b.incio) return -1;
-            return 0;
-          })
           .map((_element: any, index: number) => {
             return (
               <span key={index} className="campoFull campoComPadding">

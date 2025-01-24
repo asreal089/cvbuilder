@@ -166,11 +166,13 @@ function CvView({ data }: Data): JSX.Element {
               <section className={styles.section}>
                 <h2>Experience</h2>
                 {data.experiencia
-                  .toSorted((a: Experiencia, b: Experiencia) => {
-                    if (a.incio < b.incio) return 1;
-                    if (a.incio > b.incio) return -1;
-                    return 0;
-                  })
+                  .sort((a: Experiencia, b: Experiencia) => {
+                              const iniDateA = new Date(a.incio);
+                              const iniDateB = new Date(b.incio);
+                              if (iniDateA < iniDateB) return 1;
+                              if (iniDateA > iniDateB) return -1;
+                              return 0;
+                            })
                   .map((exp, index) => (
                     <div key={index} className={styles.item}>
                       <h4>{exp.titulo}</h4>

@@ -9,17 +9,7 @@ import {
   Links,
   Lingua,
 } from "../util/models/types";
-import {
-  Card,
-  Button,
-  FormGroup,
-  Divider,
-  TextField,
-  CardContent,
-  Typography,
-  Alert,
-  AlertTitle,
-} from "@mui/material";
+import { Button, FormGroup, Divider, Alert, AlertTitle } from "@mui/material";
 import { useSession } from "next-auth/react";
 import styles from "../styles/CvForm.module.css";
 import PrivacyModal from "./privacyTermsModal";
@@ -32,6 +22,7 @@ import EducationForm from "./cvAddEditComponents/educationForm";
 import ExpirienceForm from "./cvAddEditComponents/expirienceForm";
 import SkillsForm from "./cvAddEditComponents/skillsForm";
 import CoverLetterForm from "./cvAddEditComponents/coverLetterForm";
+import { init } from "next/dist/compiled/webpack/webpack";
 
 interface Data {
   data: Cv;
@@ -277,7 +268,7 @@ function CvAddEdit({ data }: Data): JSX.Element {
         empresa: "",
         incio: "",
         fim: "",
-        is_current: false,
+        is_current: false
       },
     ]);
   }
@@ -420,8 +411,10 @@ function CvAddEdit({ data }: Data): JSX.Element {
           removeLink={removeLink}
         />
         <br />
-        <CoverLetterForm cover_letter={cover_letter}
-          setCover_letter={setCover_letter}/>
+        <CoverLetterForm
+          cover_letter={cover_letter}
+          setCover_letter={setCover_letter}
+        />
         <br />
         <SkillsForm
           habilidades={habilidades}
@@ -432,7 +425,13 @@ function CvAddEdit({ data }: Data): JSX.Element {
 
         <br />
         <ExpirienceForm
-          experiencias={experiencia}
+          experiencias={experiencia.sort((a: Experiencia, b: Experiencia) => {
+            const iniDateA = new Date(a.incio);
+            const iniDateB = new Date(b.incio);
+            if (iniDateA > iniDateB) return 1;
+            if (iniDateA < iniDateB) return -1;
+            return 0;
+          })}
           setNovaExperienciaTitulo={setNovaExperienciaTitulo}
           setNovaExperienciaEmpresa={setNovaExperienciaEmpresa}
           setNovaExperienciaDescricao={setNovaExperienciaDescricao}
